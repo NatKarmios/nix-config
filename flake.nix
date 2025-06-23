@@ -17,30 +17,22 @@
         nixpkgs.lib.extend (self: super: { inherit custom; });
 
     in
-    {
-      nixosConfigurations = builtins.listToAttrs (
-        map (host: {
-          name = host;
-          value = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs outputs lib;
+    { 
+      hosts = builtins.readDir ./hosts;
+      nixosConfigurations =
+        with builtins;
+        let hosts = lib.remove "common" (attrNames (readDir ./hosts)); in
+        listToAttrs (
+          map (host: {
+            name = host;
+            value = nixpkgs.lib.nixosSystem {
+              specialArgs = {
+                inherit inputs outputs lib;
+              };
+              modules = [ ./hosts/${host} ];
             };
-            modules = [ ./hosts/nixos/${host} ];
-          };
-        }) (builtins.attrNames (builtins.readDir ./hosts/nixos))
-      );
-
-
-      #nixosConfigurations.nat-surface = pkgs.lib.nixosSystem {
-      #  system = "x86_64-linux";
-      #  modules = [
-      #    # Import the previous configuration.nix we used,
-      #    # so the old configuration file still takes effect
-      #    ./configuration.nix
-      #    nixos-hardware.nixosModules.microsoft-surface-common
-      #    sops-nix.nixosModules.sops
-      #  ];
-      #};
+          }) hosts
+        );
     };
 
   inputs = {
