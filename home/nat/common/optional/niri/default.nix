@@ -6,7 +6,10 @@ args:
 
   programs.niri.settings = {
     input = {
-      keyboard.xkb.layout = "gb";
+      keyboard.xkb = {
+        layout = "gb";
+	options = "caps:backspace,shift:both_capslock";
+      };
 
       touchpad = {
         tap = true;

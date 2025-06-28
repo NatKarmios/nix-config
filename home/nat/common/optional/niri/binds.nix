@@ -26,20 +26,20 @@ in
       # Important apps
       {
         "T".action = spawn "wezterm";
-        "D".action = spawn "firefox";
+        "D".action = spawn "rofi" "-show" "run";
       }
   
       # Basic navigation
       (merge [
         {
           "Left".action = focus-column-left;
-          "Right".action = focus-column-right;
-          "Up".action = focus-window-up;
           "Down".action = focus-window-down;
+          "Up".action = focus-window-up;
+          "Right".action = focus-column-right;
           "H".action = focus-column-left;
-          "J".action = focus-column-right;
+          "J".action = focus-column-down;
           "K".action = focus-window-up;
-          "L".action = focus-window-down;
+          "L".action = focus-window-right;
   
           "Home".action = focus-column-first;
           "End".action = focus-column-last;
@@ -67,13 +67,13 @@ in
         }))
         (ctrl {
           "Left".action = focus-monitor-left;
-          "Right".action = focus-monitor-right;
-          "Up".action = focus-monitor-up;
           "Down".action = focus-monitor-down;
+          "Up".action = focus-monitor-up;
+          "Right".action = focus-monitor-right;
           "H".action = focus-monitor-left;
-          "J".action = focus-monitor-right;
+          "J".action = focus-monitor-down;
           "K".action = focus-monitor-up;
-          "L".action = focus-monitor-down;
+          "L".action = focus-monitor-right;
         })
       ])
   
@@ -81,13 +81,13 @@ in
       (shift (merge [
         {
           "Left".action = move-column-left;
-          "Right".action = move-column-right;
-          "Up".action = move-window-up;
           "Down".action = move-window-down;
+          "Up".action = move-window-up;
+          "Right".action = move-column-right;
           "H".action = move-column-left;
-          "J".action = move-column-right;
+          "J".action = move-column-down;
           "K".action = move-window-up;
-          "L".action = move-window-down;
+          "L".action = move-window-right;
   
           "Home".action = move-column-to-first;
           "End".action = move-column-to-last;
@@ -104,13 +104,13 @@ in
         }))
         (ctrl {
           "Left".action = move-column-to-monitor-left;
-          "Right".action = move-column-to-monitor-right;
-          "Up".action = move-column-to-monitor-up;
           "Down".action = move-column-to-monitor-down;
+          "Up".action = move-column-to-monitor-up;
+          "Right".action = move-column-to-monitor-right;
           "H".action = move-column-to-monitor-left;
-          "J".action = move-column-to-monitor-right;
+          "J".action = move-column-to-monitor-down;
           "K".action = move-column-to-monitor-up;
-          "L".action = move-column-to-monitor-down;
+          "L".action = move-column-to-monitor-right;
         })
         {
           # Move the focused window in and out of a column.
@@ -142,9 +142,9 @@ in
   
         # Percentage of screen width/height
         "Minus".action = set-column-width "-${d}";
-        "Plus".action = set-column-width "+${d}";
+        "Equal".action = set-column-width "+${d}";
         "Shift+Minus".action = set-window-height "-${d}";
-        "Shift+Plus".action = set-window-height "+${d}";
+        "Shift+Equal".action = set-window-height "+${d}";
       })
   
       # Layout
