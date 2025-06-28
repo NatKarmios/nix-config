@@ -29,9 +29,14 @@
       #
       # ========== Optional config ==========
       #
-      "hosts/common/optional/gnome.nix"
-      "hosts/common/optional/pipewire.nix"
-      "hosts/common/optional/firefox.nix"
+      "hosts/common/optional/stylix.nix"
+      "hosts/common/optional/desktop"
+      "hosts/common/optional/brightnessctl.nix"
+      #(map (f: "hosts/common/optional/${f}") [
+      #  "stylix.nix"
+      #  "desktop"
+      #  "brightnessctl.nix"
+      #])
     ])
   ];
 
@@ -42,6 +47,8 @@
   hostSpec = {
     hostName = "surfux";
   };
+
+  services.xserver.displayManager.lightdm.enable = false;
 
   boot.loader = {
     systemd-boot.enable = true;

@@ -25,4 +25,28 @@ in
 
   programs.zsh.enable = true;
 }
+# Import home config if relevant
+// lib.optionalAttrs (inputs ? "home-manager") {
+  home-manager = {
+    backupFileExtension = "backup";
+    extraSpecialArgs = {
+      inherit pkgs inputs;
+      hostSpec = config.hostSpec;
+    };
+    users.${hostSpec.username}.imports = lib.flatten ([
+      (
+        { config, ... }:
+        import (lib.custom.relativeToRoot "home/${hostSpec.username}/${hostSpec.hostName}.nix") {
+          inherit
+            pkgs
+            inputs
+            config
+            lib
+            hostSpec
+            ;
+        }
+      )
+    ]);
+  };
+}
 

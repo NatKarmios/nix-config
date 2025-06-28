@@ -15,5 +15,9 @@
         ) (builtins.readDir path)
       )
     );
+  prependAttrNames = prefix: attrs: lib.mapAttrs'
+    (name: value: lib.nameValuePair (prefix + name) value)
+    attrs;
+  mod = a: b: a - ((builtins.div a b) * b);
 }
 
