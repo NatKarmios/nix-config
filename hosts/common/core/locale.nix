@@ -1,9 +1,11 @@
-{ config, ... }:
+{ lib, ... }:
 
 {
-  i18n.defaultLocale = "en_GB.UTF-8";
+  time.timeZone = lib.mkDefault "Europe/London";
 
-  i18n.extraLocaleSettings = {
+  i18n.defaultLocale = lib.mkDefault "en_GB.UTF-8";
+
+  i18n.extraLocaleSettings = lib.mkDefault {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
     LC_MEASUREMENT = "en_GB.UTF-8";

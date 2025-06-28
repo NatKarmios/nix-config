@@ -17,8 +17,7 @@
         nixpkgs.lib.extend (self: super: { inherit custom; });
 
     in
-    { 
-      hosts = builtins.readDir ./hosts;
+    {
       nixosConfigurations =
         with builtins;
         let hosts = lib.remove "common" (attrNames (readDir ./hosts)); in
@@ -50,12 +49,31 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #
     # ========== Utilities ==========
     #
     # Secrets management
     sops-nix = {
       url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+    };
+
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
