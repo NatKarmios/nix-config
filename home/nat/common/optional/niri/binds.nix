@@ -25,8 +25,8 @@ in
   
       # Important apps
       {
-        "T".action = spawn "wezterm";
-        "D".action = spawn "rofi" "-show" "run";
+        "T".action = spawn "uwsm" "app" "--" "wezterm";
+        "D".action = spawn "uwsm" "app" "--" "rofi" "-show" "drun";
       }
   
       # Basic navigation
@@ -37,9 +37,9 @@ in
           "Up".action = focus-window-up;
           "Right".action = focus-column-right;
           "H".action = focus-column-left;
-          "J".action = focus-column-down;
+          "J".action = focus-window-down;
           "K".action = focus-window-up;
-          "L".action = focus-window-right;
+          "L".action = focus-column-right;
   
           "Home".action = focus-column-first;
           "End".action = focus-column-last;
@@ -85,9 +85,9 @@ in
           "Up".action = move-window-up;
           "Right".action = move-column-right;
           "H".action = move-column-left;
-          "J".action = move-column-down;
+          "J".action = move-window-down;
           "K".action = move-window-up;
-          "L".action = move-window-right;
+          "L".action = move-column-right;
   
           "Home".action = move-column-to-first;
           "End".action = move-column-to-last;

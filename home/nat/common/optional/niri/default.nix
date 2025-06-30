@@ -1,4 +1,7 @@
-args:
+{ lib, config, ... }:
+let
+  l-if = cond: elem: if cond then [ elem ] else [];
+in
 {
   imports = [
     ./binds.nix
@@ -16,6 +19,11 @@ args:
 	natural-scroll = true;
       };
     };
+
+    spawn-at-startup = lib.flatten [
+      (l-if config.programs.waybar.enable { command = ["waybar"]; })
+      { command = ["uwsm" "finalize"]; }
+    ];
 
     layout = {
       gaps = 8;
