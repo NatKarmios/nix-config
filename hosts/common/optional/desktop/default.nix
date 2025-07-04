@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./firefox.nix
@@ -8,5 +9,10 @@
     ./pipewire.nix
   ];
 
-  #services.xserver.displayManager.gdm.enable = true;
+  environment.systemPackages = with pkgs; [
+    uwsm
+    libinput
+    fira-code
+    nerd-fonts.fira-code
+  ];
 }
