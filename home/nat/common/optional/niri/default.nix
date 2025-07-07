@@ -11,13 +11,23 @@ in
     input = {
       keyboard.xkb = {
         layout = "gb";
-	options = "caps:backspace,shift:both_capslock";
+        options = "caps:backspace,shift:both_capslock";
+      };
+
+      mouse = {
+        accel-speed = null;
       };
 
       touchpad = {
         tap = true;
-	natural-scroll = true;
+        natural-scroll = true;
       };
+
+      power-key-handling.enable = false;
+    };
+
+    environment = {
+      "NIXOS_OZONE_WL" = "1";
     };
 
     spawn-at-startup = lib.flatten [
@@ -42,12 +52,12 @@ in
         enable = true;
 
         width = 2;
-	active.gradient = {
-	  from = "#18b6f6";
-	  to = "#8000ff";
-	  angle = 150;
-	};
-	inactive.color = "#505050";
+        active.gradient = {
+          from = "#18b6f6";
+          to = "#8000ff";
+          angle = 150;
+        };
+        inactive.color = "#505050";
       };
 
       # stylix integration enables this by default
