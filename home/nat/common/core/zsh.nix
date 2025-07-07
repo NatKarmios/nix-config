@@ -5,15 +5,22 @@ let
 in
 {
   home.packages = with pkgs; [
+    just
     thefuck
     tldr
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.starship.enable = true;
 
   programs.zsh = {
     enable = true;
-    
+
     # relative to '~'
     dotDir = ".config/zsh";
     enableCompletion = true;
@@ -37,6 +44,7 @@ in
 
     shellAliases = {
       q = "exit";
+      lg = "lazygit";
 
       #----------Navigation----------
       doc = "cd $HOME/docs";
