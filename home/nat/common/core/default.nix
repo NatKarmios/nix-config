@@ -24,8 +24,7 @@
     sessionVariables = {
       FLAKE = "$HOME/nix-config";
       SHELL = "zsh";
-      TERM = "kitty";
-      TERMINAL = "kitty";
+      TERMINAL = "wezterm";
       VISUAL = "nvim";
       EDITOR = "nvim";
     };
