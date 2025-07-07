@@ -4,11 +4,12 @@ let
   sync-path = "/home/${username}/.local/sync";
 
   secrets-path = builtins.toString inputs.nix-secrets;
-  private = import "${secrets-path}/syncthing.nix";
+  private = import "${secrets-path}/private.nix";
+  deviceIds = private.syncthing.deviceIds;
   secrets = config.sops.secrets;
 
   mkDeviceAttr = device:
-    let id = builtins.getAttr device.name private.deviceIds; in
+    let id = builtins.getAttr device.name deviceIds; in
     { name = device.name; value = device // { inherit id; }; };
 
   keyAttr = "syncthing/${hostName}/key";

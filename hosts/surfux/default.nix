@@ -33,6 +33,7 @@
       "hosts/common/optional/desktop"
       "hosts/common/optional/brightnessctl.nix"
       "hosts/common/optional/syncthing.nix"
+      "hosts/common/optional/zerotier.nix"
       #(map (f: "hosts/common/optional/${f}") [
       #  "stylix.nix"
       #  "desktop"
