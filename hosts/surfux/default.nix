@@ -51,6 +51,7 @@
   };
 
   services.xserver.displayManager.lightdm.enable = false;
+  services.logind.powerKey = "ignore";
 
   boot.loader = {
     systemd-boot.enable = true;
