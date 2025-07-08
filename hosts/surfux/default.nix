@@ -8,7 +8,6 @@
 {
   inputs,
   lib,
-  config,
   pkgs,
   ...
 }:
@@ -34,11 +33,6 @@
       "hosts/common/optional/brightnessctl.nix"
       "hosts/common/optional/syncthing.nix"
       "hosts/common/optional/zerotier.nix"
-      #(map (f: "hosts/common/optional/${f}") [
-      #  "stylix.nix"
-      #  "desktop"
-      #  "brightnessctl.nix"
-      #])
     ])
   ];
 
@@ -52,6 +46,13 @@
 
   services.xserver.displayManager.lightdm.enable = false;
   services.logind.powerKey = "ignore";
+
+  environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
+    [Microsoft Surface Book 3 Keyboard]
+    MatchName=*Microsoft Surface *Keyboard*
+    MatchDMIModalias=dmi:*svnMicrosoftCorporation:*
+    AttrEventCode=-BTN_0;
+  '';
 
   boot.loader = {
     systemd-boot.enable = true;
