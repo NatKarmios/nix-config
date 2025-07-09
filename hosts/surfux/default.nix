@@ -28,9 +28,10 @@
       #
       # ========== Optional config ==========
       #
-      "hosts/common/optional/stylix.nix"
-      "hosts/common/optional/desktop"
       "hosts/common/optional/brightnessctl.nix"
+      "hosts/common/optional/desktop"
+      "hosts/common/optional/lanzaboote.nix"
+      "hosts/common/optional/stylix.nix"
       "hosts/common/optional/syncthing.nix"
       "hosts/common/optional/zerotier.nix"
     ])
@@ -47,6 +48,8 @@
   services.xserver.displayManager.lightdm.enable = false;
   services.logind.powerKey = "ignore";
 
+  # Prevent keyboard from sending BTN_0; this is interpreted as a
+  #   mouse button and messed with compositors!
   environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''
     [Microsoft Surface Book 3 Keyboard]
     MatchName=*Microsoft Surface *Keyboard*
@@ -54,10 +57,7 @@
     AttrEventCode=-BTN_0;
   '';
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
+  boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "24.11";
 }
