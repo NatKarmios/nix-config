@@ -59,6 +59,21 @@
     AttrEventCode=-BTN_0;
   '';
 
+  # Prioritise WiFi connections over Bluetooth tethering
+  networking.networkmanager.settings = {
+    connection-wifi = {
+      match-device = "type:wifi";
+      "ipv4.route-metric" = 100;
+      "ipv6.route-metric" = 100;
+    };
+
+    connection-bluetooth = {
+      match-device = "type:bt";
+      "ipv4.route-metric" = 500;
+      "ipv6.route-metric" = 500;
+    };
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "24.11";
