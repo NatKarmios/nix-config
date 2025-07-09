@@ -48,6 +48,8 @@
   services.xserver.displayManager.lightdm.enable = false;
   services.logind.powerKey = "ignore";
 
+  misc-tweaks.sddmFontSize = 18;
+
   # Prevent keyboard from sending BTN_0; this is interpreted as a
   #   mouse button and messed with compositors!
   environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''

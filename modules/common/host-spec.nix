@@ -1,7 +1,6 @@
 # Specifications for differentiating hosts
 {
   config,
-  pkgs,
   lib,
   ...
 }:
