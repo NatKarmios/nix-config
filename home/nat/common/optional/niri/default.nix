@@ -5,7 +5,11 @@ in
 {
   imports = [
     ./binds.nix
+    ./idle.nix
+    ./lock.nix
   ];
+
+  services.mako.enable = true;
 
   programs.niri.settings = {
     input = {
@@ -31,7 +35,8 @@ in
     };
 
     spawn-at-startup = lib.flatten [
-      (l-if config.programs.waybar.enable { command = ["waybar"]; })
+      (l-if config.programs.waybar.enable
+        { command = ["uwsm" "app" "--" "waybar"]; })
       { command = ["uwsm" "finalize"]; }
     ];
 
