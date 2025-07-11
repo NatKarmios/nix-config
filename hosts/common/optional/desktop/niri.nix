@@ -33,5 +33,7 @@ in
   services.displayManager.sessionPackages = [
     desktop-entry
   ];
+
+  security.pam.services.swaylock = {};
 }
 

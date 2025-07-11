@@ -3,7 +3,7 @@
   imports = [
     ./firefox.nix
     ./gnome.nix
-    ./hyprland.nix
+    #./hyprland.nix
     ./niri.nix
     ./sddm.nix
     ./pipewire.nix
