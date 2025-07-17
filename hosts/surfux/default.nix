@@ -18,6 +18,7 @@
     #
     ./hardware-configuration.nix
     inputs.hardware.nixosModules.microsoft-surface-common
+    ./nvidia.nix
 
     (map lib.custom.relativeToRoot [
       #
