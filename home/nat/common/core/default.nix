@@ -2,16 +2,23 @@
   config,
   lib,
   pkgs,
+  hostSpec,
   ... 
 }:
 {
-  imports = [
+  imports = lib.flatten [
+    (map lib.custom.relativeToRoot [
+      "modules/common"
+    ])
+
     ./nixvim
     ./rofi.nix
     ./wezterm.nix
     ./zoxide.nix
     ./zsh.nix
   ];
+
+  inherit hostSpec;
 
   home = {
     username = lib.mkDefault config.hostSpec.username;
