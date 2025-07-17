@@ -24,11 +24,11 @@
   #
   # ========== Core host specifications ==========
   #
-  hostSpec = {
+  hostSpec = with inputs.nix-secrets; {
     username = "nat";
-    handle = "NatKarmios";
-    email = "nat@karmios.com";
-    userFullName = "Nat Karmios";
+    email = email.business;
+    userFullName = fullName;
+    handle = handle;
   };
 
   networking.hostName = config.hostSpec.hostName;

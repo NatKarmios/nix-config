@@ -1,8 +1,6 @@
 { inputs, config, ... }:
 with (with config.hostSpec; { inherit hostName; });
 let
-  secrets-path = builtins.toString inputs.nix-secrets;
-  private = import "${secrets-path}/private.nix";
   ztPath = "/var/lib/zerotier-one";
 
   publicAttr = "zerotier/${hostName}/public";
@@ -11,7 +9,7 @@ in
 {
   services.zerotierone = {
     enable = true;
-    joinNetworks = private.zerotier.networkIds;
+    joinNetworks = inputs.nix-secrets.zerotier.networkIds;
   };
 
   sops.secrets = {

@@ -3,9 +3,7 @@ with (with config.hostSpec; { inherit username hostName; });
 let
   sync-path = "/home/${username}/.local/sync/syncthing";
 
-  secrets-path = builtins.toString inputs.nix-secrets;
-  private = import "${secrets-path}/private.nix";
-  deviceIds = private.syncthing.deviceIds;
+  deviceIds = inputs.nix-secrets.syncthing.deviceIds;
   secrets = config.sops.secrets;
 
   mkDeviceAttr = device:

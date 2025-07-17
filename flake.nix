@@ -18,6 +18,16 @@
 
     in
     {
+      #
+      # ========== Overlays ==========
+      #
+      # Custom modifications/overrides to upstream packages
+      overlays = import ./overlays { inherit inputs; };
+
+
+      #
+      # ========== Host Configurations ==========
+      #
       nixosConfigurations =
         with builtins;
         let hosts = lib.remove "common" (attrNames (readDir ./hosts)); in
@@ -77,15 +87,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-secrets = {
-      url = "git+ssh://git@gitlab.com/NatKarmios/nix-secrets.git?ref=main&shallow=1";
-      flake = false;
-    };
-
     # Secure boot
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #
+    # ========== Personal Repositories
+    #
+    # My secrets
+    nix-secrets = {
+      url = "git+ssh://git@gitlab.com/NatKarmios/nix-secrets.git?ref=main&shallow=1";
+      inputs = {};
     };
   };
 }
