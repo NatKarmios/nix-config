@@ -9,15 +9,16 @@
         "${pkgs.niri}/bin/niri msg action power-${s}-monitors";
       idle = pkgs.writeShellScriptBin "idle" ''
         ${pkgs.swayidle}/bin/swayidle -w \
-          timeout 150 '${pkgs.libnotify}/bin/notify-send "Locking in 30 seconds" -t 5000' \
-          timeout 180 '${lock}' \
-          timeout 300 '${display "off"}' resume '${display "on"}' \
-          timeout 450 '${pkgs.systemd}/bin/systemctl suspend' \
-          before-sleep '${display "off"}; ${lock}' \
-          after-resume '${display "on"}' \
-          lock '${display "off"}; ${lock}' \
-          unlock '${display "on"}'
+          timeout 300 '${lock}; ${display "off"}' \
+            resume '${display "on"}' \
+          timeout 600 '${pkgs.systemd}/bin/systemctl suspend' \
+          after-resume '${lock}; ${display "on"}'
       '';
+      #    timeout 300 '${display "off"}' resume '${display "on"}' \
+      #    timeout 150 '${pkgs.libnotify}/bin/notify-send "Locking in 30 seconds" -t 5000' \
+      #    before-sleep '${display "off"}; ${lock}' \
+      #    lock '${display "off"}; ${lock}' \
+      #    unlock '${display "on"}'
     in
     [{ command = ["uwsm" "app" "--" "${idle}/bin/idle"]; }];
 }
