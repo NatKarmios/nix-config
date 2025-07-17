@@ -73,7 +73,6 @@
       findutils  # find
       fzf  # fuzzy find
       jq  # json pretty-printer and manipulator
-      lazygit  # terminal git porcelain
       nix-tree  # nix package tree viewer
       neofetch  # fancier system info than pfetch
       ncdu  # TUI disk usage

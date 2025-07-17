@@ -4,6 +4,7 @@
     common/core
     common/optional/discord.nix
     common/optional/git.nix
+    common/optional/lazygit.nix
     common/optional/onedrive
     common/optional/hyprland
     common/optional/niri
