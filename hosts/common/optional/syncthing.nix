@@ -1,7 +1,7 @@
 { lib, config, inputs, ... }:
 with (with config.hostSpec; { inherit username hostName; });
 let
-  sync-path = "/home/${username}/.local/sync";
+  sync-path = "/home/${username}/.local/sync/syncthing";
 
   secrets-path = builtins.toString inputs.nix-secrets;
   private = import "${secrets-path}/private.nix";

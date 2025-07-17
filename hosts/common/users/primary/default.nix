@@ -20,6 +20,7 @@ in
       hashedPasswordFile = sopsHashedPasswordFile;
       shell = pkgs.zsh;  # default shell
       extraGroups = [ "wheel" ];
+      linger = true;
     };
   };
 
@@ -33,7 +34,7 @@ in
       inherit pkgs inputs;
       hostSpec = config.hostSpec;
     };
-    users.${hostSpec.username}.imports = lib.flatten ([
+    users.${hostSpec.username}.imports = lib.flatten [
       (
         { config, ... }:
         import (lib.custom.relativeToRoot "home/${hostSpec.username}/${hostSpec.hostName}.nix") {
@@ -46,7 +47,7 @@ in
             ;
         }
       )
-    ]);
+    ];
   };
 }
 
