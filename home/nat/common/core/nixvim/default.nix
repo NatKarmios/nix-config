@@ -76,6 +76,7 @@ with lib.custom.nixvim;
       gitsigns.enable = true;  # Add git signs to the gutter
       numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
       sleuth.enable = true;  # Configure tabs and indents automatically
+      leap.enable = true;  # Super powered motion!
     };
 
     keymaps = with bind-helpers; lib.flatten [
