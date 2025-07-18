@@ -44,6 +44,7 @@
 
   hostSpec = {
     hostName = "surfux";
+    isLaptop = true;
   };
 
   services.xserver.displayManager.lightdm.enable = false;

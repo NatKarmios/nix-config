@@ -11,7 +11,7 @@
         ${pkgs.swayidle}/bin/swayidle -w \
           timeout 300 '${lock}; ${display "off"}' \
             resume '${display "on"}' \
-          timeout 600 '${pkgs.systemd}/bin/systemctl suspend' \
+          timeout 600 '/run/current-system/sw/bin/sleepy' \
           after-resume '${lock}; ${display "on"}'
       '';
       #    timeout 300 '${display "off"}' resume '${display "on"}' \

@@ -5,6 +5,7 @@
     ./gnome.nix
     ./niri.nix
     ./sddm.nix
+    ./sleepy.nix
     ./pipewire.nix
   ];
 

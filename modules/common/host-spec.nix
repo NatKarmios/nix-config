@@ -35,6 +35,11 @@
       description = "Home directory of the primary user";
       default = "/home/${config.hostSpec.username}";
     };
+    isLaptop = lib.mkOption {
+      type = lib.types.bool;
+      description = "Whether this device is a laptop";
+      default = false;
+    };
   };
 }
 
