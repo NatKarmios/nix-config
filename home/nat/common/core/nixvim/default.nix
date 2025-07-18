@@ -4,6 +4,7 @@ with lib.custom.nixvim;
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins/lsp.nix
+    ./plugins/cmp.nix
     ./plugins/telescope.nix
     ./plugins/which-key.nix
   ];
@@ -61,18 +62,6 @@ with lib.custom.nixvim;
     };
 
     plugins = {
-      cmp = {
-        enable = true;
-        autoEnableSources = true;
-        settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "luasnip"; }
-            { name = "path"; }
-            { name = "nvim_lsp_signature_help"; }
-          ];
-        };
-      };
       gitsigns.enable = true;  # Add git signs to the gutter
       numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
       sleuth.enable = true;  # Configure tabs and indents automatically
