@@ -3,8 +3,8 @@ with lib.custom.nixvim;
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    ./plugins/lsp.nix
     ./plugins/cmp.nix
+    ./plugins/lsp
     ./plugins/telescope.nix
     ./plugins/which-key.nix
   ];
