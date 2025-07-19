@@ -35,6 +35,7 @@
       i = bind "i";
       t' = bind' "t";
       nv = bind ["n" "v"];
+      nv' = bind' ["n" "v"];
       nx' = bind' ["n" "x"];
 
       cmd = s: "<cmd>${s}<CR>";

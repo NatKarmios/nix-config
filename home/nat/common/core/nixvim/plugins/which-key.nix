@@ -47,6 +47,7 @@ with lib.custom.nixvim;
         { __unkeyed = "<leader>c"; group = "[C]ode"; }
         { __unkeyed = "<leader>f"; group = "[F]ind"; }
         { __unkeyed = "<leader>F"; group = "[F]ile"; }
+        { __unkeyed = "<leader>t"; group = "[T]oggle"; }
         { __unkeyed = "<leader>w"; group = "[W]indow"; }
         { __unkeyed = "<leader>W"; group = "Tab"; }
       ];
