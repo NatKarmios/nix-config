@@ -8,6 +8,7 @@ with lib.custom.nixvim;
     ./plugins/sidebar.nix
     ./plugins/spider.nix
     ./plugins/telescope.nix
+    ./plugins/ufo.nix
     ./plugins/which-key.nix
   ];
 
@@ -59,12 +60,6 @@ with lib.custom.nixvim;
       cursorline = true;  # Show which line the cursor is on
       scrolloff = 10;  # Min lines to keep above and below cursor
 
-      # Fold settings; copped from `nvim-ufo` README
-      foldcolumn = "1";
-      fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:";
-      foldlevel = 99;
-      foldlevelstart = 99;
-      foldenable = true;
     };
 
     plugins = {

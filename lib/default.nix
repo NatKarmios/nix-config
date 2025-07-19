@@ -21,6 +21,7 @@
   mod = a: b: a - ((builtins.div a b) * b);
   nixvim = rec {
     raw = s: { __raw = s; };
+    call = p: s: raw "function() require('${p}').${s} end";
 
     # Quick bind functions
     bind-helpers = rec {
