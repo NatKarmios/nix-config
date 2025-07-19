@@ -59,7 +59,6 @@ with lib.custom.nixvim;
       inccommand = "split";  # Substitutions live preview
       cursorline = true;  # Show which line the cursor is on
       scrolloff = 10;  # Min lines to keep above and below cursor
-
     };
 
     plugins = {
@@ -68,6 +67,7 @@ with lib.custom.nixvim;
       leap.enable = true;  # Super powered motion!
       numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
       sleuth.enable = true;  # Configure tabs and indents automatically
+      yazi.enable = true;  # Embedded file browser
     };
 
     keymaps = with bind-helpers; lib.flatten [
@@ -96,6 +96,10 @@ with lib.custom.nixvim;
       (n' "gb" "<C-o>" "[G]o [B]ack")
       (n' "gB" "<C-i>" "[G]o Forward")
       (i "jj" "<Esc>")
+
+      # Open utils
+      (n' "<leader>og" (cmd "LazyGit") "[O]pen Lazy[G]it")
+      (n' "<leader>oy" (cmd "Yazi") "[O]pen [Y]azi")
     ];
 
     autoGroups = {
