@@ -1,12 +1,17 @@
-{ lib, inputs, ... }:
+{ lib, inputs, pkgs, ... }:
 with lib.custom.nixvim;
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins/cmp.nix
     ./plugins/lsp
+    ./plugins/spider.nix
     ./plugins/telescope.nix
     ./plugins/which-key.nix
+  ];
+
+  home.packages = [
+    pkgs.neovim-remote
   ];
 
   programs.nixvim = {
@@ -63,9 +68,10 @@ with lib.custom.nixvim;
 
     plugins = {
       gitsigns.enable = true;  # Add git signs to the gutter
+      lazygit.enable = true;  # Embedded git porcelain
+      leap.enable = true;  # Super powered motion!
       numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
       sleuth.enable = true;  # Configure tabs and indents automatically
-      leap.enable = true;  # Super powered motion!
     };
 
     keymaps = with bind-helpers; lib.flatten [
