@@ -1,3 +1,7 @@
+#
+# Peer to peer folder sync
+#
+
 { lib, config, inputs, ... }:
 with (with config.hostSpec; { inherit username hostName; });
 let

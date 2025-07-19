@@ -1,3 +1,7 @@
+#
+# Automatic theming for many apps
+#
+
 { inputs, pkgs, lib, ... }:
 {
   imports = [

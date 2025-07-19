@@ -1,3 +1,7 @@
+#
+# A nice git TUI
+#
+
 {
   programs.lazygit = {
     enable = true;

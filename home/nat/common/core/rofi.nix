@@ -1,3 +1,7 @@
+#
+# Quick, versatile GUI menus
+#
+
 { pkgs, ... }:
 {
   programs.rofi.enable = true;

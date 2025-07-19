@@ -1,3 +1,7 @@
+#
+# Secure boot
+#
+
 { pkgs, lib, inputs, ... }:
 {
   imports = [

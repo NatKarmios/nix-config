@@ -1,3 +1,7 @@
+#
+# Self-hosted WAN
+#
+
 { inputs, config, ... }:
 with (with config.hostSpec; { inherit hostName; });
 let

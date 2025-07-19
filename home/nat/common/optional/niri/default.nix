@@ -1,7 +1,8 @@
-{ lib, config, ... }:
-let
-  l-if = cond: elem: if cond then [ elem ] else [];
-in
+#
+# Scrolling window manager
+#
+
+{ lib, ... }:
 {
   imports = [
     ./binds.nix
