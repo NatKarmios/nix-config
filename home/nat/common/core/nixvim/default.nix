@@ -5,6 +5,7 @@ with lib.custom.nixvim;
     inputs.nixvim.homeManagerModules.nixvim
     ./plugins/cmp.nix
     ./plugins/lsp
+    ./plugins/lualine.nix
     ./plugins/sidebar.nix
     ./plugins/spider.nix
     ./plugins/telescope.nix
