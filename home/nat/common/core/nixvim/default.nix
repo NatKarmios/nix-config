@@ -8,6 +8,7 @@ with lib.custom.nixvim;
     ./plugins/lualine.nix
     ./plugins/sidebar.nix
     ./plugins/spider.nix
+    ./plugins/surround.nix
     ./plugins/telescope.nix
     ./plugins/ufo.nix
     ./plugins/which-key.nix
@@ -64,6 +65,7 @@ with lib.custom.nixvim;
     };
 
     plugins = {
+      auto-session.enable = true;  # Automatic session management
       gitsigns.enable = true;  # Add git signs to the gutter
       lazygit.enable = true;  # Embedded git porcelain
       leap.enable = true;  # Super powered motion!
