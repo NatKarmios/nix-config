@@ -11,6 +11,7 @@ with lib.custom.nixvim;
     ./plugins/telescope.nix
     ./plugins/ufo.nix
     ./plugins/which-key.nix
+    ./plugins/yazi.nix
   ];
 
   home.packages = [
@@ -68,7 +69,6 @@ with lib.custom.nixvim;
       leap.enable = true;  # Super powered motion!
       numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
       sleuth.enable = true;  # Configure tabs and indents automatically
-      yazi.enable = true;  # Embedded file browser
     };
 
     keymaps = with bind-helpers; lib.flatten [
