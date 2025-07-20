@@ -2,10 +2,11 @@
 # Bi-directional OneDrive sync for select folders
 #
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   onedrive-dir = "~/.local/sync/onedrive";
   onedrive-pkg = pkgs.unstable.onedrive;
+  inherit (config.xdg) userDirs;
 in
 {
   programs.onedrive = {
@@ -32,8 +33,12 @@ in
     /Scripts
   '';
 
-  home.activation.mk-onedrive-dir = ''
+  home.activation.mk-onedrive-dir-and-symlink = ''
     run mkdir -p ${onedrive-dir}
+    run ln -sfT ${onedrive-dir}/Documents ${userDirs.documents}/onedrive
+    run ln -sfT ${onedrive-dir}/Pictures ${userDirs.pictures}/onedrive
+    run ln -sfT ${onedrive-dir}/Music ${userDirs.music}/onedrive
+    run ln -sfT ${onedrive-dir}/Videos ${userDirs.videos}/onedrive
   '';
 
   systemd.user.services.onedrive = {
