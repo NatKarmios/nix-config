@@ -74,8 +74,8 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim/main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     stylix = {
@@ -91,6 +91,10 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    tmux-sessionx = {
+      url = "github:omerxx/tmux-sessionx";
     };
 
     #

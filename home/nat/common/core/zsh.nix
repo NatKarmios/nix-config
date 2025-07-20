@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   devDirectory = "~/src";
   devNix = "${devDirectory}/nix";
@@ -21,8 +21,7 @@ in
   programs.zsh = {
     enable = true;
 
-    # relative to '~'
-    dotDir = ".config/zsh";
+    dotDir = ".config/zsh";  # relative to '~'
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autocd = true;
@@ -45,6 +44,7 @@ in
     shellAliases = {
       q = "exit";
       lg = "lazygit";
+      tx = "tmux attach || tmux";
 
       #----------Navigation----------
       doc = "cd $HOME/docs";

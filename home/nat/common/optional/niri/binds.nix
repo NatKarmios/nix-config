@@ -25,7 +25,7 @@ in
   
       # Important apps
       {
-        "T".action = spawn "uwsm" "app" "--" "wezterm";
+        "T".action = spawn "uwsm" "app" "--" "wezterm" "start" "sh" "-c" "tmux attach || tmux";
         "D".action = spawn "uwsm" "app" "--" "rofi" "-show" "drun";
       }
   

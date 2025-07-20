@@ -13,6 +13,7 @@
 
     ./nixvim
     ./rofi.nix
+    ./tmux.nix
     ./wezterm.nix
     ./yazi.nix
     ./zoxide.nix
