@@ -9,6 +9,7 @@
   inputs,
   lib,
   pkgs,
+  config,
   ...
 }:
 {
@@ -75,6 +76,9 @@
       "ipv6.route-metric" = 500;
     };
   };
+
+  services.blueman.enable = true;
+  users.users.${config.hostSpec.username}.extraGroups = [ "lp" ];
 
   boot.loader.efi.canTouchEfiVariables = true;
 

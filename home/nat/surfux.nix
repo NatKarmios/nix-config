@@ -10,5 +10,7 @@
     common/optional/niri
     common/optional/waybar.nix
   ];
+
+  services.blueman-applet.enable = true;
 }
 

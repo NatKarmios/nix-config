@@ -10,7 +10,8 @@
     ./lock.nix
   ];
 
-  services.mako.enable = true;
+  services.swaync.enable = true;
+  services.hyprpaper.enable = true;
 
   programs.niri.settings = {
     input = {
@@ -70,6 +71,12 @@
       # stylix integration enables this by default
       border.enable = false;
     };
+    window-rules = [
+      {
+        matches = [{ app-id = "org.wezfurlong.wezterm"; }];
+        draw-border-with-background = false;
+      }
+    ];
   };
 }
 

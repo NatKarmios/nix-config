@@ -10,6 +10,6 @@
 
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.image = lib.custom.relativeToRoot "img/swirls.jpg";
+  stylix.image = lib.custom.relativeToRoot "img/ds3.jpg";
 }
 
