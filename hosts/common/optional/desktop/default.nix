@@ -13,8 +13,9 @@
     uwsm
     libinput
     wl-clipboard-rs
+  ];
 
-    # Fonts
+  fonts.packages = with pkgs; [
     fira-code
     nerd-fonts.fira-code
     source-sans-pro

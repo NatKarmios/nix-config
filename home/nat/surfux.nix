@@ -8,7 +8,7 @@
     common/optional/obsidian.nix
     common/optional/onedrive
     common/optional/niri
-    common/optional/waybar.nix
+    common/optional/waybar
   ];
 
   services.blueman-applet.enable = true;
