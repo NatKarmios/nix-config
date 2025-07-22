@@ -3,31 +3,17 @@ with lib.custom.nixvim;
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    ./plugins/cmp.nix
-    ./plugins/lsp
-    ./plugins/lualine.nix
-    ./plugins/sidebar.nix
-    ./plugins/spider.nix
-    ./plugins/surround.nix
-    ./plugins/telescope.nix
-    ./plugins/ufo.nix
-    ./plugins/which-key.nix
-    ./plugins/yazi.nix
+    ./plugins
+    ./theme.nix
   ];
 
   home.packages = [
     pkgs.neovim-remote
   ];
 
-  stylix.targets.nixvim.enable = false;
-
   programs.nixvim = {
     enable = true;
     enableMan = true;
-    colorschemes.catppuccin = {
-      enable = true;
-      settings.transparent_background = true;
-    };
 
     globals = {
       mapleader = " ";
@@ -69,15 +55,6 @@ with lib.custom.nixvim;
       scrolloff = 10;  # Min lines to keep above and below cursor
     };
 
-    plugins = {
-      auto-session.enable = true;  # Automatic session management
-      gitsigns.enable = true;  # Add git signs to the gutter
-      lazygit.enable = true;  # Embedded git porcelain
-      leap.enable = true;  # Super powered motion!
-      numbertoggle.enable = true;  # Auto-toggle relative/absolute nums based on mode
-      sleuth.enable = true;  # Configure tabs and indents automatically
-    };
-
     keymaps = with bind-helpers; lib.flatten [
       (n "<Esc>" (cmd "nohlsearch")) # Clear search highlights
       (t' "<Esc><Esc>" ''<C-\\><C-n>'' "Exit terminal mode")
@@ -98,6 +75,7 @@ with lib.custom.nixvim;
       (n' "<leader><Tab>" (cmd "tabn") "Next tab")
       (n' "<leader><S-Tab>" (cmd "tabN") "Previous tab")
       (n' "<leader>bd" (cmd "bd") "[B]uffer [D]elete")
+      (n' "<leader>bD" (cmd "bufdo :bd") "[B]uffer [D]elete All")
       (n' "<leader>bc" (cmd "bc") "[B]uffer [C]reate")
       (n' "<leader>bn" (cmd "bn") "[B]uffer [N]ext")
       (n' "<leader>bN" (cmd "bN") "[B]uffer Previous")

@@ -43,7 +43,6 @@ with lib.custom.nixvim;
     plugins = {
       cmp-nvim-lsp.enable = true;
       cmp-nvim-lsp-signature-help.enable = true;
-      fidget.enable = true;
     };
 
     plugins.lsp = {

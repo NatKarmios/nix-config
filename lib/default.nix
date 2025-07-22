@@ -38,6 +38,7 @@
       nv = bind ["n" "v"];
       nv' = bind' ["n" "v"];
       nx' = bind' ["n" "x"];
+      nox = bind ["n" "o" "x"];
 
       cmd = s: "<cmd>${s}<CR>";
     };

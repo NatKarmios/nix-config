@@ -67,11 +67,6 @@ with lib.custom.nixvim;
         }
       ];
     };
-
-    # The fold column was cyan for some reason??
-    # Just set it to be the same as line numbers
-    extraConfigLuaPost = ''
-      vim.api.nvim_set_hl(0, "FoldColumn", vim.api.nvim_get_hl(0, {}).LineNr)
-    '';
   };
 }
+
