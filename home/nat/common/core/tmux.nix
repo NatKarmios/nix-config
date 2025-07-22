@@ -27,6 +27,7 @@
           set -g @catppuccin_window_current_text "#W#{?window_zoomed_flag,(),}"
         '';
       }
+      sessionist
       {
         plugin = inputs.tmux-sessionx.packages.${pkgs.system}.default;
         extraConfig = ''
