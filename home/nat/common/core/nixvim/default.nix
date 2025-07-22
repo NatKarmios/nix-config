@@ -19,10 +19,15 @@ with lib.custom.nixvim;
     pkgs.neovim-remote
   ];
 
+  stylix.targets.nixvim.enable = false;
+
   programs.nixvim = {
     enable = true;
     enableMan = true;
-    colorschemes.catppuccin.enable = true;
+    colorschemes.catppuccin = {
+      enable = true;
+      settings.transparent_background = true;
+    };
 
     globals = {
       mapleader = " ";

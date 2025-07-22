@@ -30,7 +30,7 @@
       "$HOME/.local/bin"
     ];
     sessionVariables = {
-      FLAKE = "$HOME/nix-config";
+      FLAKE = "$HOME/src/nix/nix-config";
       SHELL = "zsh";
       TERMINAL = "wezterm";
       VISUAL = "nvim";
