@@ -2,16 +2,18 @@
 # Scrolling window manager
 #
 
-{ lib, ... }:
+{ lib, config, ... }:
 {
   imports = [
     ./binds.nix
     ./idle.nix
     ./lock.nix
+    ./quick-actions.nix
   ];
 
   services.swaync.enable = true;
   services.hyprpaper.enable = true;
+
 
   programs.niri.settings = {
     input = {
@@ -36,12 +38,15 @@
       "NIXOS_OZONE_WL" = "1";
     };
 
-    spawn-at-startup = lib.flatten [
-      { command = ["uwsm" "app" "--" "waybar"]; }
-      { command = ["uwsm" "app" "--" "obsidian"]; }
-      { command = ["uwsm" "app" "--" "vesktop"]; }
-      { command = ["uwsm" "finalize"]; }
-    ];
+    cursor = {
+      theme = "Posy_Cursor_Black";
+    };
+
+    spawn-at-startup =
+      config.my.niri.startup-apps
+      |> lib.attrValues
+      |> builtins.filter (a: a.enable)
+      |> map (a: { command = a.cmd; });
 
     layout = {
       gaps = 8;
@@ -77,6 +82,8 @@
         draw-border-with-background = false;
       }
     ];
+    overview.backdrop-color = "#1e1e2e";
+    hotkey-overlay.skip-at-startup = true;
   };
 }
 

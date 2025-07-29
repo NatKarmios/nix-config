@@ -29,5 +29,7 @@
       settings.enabledThemes = [ "natppuccin.css" ];
     };
   };
+
+  my.niri.startup-apps.vesktop.cmd = ["vesktop" "--start-minimized"];
 }
 

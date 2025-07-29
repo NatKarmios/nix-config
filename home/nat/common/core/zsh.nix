@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   devDirectory = "~/src";
   devNix = "${devDirectory}/nix";
@@ -78,5 +78,13 @@ in
       vi = "nvim";
       vim = "nvim";
     };
+
+    initContent = lib.mkOrder 999999 ''
+      if [[ -n $ZSH_RUN ]] then
+        eval $ZSH_RUN
+      fi
+      unset ZSH_RUN
+    '';
   };
 }
+

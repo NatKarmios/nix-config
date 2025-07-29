@@ -10,7 +10,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    uwsm
     libinput
     wl-clipboard-rs
   ];

@@ -22,13 +22,13 @@ in
           repeat = false;
         };
       }
-  
+
       # Important apps
       {
-        "T".action = spawn "uwsm" "app" "--" "wezterm" "start" "sh" "-c" "tmux attach || tmux";
-        "D".action = spawn "uwsm" "app" "--" "rofi" "-show" "drun";
+        "T".action = spawn "wezterm" "start" "sh" "-c" "tmux attach || tmux";
+        "D".action = spawn "rofi" "-show" "drun";
       }
-  
+
       # Basic navigation
       (merge [
         {
@@ -40,13 +40,13 @@ in
           "J".action = focus-window-down;
           "K".action = focus-window-up;
           "L".action = focus-column-right;
-  
+
           "Home".action = focus-column-first;
           "End".action = focus-column-last;
-  
+
           "C".action = center-column;
           "Ctrl+C".action = center-visible-columns;
-  
+
           "WheelScrollDown" = {
             action = focus-workspace-down;
             cooldown-ms = 150;
@@ -55,7 +55,7 @@ in
             action = focus-workspace-up;
             cooldown-ms = 150;
           };
-          
+
           "Page_Down".action = focus-workspace-down;
           "Page_Up".action = focus-workspace-up;
           "U".action = focus-workspace-down;
@@ -76,7 +76,7 @@ in
           "L".action = focus-monitor-right;
         })
       ])
-  
+
       # Moving windows & columns
       (shift (merge [
         {
@@ -88,10 +88,10 @@ in
           "J".action = move-window-down;
           "K".action = move-window-up;
           "L".action = move-column-right;
-  
+
           "Home".action = move-column-to-first;
           "End".action = move-column-to-last;
-  
+
           "Page_Down".action = move-column-to-workspace-down;
           "Page_Up".action = move-column-to-workspace-up;
           "U".action = move-column-to-workspace-down;
@@ -135,25 +135,25 @@ in
         "R".action = switch-preset-column-width;
         "Shift+R".action = switch-preset-window-height;
         "Ctrl+R".action = reset-window-height;
-  
+
         "F".action = maximize-column;
         "Shift+F".action = expand-column-to-available-width;
         "Ctrl+F".action = fullscreen-window;
-  
+
         # Percentage of screen width/height
         "Minus".action = set-column-width "-${d}";
         "Equal".action = set-column-width "+${d}";
         "Shift+Minus".action = set-window-height "-${d}";
         "Shift+Equal".action = set-window-height "+${d}";
       })
-  
+
       # Layout
       {
         "V".action = toggle-window-floating;
         "Ctrl+V".action = switch-focus-between-floating-and-tiling;
       }
     ]))
-  
+
     # Media keys
     {
       "XF86AudioRaiseVolume" = {
@@ -172,7 +172,7 @@ in
         action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         allow-when-locked = true;
       };
-  
+
       "XF86MonBrightnessUp" = {
         action = spawn "brightnessctl" "--class=backlight" "set" "+10%";
         allow-when-locked = true;
@@ -182,7 +182,7 @@ in
         allow-when-locked = true;
       };
     }
-  
+
     # Exiting
     {
       "Mod+Shift+E".action = quit;
