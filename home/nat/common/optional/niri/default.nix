@@ -74,12 +74,6 @@
       # stylix integration enables this by default
       border.enable = false;
     };
-    window-rules = [
-      {
-        matches = [{ app-id = "org.wezfurlong.wezterm"; }];
-        draw-border-with-background = false;
-      }
-    ];
     overview.backdrop-color = "#1e1e2e";
     hotkey-overlay.skip-at-startup = true;
   };
