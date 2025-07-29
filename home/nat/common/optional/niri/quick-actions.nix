@@ -22,7 +22,7 @@
       declare -A actions
       ${builtins.concatStringsSep "\n" opt_assigns}
 
-      key=$(echo "''${!actions[@]}" | wofi -m --dmenu)
+      key=$(printf "%s\n" "''${!actions[@]}" | wofi -m --dmenu)
       exec bash -c "''${actions[$key]}"
     '';
   in

@@ -16,6 +16,7 @@
     ./rofi.nix
     ./tmux.nix
     ./wezterm.nix
+    ./wofi.nix
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
