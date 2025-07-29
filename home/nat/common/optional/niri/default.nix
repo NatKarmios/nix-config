@@ -12,8 +12,6 @@
   ];
 
   services.swaync.enable = true;
-  services.hyprpaper.enable = true;
-
 
   programs.niri.settings = {
     input = {

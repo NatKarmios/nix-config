@@ -73,15 +73,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nix-level configuration
     nixvim = {
       url = "github:nix-community/nixvim/main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # Consistent system-wide theming
     stylix = {
       url = "github:nix-community/stylix/release-25.05";
     };
 
+    # Nix-level configuration for Niri
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -93,8 +96,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nicer tmux session management
     tmux-sessionx = {
       url = "github:omerxx/tmux-sessionx";
+    };
+
+    # Dynamic wallpapers
+    timewall = {
+      url = "github:natkarmios/timewall";
     };
 
     #

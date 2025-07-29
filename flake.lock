@@ -633,6 +633,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1744932701,
+        "narHash": "sha256-fusHbZCyv126cyArUwwKrLdCkgVAIaa/fQJYFlCEqiU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1711333969,
         "narHash": "sha256-5PiWGn10DQjMZee5NXzeA6ccsv60iLu+Xtw+mfvkUAs=",
         "owner": "NixOS",
@@ -760,6 +776,7 @@
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
+        "timewall": "timewall",
         "tmux-sessionx": "tmux-sessionx"
       }
     },
@@ -776,6 +793,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "0be641045af6d8666c11c2c40e45ffc9667839b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "timewall",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745289264,
+        "narHash": "sha256-7nt+UJ7qaIUe2J7BdnEEph9n2eKEwxUwKS/QIr091uA=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "3b7171858c20d5293360042936058fb0c4cb93a9",
         "type": "github"
       },
       "original": {
@@ -885,6 +923,25 @@
         "type": "github"
       }
     },
+    "timewall": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1753793606,
+        "narHash": "sha256-IWre10SKoX3e+KsT1dPouOnt5vt7Th56sP1ofX9rbMg=",
+        "owner": "natkarmios",
+        "repo": "timewall",
+        "rev": "665cbf110ad327cee435037a47ea367d3f6535c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "natkarmios",
+        "repo": "timewall",
+        "type": "github"
+      }
+    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -969,7 +1026,7 @@
     "tmux-sessionx": {
       "inputs": {
         "flake-parts": "flake-parts_4",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1736251564,
