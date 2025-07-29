@@ -15,6 +15,7 @@
   };
   "custom/note" = {
     format = "󰏫";
+    justify = "center";
   };
 } // lib.mergeAttrsList (map (p: (import p) args) [
   ./datetime.nix

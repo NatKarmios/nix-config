@@ -5,7 +5,9 @@ in
 {
   programs.waybar = {
     enable = true;
-    settings = [({
+    systemd.enable = true;
+    settings.mainBar = modules // {
+      layer = "top";
       spacing = 10;
       modules-left = [
         "group/start"
@@ -22,9 +24,11 @@ in
         "pulseaudio"
         "battery"
       ];
-    } // modules)];
+    };
     style = lib.mkAfter (builtins.readFile ./style.css);
   };
+
+  my.niri.startup-apps.waybar.cmd = ["systemctl" "--user" "reset-failed" "waybar.service"];
 
   stylix.targets.waybar.addCss = false;
 }

@@ -41,12 +41,18 @@ window#waybar {
 
 #start .module {
   margin-top: 0;
-}
-
-#image.nixos {
   padding: 0;
   min-width: 26px;
   min-height: 26px;
+  font-family: "0xProto Nerd Font";
+  border-radius: 100000px;
+}
+
+#custom-launch:hover,
+#custom-apps:hover,
+#custom-power:hover
+{
+  background-color: @base03;
 }
 
 #custom-power {
@@ -118,8 +124,12 @@ window#waybar {
   font-weight: 600;
 }
 
-#workspaces button.empty:not(.active) {
+#workspaces button.empty:not(.active):not(:hover) {
   opacity: 0.5;
+}
+
+#workspaces button:hover:not(.active) {
+  background-color: mix(@base00, @base0E, 0.4);
 }
 
 #workspaces button:first-child {
@@ -134,6 +144,10 @@ window#waybar {
   margin-right: 0;
 }
 
+#workspaces button {
+  transition-property: none;
+}
+
 #custom-notification {
   border-radius: 100000px;
   background-color: @base00;
@@ -141,22 +155,21 @@ window#waybar {
   min-width: 26px;
 }
 
+#custom-notification:hover {
+  background-color: @base03;
+}
+
 #custom-notification.cc-open {
   opacity: 0.5;
 }
 
 #custom-notification.none,
-#custom-notification.dnd-none
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification
 {}
 
 #custom-notification.notification {
-  color: @base08;
-  background-color: mix(@base00, @base08, 0.1);
-}
-
-#custom-notification.dnd-notification {
-  color: @base0F;
-  background-color: mix(@base00, @base0F, 0.1);
+  color: #eba0ac;  /* "Maroon" */
 }
 
 #custom-notification.dnd-inhibited-none,
@@ -164,8 +177,7 @@ window#waybar {
 #custom-notification.inhibited-none,
 #custom-notification.inhibited-notification
 {
-  color: @base0A;
-  background-color: mix(@base00, @base0A, 0.1);
+  color: #9399b2;  /* "Overlay 2" */
 }
 
 #custom-note {
@@ -173,5 +185,6 @@ window#waybar {
   background-color: @base00;
   padding: 0;
   min-width: 26px;
+  font-family: "0xProto Nerd Font";
 }
 
