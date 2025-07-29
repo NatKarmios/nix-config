@@ -39,6 +39,7 @@ in
     run ln -sfT ${onedrive-dir}/Pictures ${userDirs.pictures}/onedrive
     run ln -sfT ${onedrive-dir}/Music ${userDirs.music}/onedrive
     run ln -sfT ${onedrive-dir}/Videos ${userDirs.videos}/onedrive
+    run ln -sfT ${onedrive-dir}/Pictures/Screenshots ${userDirs.pictures}/screenshots
   '';
 
   systemd.user.services.onedrive = {
