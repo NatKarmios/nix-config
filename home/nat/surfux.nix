@@ -16,6 +16,7 @@
   ];
 
   services.blueman-applet.enable = true;
+  services.network-manager-applet.enable = true;
 
   programs.niri.settings.outputs."eDP-1".scale = 1.75;
 }
