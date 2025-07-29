@@ -53,6 +53,8 @@
 
   misc-tweaks.sddmFontSize = 18;
 
+  environment.systemPackages = [ pkgs.surface-control ];
+
   # Prevent keyboard from sending BTN_0; this is interpreted as a
   #   mouse button and messed with compositors!
   environment.etc."libinput/local-overrides.quirks".text = pkgs.lib.mkForce ''

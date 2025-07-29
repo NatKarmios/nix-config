@@ -41,6 +41,7 @@
     git
     vim
     wget
+    jq
   ];
 
   #
