@@ -29,7 +29,7 @@ let
 in
 {
   default = final: prev: {}
-    #// (additions final prev)
+    // (additions final prev)
     // (stable-packages final prev)
     // (unstable-packages final prev);
 }

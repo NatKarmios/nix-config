@@ -13,6 +13,7 @@
     common/optional/onedrive
     common/optional/timewall.nix
     common/optional/waybar
+    common/optional/zotero
   ];
 
   services.blueman-applet.enable = true;

@@ -1,0 +1,583 @@
+/* Nat: I have tweaked this! */
+
+/*==============================================================================
+ *  Theme Name: Catppuccin Mocha for Zotero
+ *  Description: A Zotero theme using the Catppuccin Mocha color palette
+ *  Author: promicrobial
+ *  Version: 1.0.0
+ *  Date Created: 17-12-24
+ *  Last Updated: 17-12-24
+ *  Repository: https://github.com/promicrobial/Zotero-Catppuccin-Theme
+ *  License: GPL-3.0
+ *
+ *  Based on Catppuccin Mocha (https://github.com/catppuccin/catppuccin)
+ *
+ *  Installation:
+ *  1. Navigate to your Zotero profile directory
+ *  2. Place this file in chrome/userChrome.css
+ *  3. Restart Zotero
+ *============================================================================*/
+
+:root {
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --blue: #89b4fa;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+
+  --base: #1e1e2e;    /* Base color for main backgrounds */
+  --mantle: #181825;  /* Slightly darker background */
+  --crust: #11111b;   /* Darkest background, for borders */
+
+  --surface0: #313244; /* Lighter background for UI elements */
+  --surface1: #45475a; /* Even lighter background for hover states */
+  --surface2: #585b70; /* For selected items */
+
+  --text: #cdd6f4;     /* Main text color */
+  --subtext1: #bac2de; /* Secondary text */
+  --subtext0: #a6adc8; /* Tertiary text */
+
+  --overlay0: #6c7086; /* For disabled or less prominent elements */
+
+  --fill-secondary: var(--subtext0) !important;
+  --color-accent: var(--mauve) !important;
+  --color-focus-border: var(--mauve) !important;
+}
+
+* {border: 0 !important; }
+
+#zotero-tb, #zotero-toolbar, .zotero-toolbar, #navigator-toolbox,
+#tab-bar-container, .tag-selector, #zotero-view-item-sidenav {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+#zotero-toolbar, .zotero-toolbar {
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+#zotero-tabs-toolbar {
+  border: none !important;
+  background: var(--mantle) !important;
+}
+
+#zotero-tabs-menu-wrapper {
+  background: var(--mantle) !important;
+}
+
+#navigator-toolbox menu {
+  color: var(--text) !important
+}
+
+#manage-attachments-menu label, #developer-menu label, #layout-menu label,
+#note-font-size-menu label, #font-size-menu label, #debug-output-menu label,
+#new-item label {
+  color: var(--text) !important;
+}
+
+#navigator-toolbox menu:first-child {
+  color: unset !important;
+}
+
+#zotero-tag-selector-container {
+  border-bottom: 1px solid var(--crust) !important;
+  border-top: 1px solid var(--crust) !important;
+}
+
+#zotero-tag-selector-container input {
+  -moz-appearance: none !important;
+  background: var(--surface0) !important;
+  border: 1px solid var(--crust) !important;
+  color: var(--text) !important;
+}
+
+.tag-selector-list-container {
+  -moz-appearance: none !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+.tag-selector-item:hover {
+  background: var(--surface2) !important;
+  color: var(--text) !important;
+}
+
+.tag-selector-item {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+.tag-selector-item.selected {
+  background: var(--surface1) !important;
+  font-weight: bold !important;
+}
+
+.tag-selector-item.selected:hover {
+  background: var(--surface2) !important;
+  font-weight: bold !important;
+}
+
+#zotero-collections-search, #zotero-tb-search-textbox {
+  -moz-appearance: none !important;
+  background-color: var(--surface0) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--crust) !important;
+}
+
+editable-text .input:focus {
+  background-color: var(--surface0) !important;
+}
+
+#zotero-pane {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+treechildren {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+.virtualized-table .row {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+.virtualized-table .row.highlighted {
+  background: var(--surface2) !important;
+  color: var(--text) !important;
+}
+
+.virtualized-table .row.selected {
+  background: var(--surface0) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+.virtualized-table:not(:focus) .row.selected {
+  background: var(--surface0) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+.row:hover {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 0 !important;
+}
+
+.tabs {
+  background: var(--mantle) !important;
+  color: var(--text) !important;
+  border: 0px !important;
+}
+
+.tab {
+  -moz-appearance: none !important;
+  color: var(--subtext0) !important;
+  background: var(--surface0) !important;
+  border-left: 0px solid var(--crust) !important;
+  border-right: 0px solid var(--crust) !important;
+}
+
+.tab:hover {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 0px !important;
+}
+
+.tab:not(:focus){
+  -moz-appearance: none !important;
+  color: var(--subtext0) !important;
+  background: var(--surface0) !important;
+  border-top: 0px solid var(--color-accent) !important;
+  border-left: 1px solid var(--crust) !important;
+  border-right: 0px solid var(--crust) !important;
+  border-radius: 0px !important;
+}
+
+.tab.selected:not(.highlighted){
+  color: var(--text) !important;
+  background: var(--base) !important;
+  border-top: 3px solid var(--color-accent) !important;
+  border-left: 0px solid var(--crust) !important;
+  border-right: 0px solid var(--crust) !important;
+  border-radius: 0px !important;
+}
+
+.tab-close:hover {
+  background: var(--surface1) !important;
+}
+
+.notes-list-container {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+.note-row {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+.note-row .date {
+  color: var(--text) !important;
+}
+
+.more-row {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+.note-row:hover, .more-row:hover {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+#zotero-collections-tree {
+  color: var(--text);
+  background: var(--base) !important;
+}
+
+#zotero-collections-tree treechildren::-moz-tree-row(hover) {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 0 !important;
+}
+
+#zotero-collections-tree treechildren::-moz-tree-cell(selected) {
+  background: var(--surface0) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+#zotero-collections-tree treechildren::-moz-tree-cell-text(selected) {
+  color: var(--text) !important;
+}
+
+#zotero-collections-tree treechildren {
+  border-right: 1px solid var(--crust) !important;
+}
+
+#zotero-collections-tree .virtualized-table {
+  border-right: 1px solid var(--crust) !important;
+}
+
+#zotero-items-tree {
+  border-right: 1px solid var(--crust) !important;
+  border-bottom: 1px solid var(--crust) !important;
+  color: var(--text);
+  background: var(--base) !important;
+}
+
+#zotero-items-tree treechildren::-moz-tree-row(hover) {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 0 !important;
+}
+
+#zotero-items-tree treechildren::-moz-tree-row(selected) {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+#zotero-items-tree treechildren::-moz-tree-cell-text(selected) {
+  color: var(--text) !important;
+  border: 0 !important;
+}
+
+#zotero-items-tree treecol {
+  -moz-appearance: none !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--crust) !important;
+  border-right: 1px solid var(--crust) !important;
+}
+
+#zotero-items-tree .virtualized-table-header {
+  -moz-appearance: none !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--crust) !important;
+  border-right: 1px solid var(--crust) !important;
+}
+
+#zotero-items-tree .virtualized-table-header .cell:hover {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+.treecol-image {
+  -moz-appearance: none !important;
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--crust) !important;
+}
+
+#zotero-item-pane-content .zotero-clicky:hover {
+  color: var(--base) !important;
+  border-radius: 0px !important;
+}
+
+#better-bibtex-citekey-display {
+  color: var(--text) !important;
+}
+
+#zotero-item-pane-content .zotero-clicky-minus:hover {
+  color: transparent !important;
+}
+
+#zotero-item-pane-content .zotero-clicky-plus:hover {
+  color: transparent !important;
+}
+
+tabpanel {
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+}
+
+tab[selected="true"] {
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+  border-top: 3px solid var(--color-accent) !important;
+}
+
+tab {
+  -moz-appearance: none !important;
+  color: var(--subtext0) !important;
+  background: var(--surface0) !important;
+  border-top: 0px solid var(--base) !important;
+  border-left: 0px solid var(--base) !important;
+  border-right: 1px solid var(--crust) !important;
+  border-radius: 0px !important;
+}
+
+tab:hover {
+  color: var(--text) !important;
+  background: var(--surface2) !important;
+  box-shadow: inset 0px 0px 0px !important;
+  border-radius: 0px 0px 0 0 !important;
+}
+
+#zotero-duplicates-merge-pane > groupbox > .groupbox-body {
+  background: var(--base) !important;
+  color: var(--text) !important;
+  border: 0 !important;
+}
+
+#zotero-item-pane-content > groupbox > .groupbox-body {
+  border: 0 !important;
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+#retraction-details {
+  background: var(--red) !important;
+}
+
+.zotero-view-tabbox, .zotero-item-pane-content {
+  background: var(--base) !important;
+  color: var(--text) !important;
+}
+
+#zotero-item-pane-content tabpanel {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+#tags-box-container ul li ul {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+#tags-box-container input {
+  -moz-appearance: none !important;
+  background-color: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--crust) !important;
+}
+
+.zotero-view-tabbox .tags-box-container ul li ul {
+  background: var(--surface1) !important;
+  color: var(--text) !important;
+}
+
+.zotero-view-tabbox .tags-box-container input {
+  -moz-appearance: none !important;
+  background-color: var(--surface1) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--crust) !important;
+}
+
+.zotero-view-tabbox tab[selected="true"]{
+  background: var(--surface0) !important;
+  border-top: 3px solid var(--color-accent) !important;
+}
+
+.zotero-view-tabbox tab {
+  -moz-appearance: none !important;
+  color: var(--subtext0) !important;
+  background: var(--base) !important;
+  border-top: 0px solid var(--color-accent) !important;
+  border-left: 0px solid var(--crust) !important;
+  border-right: 1px solid var(--crust) !important;
+  border-radius: 0px !important;
+}
+
+.zotero-view-tabbox tab:hover{
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+}
+
+.zotero-view-tabbox tabpanel {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+.zotero-view-tabbox .zotero-clicky:hover {
+  color: var(--base) !important;
+}
+
+.zotero-view-item-main {
+  background: none !important;
+};
+
+#zotero-item-pane-content tab[selected="true"]{
+  background: var(--surface0) !important;
+  border-top: 3px solid var(--color-accent) !important;
+}
+
+#zotero-item-pane-content tab {
+  -moz-appearance: none !important;
+  color: var(--subtext0) !important;
+  background: var(--base) !important;
+  border-top: 0px solid var(--color-accent) !important;
+  border-left: 0px solid var(--crust) !important;
+  border-right: 1px solid var(--crust) !important;
+  border-radius: 0px !important;
+}
+
+#zotero-item-pane-content tab:hover{
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+  box-shadow: inset 0px 0px 0px !important;
+  border-radius: 0px 0px 0 0 !important;
+}
+
+#item-type-menu {
+  -moz-appearance: none;
+  color: var(--text) !important;
+  height: 1.5em !important;
+  min-height: 1.5em !important;
+  padding: 0 0 0 2px !important;
+  margin: 1px 5px 0 1px !important;
+  max-height: 1.5em !important;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+#item-type-menu:hover {
+  color: var(--base) !important;
+  background: var(--surface2) !important;
+}
+
+#zotero-date-field-status {
+  color: var(--text) !important;
+  padding: 0 10px 0 1px !important;
+}
+
+#zotero-prefpane-general, #zotero-prefpane-sync, #zotero-prefpane-export,
+#zotero-prefpane-advanced-keys-tab, #wordProcessors, #zotero-quickCopy-format,
+#sync-reset-form, #zotero-export-options {
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+}
+
+#zotero-prefpane-general title {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+prefwindow {
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+}
+
+prefwindow .chromeclass-toolbar {
+  color: var(--text) !important;
+  background: var(--base) !important;
+}
+
+#aboutcontent {
+  background: var(--surface0) !important;
+  color: var(--text) !important;
+  padding: 10px;
+}
+
+#version {
+  color: var(--text) !important;
+}
+
+#zotero-advanced-search-dialog #zotero-search-box-controls {
+  color: var(--text) !important;
+  background: var(--surface1) !important;
+}
+
+#zotero-note-editor linksbox {
+  background-color: var(--surface0) !important;
+  color: var(--text) !important;
+}
+
+#zotero-note-window {
+  background-color: var(--base) !important;
+}
+
+#zotero-note-window h1 {
+  color: var(--text);
+  font-size: 1.6em;
+  padding-bottom: none;
+}
+
+#zotero-note-window h2 {
+  color: var(--text);
+  font-size: 1.4em;
+  font-weight: bold;
+  padding-bottom: none;
+  border-bottom: none;
+}
+
+#zotero-note-window h3 {
+  color: var(--text);
+  font-size: 1.2em;
+}
+
+#zotero-note-window p {
+  text-indent: 1.75em;
+}
+
+#zotero-note-window ul, ol {
+  padding-left: 1.75em;
+}
+
+#zotero-note-window blockquote {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 1.55em;
+  border-left: 3px solid var(--surface2);
+  color: var(--subtext0);
+}
+
+#zotero-note-window blockquote p {
+  text-indent: 0;
+}
+
