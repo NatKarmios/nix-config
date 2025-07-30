@@ -34,5 +34,6 @@
     lazygit.enable = true; # Embedded git porcelain
     numbertoggle.enable = true; # Auto-toggle relative/absolute nums based on mode
     sleuth.enable = true; # Configure tabs and indents automatically
+    web-devicons.enable = true; # Helpers for Nerd Font icons
   };
 }

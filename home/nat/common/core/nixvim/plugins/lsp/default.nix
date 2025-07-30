@@ -54,7 +54,13 @@ with lib.custom.nixvim;
       enable = true;
       servers = {
         nixd.enable = true;
-        rust_analyzer.enable = true;
+        rust_analyzer = {
+          enable = true;
+
+          # Don't install these automatically; I'll use dev shells when appropriate.
+          installCargo = false;
+          installRustc = false;
+        };
       };
 
       keymaps.extra =

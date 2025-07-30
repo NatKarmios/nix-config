@@ -35,13 +35,13 @@ with (with lib; {
             default = true;
           };
           desc = mkOption {
-            type = string;
+            type = str;
           };
           cmd = mkOption {
-            type = nonEmptyListOf string;
+            type = nonEmptyListOf str;
           };
           bind = mkOption {
-            type = nullOr string;
+            type = nullOr str;
             default = null;
           };
         };

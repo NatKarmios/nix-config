@@ -22,5 +22,9 @@
       sansSerif.name = "Source Sans Pro";
       monospace.name = "0xProto Nerd Font";
     };
+
+    # This defaults to "gnome" while I have GNOME installed;
+    # it raises a warning, as only "qtct" is supported right now.
+    targets.qt.platform = lib.mkForce "qtct";
   };
 }
