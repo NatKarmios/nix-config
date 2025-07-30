@@ -929,15 +929,15 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1753793606,
+        "lastModified": 1753803771,
         "narHash": "sha256-IWre10SKoX3e+KsT1dPouOnt5vt7Th56sP1ofX9rbMg=",
-        "owner": "natkarmios",
+        "owner": "bcyran",
         "repo": "timewall",
-        "rev": "665cbf110ad327cee435037a47ea367d3f6535c0",
+        "rev": "44a78dca23cf9f8c9a50fbd5d1f3f0986ac30a17",
         "type": "github"
       },
       "original": {
-        "owner": "natkarmios",
+        "owner": "bcyran",
         "repo": "timewall",
         "type": "github"
       }

@@ -103,7 +103,7 @@
 
     # Dynamic wallpapers
     timewall = {
-      url = "github:natkarmios/timewall";
+      url = "github:bcyran/timewall";
     };
 
     #
