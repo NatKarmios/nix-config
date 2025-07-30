@@ -6,4 +6,3 @@
     indicator = true;
   };
 }
-

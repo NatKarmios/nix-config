@@ -82,10 +82,12 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
-  users.users.${config.hostSpec.username}.extraGroups = [ "networkmanager" "lp" ];
+  users.users.${config.hostSpec.username}.extraGroups = [
+    "networkmanager"
+    "lp"
+  ];
 
   boot.loader.efi.canTouchEfiVariables = true;
 
   system.stateVersion = "24.11";
 }
-

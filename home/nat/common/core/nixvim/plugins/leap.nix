@@ -14,4 +14,3 @@ with lib.custom.nixvim;
     ];
   };
 }
-

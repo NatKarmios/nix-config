@@ -44,7 +44,9 @@
       config.my.niri.startup-apps
       |> lib.attrValues
       |> builtins.filter (a: a.enable)
-      |> map (a: { command = a.cmd; });
+      |> map (a: {
+        command = a.cmd;
+      });
 
     layout = {
       gaps = 8;
@@ -78,4 +80,3 @@
     hotkey-overlay.skip-at-startup = true;
   };
 }
-

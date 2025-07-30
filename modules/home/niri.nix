@@ -1,10 +1,12 @@
 { lib, ... }:
 with (lib.types);
-with (with lib; { inherit mkOption; });
+with (with lib; {
+  inherit mkOption;
+});
 {
   options.my.niri = {
     startup-apps = mkOption {
-      default = {};
+      default = { };
       description = "Apps to start up automatically with Niri";
       type = attrsOf (submodule {
         options = {
@@ -17,14 +19,14 @@ with (with lib; { inherit mkOption; });
               (nonEmptyListOf str)
               str
             ];
-            apply = c: if (lib.isString c) then [c] else c;
+            apply = c: if (lib.isString c) then [ c ] else c;
           };
         };
       });
     };
 
     quick-actions = mkOption {
-      default = {};
+      default = { };
       description = ''Things to show in the "quick actions" picker'';
       type = attrsOf (submodule {
         options = {
@@ -47,4 +49,3 @@ with (with lib; { inherit mkOption; });
     };
   };
 }
-

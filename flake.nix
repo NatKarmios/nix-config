@@ -1,11 +1,12 @@
 {
   description = "Nat's Nix config";
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
 
@@ -21,7 +22,9 @@
       # This approach allows lib.custom to propagate into hm
       # see: https://github.com/nix-community/home-manager/pull/3454
       lib =
-        let custom = import ./lib { inherit (nixpkgs) lib; }; in 
+        let
+          custom = import ./lib { inherit (nixpkgs) lib; };
+        in
         nixpkgs.lib.extend (self: super: { inherit custom; });
 
     in
@@ -32,13 +35,14 @@
       # Custom modifications/overrides to upstream packages
       overlays = import ./overlays { inherit inputs; };
 
-
       #
       # ========== Host Configurations ==========
       #
       nixosConfigurations =
         with builtins;
-        let hosts = lib.remove "common" (attrNames (readDir ./hosts)); in
+        let
+          hosts = lib.remove "common" (attrNames (readDir ./hosts));
+        in
         listToAttrs (
           map (host: {
             name = host;
@@ -64,7 +68,7 @@
         in
         import ./checks.nix { inherit inputs system pkgs; }
       );
-  };
+    };
 
   inputs = {
     #
@@ -140,7 +144,7 @@
     # My secrets
     nix-secrets = {
       url = "git+ssh://git@gitlab.com/NatKarmios/nix-secrets.git?ref=main&shallow=1";
-      inputs = {};
+      inputs = { };
     };
   };
 }

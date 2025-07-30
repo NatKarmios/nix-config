@@ -11,9 +11,10 @@
     '';
   };
 
-  programs.niri.settings.window-rules = [{
-    matches = [{ app-id = "org.wezfurlong.wezterm"; }];
-    draw-border-with-background = false;
-  }];
+  programs.niri.settings.window-rules = [
+    {
+      matches = [ { app-id = "org.wezfurlong.wezterm"; } ];
+      draw-border-with-background = false;
+    }
+  ];
 }
-

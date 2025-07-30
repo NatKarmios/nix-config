@@ -18,7 +18,8 @@ in
       settings = {
         "extensions.zotero.sync.storage.enabled" = false;
         "extensions.zotero.dataDir" = "${doc}/.zotero";
-        "extensions.zotero.attachmentRenameTemplate" = ''{{firstCreator suffix=" "}}{{ suffix=" - " }}{{if shortTitle}}{{shortTtile}}{{else}}{{title truncate="100"}}{{end}}'';
+        "extensions.zotero.attachmentRenameTemplate" =
+          ''{{firstCreator suffix=" "}}{{ suffix=" - " }}{{if shortTitle}}{{shortTtile}}{{else}}{{title truncate="100"}}{{end}}'';
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         # zotero-better-bibtex
@@ -34,6 +35,5 @@ in
   };
 
   # Zotero requires libreoffice
-  home.packages = [ pkgs.libreoffice ]; 
+  home.packages = [ pkgs.libreoffice ];
 }
-

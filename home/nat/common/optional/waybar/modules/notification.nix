@@ -21,4 +21,3 @@
     escape = true;
   };
 }
-

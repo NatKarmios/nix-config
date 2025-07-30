@@ -3,7 +3,9 @@
 #
 
 { inputs, config, ... }:
-with (with config.hostSpec; { inherit hostName; });
+with (with config.hostSpec; {
+  inherit hostName;
+});
 let
   ztPath = "/var/lib/zerotier-one";
 
@@ -21,4 +23,3 @@ in
     "${secretAttr}".path = "${ztPath}/identity.secret";
   };
 }
-

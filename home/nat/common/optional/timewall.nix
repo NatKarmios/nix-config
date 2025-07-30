@@ -1,4 +1,9 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     inputs.timewall.homeManagerModules.timewall
@@ -12,11 +17,18 @@
     wallpaperPath = lib.custom.relativeToRoot "img/zelda.heic";
     config = {
       setter = {
-        command = ["swaybg" "-o" "*" "-i" "%f" "-m" "fill"];
+        command = [
+          "swaybg"
+          "-o"
+          "*"
+          "-i"
+          "%f"
+          "-m"
+          "fill"
+        ];
         quiet = true;
         overlap = 1000;
       };
     };
   };
 }
-

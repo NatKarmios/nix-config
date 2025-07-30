@@ -18,7 +18,7 @@ in
       home = "/home/${hostSpec.username}";
       isNormalUser = true;
       hashedPasswordFile = sopsHashedPasswordFile;
-      shell = pkgs.zsh;  # default shell
+      shell = pkgs.zsh; # default shell
       extraGroups = [ "wheel" ];
       linger = true;
     };
@@ -50,4 +50,3 @@ in
     ];
   };
 }
-

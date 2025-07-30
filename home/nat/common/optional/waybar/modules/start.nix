@@ -8,7 +8,7 @@
       "custom/power"
     ];
     orientation = "horizontal";
-    drawer = {};
+    drawer = { };
   };
   "image#nixos" = {
     path = (lib.custom.relativeToRoot "img/NixOS.svg");
@@ -30,4 +30,3 @@
     tooltip-format = "Start app";
   };
 }
-

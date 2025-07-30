@@ -1,4 +1,9 @@
-{ lib, inputs, pkgs, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 with lib.custom.nixvim;
 {
   imports = [
@@ -24,19 +29,19 @@ with lib.custom.nixvim;
     };
 
     opts = {
-      number = true;  # Line numbers
-      mouse = "a";  # Enable mouse
-      showmode = false;  # Hide mode; statusline will show it
+      number = true; # Line numbers
+      mouse = "a"; # Enable mouse
+      showmode = false; # Hide mode; statusline will show it
       breakindent = true;
-      undofile = true;  # Undo history
+      undofile = true; # Undo history
 
       # Ignore case in searches UNLESS \C or capital letters in search term
       ignorecase = true;
       smartcase = true;
 
       signcolumn = "yes";
-      updatetime = 250;  # Decrease update time
-      timeoutlen = 300;  # Decrese mapped sequence wait time
+      updatetime = 250; # Decrease update time
+      timeoutlen = 300; # Decrese mapped sequence wait time
 
       # Set how new splits should be opened
       splitright = true;
@@ -50,43 +55,45 @@ with lib.custom.nixvim;
         nbsp = "␣";
       };
 
-      inccommand = "split";  # Substitutions live preview
-      cursorline = true;  # Show which line the cursor is on
-      scrolloff = 10;  # Min lines to keep above and below cursor
+      inccommand = "split"; # Substitutions live preview
+      cursorline = true; # Show which line the cursor is on
+      scrolloff = 10; # Min lines to keep above and below cursor
     };
 
-    keymaps = with bind-helpers; lib.flatten [
-      (n "<Esc>" (cmd "nohlsearch")) # Clear search highlights
-      (t' "<Esc><Esc>" ''<C-\\><C-n>'' "Exit terminal mode")
+    keymaps =
+      with bind-helpers;
+      lib.flatten [
+        (n "<Esc>" (cmd "nohlsearch")) # Clear search highlights
+        (t' "<Esc><Esc>" ''<C-\\><C-n>'' "Exit terminal mode")
 
-      # Disable arrows in normal mode
-      (nv "<left>" (cmd ''echo "Use h to move!"''))
-      (nv "<right>" (cmd ''echo "Use l to move!"''))
-      (nv "<up>" (cmd ''echo "Use j to move!"''))
-      (nv "<down>" (cmd ''echo "Use k to move!"''))
+        # Disable arrows in normal mode
+        (nv "<left>" (cmd ''echo "Use h to move!"''))
+        (nv "<right>" (cmd ''echo "Use l to move!"''))
+        (nv "<up>" (cmd ''echo "Use j to move!"''))
+        (nv "<down>" (cmd ''echo "Use k to move!"''))
 
-      # Nicer split navigation
-      (n' "<C-h>" "<C-w><C-h>" "Move focus to the left window")
-      (n' "<C-l>" "<C-w><C-h>" "Move focus to the right window")
-      (n' "<C-j>" "<C-w><C-h>" "Move focus to the lower window")
-      (n' "<C-k>" "<C-w><C-h>" "Move focus to the upper window")
+        # Nicer split navigation
+        (n' "<C-h>" "<C-w><C-h>" "Move focus to the left window")
+        (n' "<C-l>" "<C-w><C-h>" "Move focus to the right window")
+        (n' "<C-j>" "<C-w><C-h>" "Move focus to the lower window")
+        (n' "<C-k>" "<C-w><C-h>" "Move focus to the upper window")
 
-      # My custom bindings; inspired by what I'm used to from DOOM Emacs
-      (n' "<leader><Tab>" (cmd "tabn") "Next tab")
-      (n' "<leader><S-Tab>" (cmd "tabN") "Previous tab")
-      (n' "<leader>bd" (cmd "bd") "[B]uffer [D]elete")
-      (n' "<leader>bD" (cmd "bufdo :bd") "[B]uffer [D]elete All")
-      (n' "<leader>bc" (cmd "bc") "[B]uffer [C]reate")
-      (n' "<leader>bn" (cmd "bn") "[B]uffer [N]ext")
-      (n' "<leader>bN" (cmd "bN") "[B]uffer Previous")
-      (n' "gb" "<C-o>" "[G]o [B]ack")
-      (n' "gB" "<C-i>" "[G]o Forward")
-      (i "jj" "<Esc>")
+        # My custom bindings; inspired by what I'm used to from DOOM Emacs
+        (n' "<leader><Tab>" (cmd "tabn") "Next tab")
+        (n' "<leader><S-Tab>" (cmd "tabN") "Previous tab")
+        (n' "<leader>bd" (cmd "bd") "[B]uffer [D]elete")
+        (n' "<leader>bD" (cmd "bufdo :bd") "[B]uffer [D]elete All")
+        (n' "<leader>bc" (cmd "bc") "[B]uffer [C]reate")
+        (n' "<leader>bn" (cmd "bn") "[B]uffer [N]ext")
+        (n' "<leader>bN" (cmd "bN") "[B]uffer Previous")
+        (n' "gb" "<C-o>" "[G]o [B]ack")
+        (n' "gB" "<C-i>" "[G]o Forward")
+        (i "jj" "<Esc>")
 
-      # Open utils
-      (n' "<leader>og" (cmd "LazyGit") "[O]pen Lazy[G]it")
-      (n' "<leader>oy" (cmd "Yazi") "[O]pen [Y]azi")
-    ];
+        # Open utils
+        (n' "<leader>og" (cmd "LazyGit") "[O]pen Lazy[G]it")
+        (n' "<leader>oy" (cmd "Yazi") "[O]pen [Y]azi")
+      ];
 
     autoGroups = {
       nat-highlight-yank.clear = true;
@@ -102,4 +109,3 @@ with lib.custom.nixvim;
     ];
   };
 }
-

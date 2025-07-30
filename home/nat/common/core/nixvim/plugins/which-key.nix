@@ -43,15 +43,35 @@ with lib.custom.nixvim;
 
       # Document existing key chains
       spec = [
-        { __unkeyed = "<leader>b"; group = "[B]uffer"; }
-        { __unkeyed = "<leader>c"; group = "[C]ode"; }
-        { __unkeyed = "<leader>f"; group = "[F]ind"; }
-        { __unkeyed = "<leader>F"; group = "[F]ile"; }
-        { __unkeyed = "<leader>t"; group = "[T]oggle"; }
-        { __unkeyed = "<leader>w"; group = "[W]indow"; }
-        { __unkeyed = "<leader>W"; group = "Tab"; }
+        {
+          __unkeyed = "<leader>b";
+          group = "[B]uffer";
+        }
+        {
+          __unkeyed = "<leader>c";
+          group = "[C]ode";
+        }
+        {
+          __unkeyed = "<leader>f";
+          group = "[F]ind";
+        }
+        {
+          __unkeyed = "<leader>F";
+          group = "[F]ile";
+        }
+        {
+          __unkeyed = "<leader>t";
+          group = "[T]oggle";
+        }
+        {
+          __unkeyed = "<leader>w";
+          group = "[W]indow";
+        }
+        {
+          __unkeyed = "<leader>W";
+          group = "Tab";
+        }
       ];
     };
   };
 }
-

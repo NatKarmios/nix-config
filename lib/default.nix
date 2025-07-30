@@ -15,9 +15,8 @@
         ) (builtins.readDir path)
       )
     );
-  prependAttrNames = prefix: attrs: lib.mapAttrs'
-    (name: value: lib.nameValuePair (prefix + name) value)
-    attrs;
+  prependAttrNames =
+    prefix: attrs: lib.mapAttrs' (name: value: lib.nameValuePair (prefix + name) value) attrs;
   mod = a: b: a - ((builtins.div a b) * b);
   nixvim = rec {
     raw = s: { __raw = s; };
@@ -26,28 +25,58 @@
     # Quick bind functions
     bind-helpers = rec {
       bind'' = mode: key: action: options: {
-        inherit mode key action options;
+        inherit
+          mode
+          key
+          action
+          options
+          ;
       };
-      bind' = mode: key: action: desc: bind'' mode key action { inherit desc; };
-      bind = mode: key: action: bind'' mode key action {};
+      bind' =
+        mode: key: action: desc:
+        bind'' mode key action { inherit desc; };
+      bind =
+        mode: key: action:
+        bind'' mode key action { };
 
       n = bind "n";
       n' = bind' "n";
       i = bind "i";
       t' = bind' "t";
-      nv = bind ["n" "v"];
-      nv' = bind' ["n" "v"];
-      nx' = bind' ["n" "x"];
-      nox = bind ["n" "o" "x"];
+      nv = bind [
+        "n"
+        "v"
+      ];
+      nv' = bind' [
+        "n"
+        "v"
+      ];
+      nx' = bind' [
+        "n"
+        "x"
+      ];
+      nox = bind [
+        "n"
+        "o"
+        "x"
+      ];
 
       cmd = s: "<cmd>${s}<CR>";
     };
 
-    toAttrKeymap = bs:
-      let attrs = map ({ key, ... }@b:
-        let value = lib.removeAttrs b [ "key" ]; in
-        { name = key; inherit value; })
-        (lib.flatten bs);
+    toAttrKeymap =
+      bs:
+      let
+        attrs = map (
+          { key, ... }@b:
+          let
+            value = lib.removeAttrs b [ "key" ];
+          in
+          {
+            name = key;
+            inherit value;
+          }
+        ) (lib.flatten bs);
       in
       lib.listToAttrs attrs;
 
@@ -57,4 +86,3 @@
     prependRawAction = p: mapBinds (b: b // { action = (raw (p + b.action)); });
   };
 }
-

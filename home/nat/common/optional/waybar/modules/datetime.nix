@@ -1,7 +1,10 @@
 { ... }:
 {
   "group/datetime" = {
-    modules = [ "clock#date" "clock#time" ];
+    modules = [
+      "clock#date"
+      "clock#time"
+    ];
     orientation = "horizontal";
   };
   "clock#date" = {
@@ -13,4 +16,3 @@
     tooltip = false;
   };
 }
-

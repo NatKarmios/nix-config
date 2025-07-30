@@ -45,10 +45,12 @@ with lib.custom.nixvim;
       numberwidth = 1;
     };
 
-    keymaps = with bind-helpers; lib.flatten [
-      (n' "zR" (call "ufo" "openAllFolds()") "Open all folds (UFO)")
-      (n' "zM" (call "ufo" "closeAllFolds()") "Close all folds (UFO)")
-    ];
+    keymaps =
+      with bind-helpers;
+      lib.flatten [
+        (n' "zR" (call "ufo" "openAllFolds()") "Open all folds (UFO)")
+        (n' "zM" (call "ufo" "closeAllFolds()") "Close all folds (UFO)")
+      ];
 
     # Hide fold level number in status column
     # https://github.com/neovim/neovim/pull/17446#issuecomment-1407651883
@@ -58,15 +60,28 @@ with lib.custom.nixvim;
         local builtin = require("statuscol.builtin")
       '';
       settings.segments = [
-        { text = ["%s"]; click = "v:lua.ScSa"; }
-        { text = [(raw "builtin.lnumfunc")]; click = "v:lua.ScLa"; }
         {
-          text = [ " " (raw "builtin.foldfunc") " " ];
-          condition = [ (raw "builtin.not_empty") true (raw "builtin.not_empty")];
+          text = [ "%s" ];
+          click = "v:lua.ScSa";
+        }
+        {
+          text = [ (raw "builtin.lnumfunc") ];
+          click = "v:lua.ScLa";
+        }
+        {
+          text = [
+            " "
+            (raw "builtin.foldfunc")
+            " "
+          ];
+          condition = [
+            (raw "builtin.not_empty")
+            true
+            (raw "builtin.not_empty")
+          ];
           click = "v:lua.ScFa";
         }
       ];
     };
   };
 }
-

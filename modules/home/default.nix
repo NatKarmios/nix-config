@@ -4,4 +4,3 @@
 {
   imports = lib.custom.scanPaths ./.;
 }
-

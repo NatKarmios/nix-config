@@ -2,7 +2,12 @@
 # Secure boot
 #
 
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 {
   imports = [
     inputs.lanzaboote.nixosModules.lanzaboote

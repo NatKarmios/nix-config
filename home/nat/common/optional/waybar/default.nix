@@ -28,8 +28,12 @@ in
     style = lib.mkAfter (builtins.readFile ./style.css);
   };
 
-  my.niri.startup-apps.waybar.cmd = ["systemctl" "--user" "reset-failed" "waybar.service"];
+  my.niri.startup-apps.waybar.cmd = [
+    "systemctl"
+    "--user"
+    "reset-failed"
+    "waybar.service"
+  ];
 
   stylix.targets.waybar.addCss = false;
 }
-

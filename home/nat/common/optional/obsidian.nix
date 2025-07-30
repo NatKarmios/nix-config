@@ -6,7 +6,7 @@
 
   home.activation.symlink-obsidian =
     let
-     doc = config.xdg.userDirs.documents;
+      doc = config.xdg.userDirs.documents;
     in
     ''
       run ln -sfT ~/.local/sync/syncthing/Obsidian ${doc}/Obsidian
@@ -16,4 +16,3 @@
 
   my.niri.startup-apps.obsidian.cmd = "obsidian";
 }
-

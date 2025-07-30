@@ -6,7 +6,8 @@
 let
 
   # Add my custom packages
-  additions = final: prev:
+  additions =
+    final: prev:
     (prev.lib.packagesFromDirectoryRecursive {
       callPackage = prev.lib.callPackageWith final;
       directory = ../pkgs;
@@ -28,9 +29,7 @@ let
 
 in
 {
-  default = final: prev: {}
-    // (additions final prev)
-    // (stable-packages final prev)
-    // (unstable-packages final prev);
+  default =
+    final: prev:
+    { } // (additions final prev) // (stable-packages final prev) // (unstable-packages final prev);
 }
-

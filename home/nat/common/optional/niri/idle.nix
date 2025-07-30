@@ -5,8 +5,7 @@
   my.niri.startup-apps.idle.cmd = ''${
     let
       lock = "lock --daemonize";
-      display = s:
-        "${pkgs.niri}/bin/niri msg action power-${s}-monitors";
+      display = s: "${pkgs.niri}/bin/niri msg action power-${s}-monitors";
     in
     pkgs.writeShellScript "niri-swayidle" ''
       ${pkgs.swayidle}/bin/swayidle -w \
@@ -16,10 +15,9 @@
         after-resume '${lock}; ${display "on"}'
     ''
   }'';
-    #    timeout 300 '${display "off"}' resume '${display "on"}' \
-    #    timeout 150 '${pkgs.libnotify}/bin/notify-send "Locking in 30 seconds" -t 5000' \
-    #    before-sleep '${display "off"}; ${lock}' \
-    #    lock '${display "off"}; ${lock}' \
-    #    unlock '${display "on"}'
+  #    timeout 300 '${display "off"}' resume '${display "on"}' \
+  #    timeout 150 '${pkgs.libnotify}/bin/notify-send "Locking in 30 seconds" -t 5000' \
+  #    before-sleep '${display "off"}; ${lock}' \
+  #    lock '${display "off"}; ${lock}' \
+  #    unlock '${display "on"}'
 }
-

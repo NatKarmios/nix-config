@@ -30,6 +30,8 @@
     };
   };
 
-  my.niri.startup-apps.vesktop.cmd = ["vesktop" "--start-minimized"];
+  my.niri.startup-apps.vesktop.cmd = [
+    "vesktop"
+    "--start-minimized"
+  ];
 }
-

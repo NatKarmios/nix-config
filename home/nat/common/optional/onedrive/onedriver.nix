@@ -21,14 +21,14 @@ in
   '';
 
   systemd.user.services.onedriver = {
-    Unit.Description =
-      "A native Linux filesystem for Microsoft OneDrive";
+    Unit.Description = "A native Linux filesystem for Microsoft OneDrive";
     Install.WantedBy = [ "default.target" ];
 
     # Use `sh` so we can expand `~`
     Service.ExecStart =
-      let bin = "${pkgs.onedriver}/bin/onedriver"; in
+      let
+        bin = "${pkgs.onedriver}/bin/onedriver";
+      in
       ''/usr/bin/env sh -c "${bin} ${onedrive-remote-dir} -n"'';
   };
 }
-

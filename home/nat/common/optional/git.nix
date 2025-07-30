@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   # https://www.reddit.com/r/git/comments/1coropv/comment/l3mwfso/
   git-ssh-sign = pkgs.writeShellScript "git-ssh-sign" ''
@@ -23,4 +28,3 @@ in
     userEmail = lib.mkDefault config.hostSpec.email;
   };
 }
-

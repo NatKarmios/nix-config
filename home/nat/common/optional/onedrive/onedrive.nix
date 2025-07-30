@@ -48,4 +48,3 @@ in
     Service.ExecStart = "${onedrive-pkg}/bin/onedrive -m";
   };
 }
-

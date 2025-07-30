@@ -4,23 +4,53 @@
     format = "{icon}  {capacity}%";
     format-full = "󰁹";
     format-icons = {
-      default = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-      charging = ["󰢟" "󰢜" "󰂆" "󰂇" "󰂈" "󰢝" "󰂉" "󰢞" "󰂊" "󰂋" "󰂅"];
+      default = [
+        "󰂎"
+        "󰁺"
+        "󰁻"
+        "󰁼"
+        "󰁽"
+        "󰁾"
+        "󰁿"
+        "󰂀"
+        "󰂁"
+        "󰂂"
+        "󰁹"
+      ];
+      charging = [
+        "󰢟"
+        "󰢜"
+        "󰂆"
+        "󰂇"
+        "󰂈"
+        "󰢝"
+        "󰂉"
+        "󰢞"
+        "󰂊"
+        "󰂋"
+        "󰂅"
+      ];
     };
   };
   pulseaudio = {
     format = "{icon}  {volume}%";
     format-muted = "󰝟";
-    format-icons = ["󰕿" "󰖀" "󰕾"];
+    format-icons = [
+      "󰕿"
+      "󰖀"
+      "󰕾"
+    ];
   };
   "custom/note" = {
     format = "󰏫";
     justify = "center";
   };
-} // lib.mergeAttrsList (map (p: (import p) args) [
-  ./datetime.nix
-  ./network.nix
-  ./notification.nix
-  ./start.nix
-])
-
+}
+// lib.mergeAttrsList (
+  map (p: (import p) args) [
+    ./datetime.nix
+    ./network.nix
+    ./notification.nix
+    ./start.nix
+  ]
+)

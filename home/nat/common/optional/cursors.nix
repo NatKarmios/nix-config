@@ -6,4 +6,3 @@
     name = "Posy_Cursor_Black";
   };
 }
-

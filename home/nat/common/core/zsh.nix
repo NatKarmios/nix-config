@@ -21,7 +21,7 @@ in
   programs.zsh = {
     enable = true;
 
-    dotDir = ".config/zsh";  # relative to '~'
+    dotDir = ".config/zsh"; # relative to '~'
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autocd = true;
@@ -33,7 +33,7 @@ in
       enable = true;
       plugins = [
         "git"
-        "sudo"  # press Esc twice to get the previous command prefixed with sudo
+        "sudo" # press Esc twice to get the previous command prefixed with sudo
       ];
       extraConfig = ''
         # Display red dots whilst waiting for completion.
@@ -87,4 +87,3 @@ in
     '';
   };
 }
-

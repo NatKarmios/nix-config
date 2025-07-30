@@ -7,13 +7,18 @@ with lib.custom.nixvim;
 
   programs.nixvim = {
 
-    globals.no_ocaml_maps = true;  # OCaml LSP binds cause interference
+    globals.no_ocaml_maps = true; # OCaml LSP binds cause interference
 
     diagnostic.settings = {
       severity_sort = true;
-      float = { border = "rounded"; source = "if_many"; };
-      underline = { severify = raw "vim.diagnostic.severity.ERROR"; };
-      signs = (raw ''
+      float = {
+        border = "rounded";
+        source = "if_many";
+      };
+      underline = {
+        severify = raw "vim.diagnostic.severity.ERROR";
+      };
+      signs = raw ''
         vim.g.have_nerd_font and {
           text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -22,7 +27,7 @@ with lib.custom.nixvim;
             [vim.diagnostic.severity.HINT] = '󰌶 ',
           },
         } or {}
-      '');
+      '';
       virtual_text = {
         source = "if_many";
         spacing = 2;
@@ -52,21 +57,23 @@ with lib.custom.nixvim;
         rust_analyzer.enable = true;
       };
 
-      keymaps.extra = with bind-helpers; lib.flatten [
-        (n' "<leader>q" (raw "vim.diagnostic.setloclist") "Open diagnostic [Q]uickfix list")
+      keymaps.extra =
+        with bind-helpers;
+        lib.flatten [
+          (n' "<leader>q" (raw "vim.diagnostic.setloclist") "Open diagnostic [Q]uickfix list")
 
-        (prependRawAction "vim.lsp.buf." [
-          (n' "gD" "declaration" "[G]oto [D]eclaration")
-          (n' "<leader>cr" "rename" "[R]ename symbol")
-          (nx' "<leader>ca" "code_action" "[C]ode [A]ction")
-          (n' "<leader>cc" "hover" "[C]ode Hover")
-        ])
+          (prependRawAction "vim.lsp.buf." [
+            (n' "gD" "declaration" "[G]oto [D]eclaration")
+            (n' "<leader>cr" "rename" "[R]ename symbol")
+            (nx' "<leader>ca" "code_action" "[C]ode [A]ction")
+            (n' "<leader>cc" "hover" "[C]ode Hover")
+          ])
 
-        (prependRawAction "require('telescope.builtin').lsp_" [
-          (n' "<leader>fs" "document_symbols" "[F]ind document [S]ymbols")
-          (n' "<leader>fS" "dynamic_workspace_symbols" "[F]ind workspace [S]ymbols")
-        ])
-      ];
+          (prependRawAction "require('telescope.builtin').lsp_" [
+            (n' "<leader>fs" "document_symbols" "[F]ind document [S]ymbols")
+            (n' "<leader>fS" "dynamic_workspace_symbols" "[F]ind workspace [S]ymbols")
+          ])
+        ];
 
       # Auto-highlight references, toggle inlay hints
       onAttach = builtins.readFile ./onAttach.lua;
@@ -74,4 +81,3 @@ with lib.custom.nixvim;
 
   };
 }
-

@@ -31,21 +31,22 @@ in
     };
   };
 
-  programs.niri.settings.window-rules = [{
-    matches = [{ app-id = "swayimg"; }];
-    open-floating = true;
-    baba-is-float = true;
-    default-floating-position = {
-      x = 10;
-      y = 30;
-      relative-to = "top-right";
-    };
-  }];
+  programs.niri.settings.window-rules = [
+    {
+      matches = [ { app-id = "swayimg"; } ];
+      open-floating = true;
+      baba-is-float = true;
+      default-floating-position = {
+        x = 10;
+        y = 30;
+        relative-to = "top-right";
+      };
+    }
+  ];
 
   my.niri.quick-actions.screenshot = {
     desc = "Take a screenshot";
-    cmd = ["sshot"];
+    cmd = [ "sshot" ];
     bind = "Mod+S";
   };
 }
-
