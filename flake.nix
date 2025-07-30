@@ -9,6 +9,14 @@
     let
       inherit (self) outputs;
 
+      #
+      # ========= Architectures =========
+      #
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        #"aarch64-darwin"
+      ];
+
       # ===== Extend lib with lib.custom
       # This approach allows lib.custom to propagate into hm
       # see: https://github.com/nix-community/home-manager/pull/3454
@@ -42,7 +50,21 @@
             };
           }) hosts
         );
-    };
+
+      #
+      # ========= Formatting =========
+      #
+      # Nix formatter available through 'nix fmt' https://github.com/NixOS/nixfmt
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      # Pre-commit checks
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./checks.nix { inherit inputs system pkgs; }
+      );
+  };
 
   inputs = {
     #
@@ -104,6 +126,12 @@
     # Dynamic wallpapers
     timewall = {
       url = "github:bcyran/timewall";
+    };
+
+    # Pre-commit
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #
