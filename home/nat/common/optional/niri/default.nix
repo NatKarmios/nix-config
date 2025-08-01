@@ -2,7 +2,12 @@
 # Scrolling window manager
 #
 
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   satellite = pkgs.xwayland-satellite;
 in

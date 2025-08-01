@@ -8,8 +8,13 @@ let
   # Add my custom packages
   additions =
     final: prev:
+    let
+      erosanix = {
+        inherit (inputs.erosanix.lib.${prev.pkgs.system}) mkWindowsApp copyDesktopIcons makeDesktopIcon;
+      };
+    in
     (prev.lib.packagesFromDirectoryRecursive {
-      callPackage = prev.lib.callPackageWith final;
+      callPackage = prev.lib.callPackageWith (final // erosanix);
       directory = ../pkgs;
     });
 
