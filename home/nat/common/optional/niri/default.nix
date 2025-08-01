@@ -2,7 +2,10 @@
 # Scrolling window manager
 #
 
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
+let
+  satellite = pkgs.xwayland-satellite;
+in
 {
   imports = [
     ./binds.nix
@@ -10,6 +13,11 @@
     ./lock.nix
     ./quick-actions.nix
   ];
+
+  home.packages = [ pkgs.xwayland-satellite ];
+  my.niri.startup-apps.xwayland-satellite = {
+    cmd = "xwayland-satellite";
+  };
 
   services.swaync.enable = true;
 
@@ -34,6 +42,7 @@
 
     environment = {
       "NIXOS_OZONE_WL" = "1";
+      "DISPLAY" = ":0";
     };
 
     cursor = {
