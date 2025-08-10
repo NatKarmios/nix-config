@@ -6,6 +6,6 @@
       uiScale = "192";
       src = pkgs.requireFile inputs.nix-secrets.photoshopSrc;
     })
+    inputs.erosanix.packages.${pkgs.system}.mkwindowsapp-tools
   ];
-
 }
