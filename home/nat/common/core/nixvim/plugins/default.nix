@@ -16,6 +16,7 @@
 
   programs.nixvim.plugins = {
     auto-session.enable = true; # Automatic session management
+    diffview.enable = true;
     dropbar = {
       # IDE-esque breadcrumb bar
       enable = true;

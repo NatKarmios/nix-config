@@ -58,6 +58,9 @@ with lib.custom.nixvim;
       inccommand = "split"; # Substitutions live preview
       cursorline = true; # Show which line the cursor is on
       scrolloff = 10; # Min lines to keep above and below cursor
+
+      # Increase limit for nicer diff matching (linematch)
+      diffopt = "internal,filler,closeoff,inline:simple,linematch:100";
     };
 
     keymaps =
