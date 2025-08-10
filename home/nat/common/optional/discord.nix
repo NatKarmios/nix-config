@@ -24,6 +24,7 @@
           --brand-500: #8839ef;
           --status-danger: #e64553;
           --control-background-primary-default: #8839ef;
+          --font-code: "0xProto Nerd Font", monospace;
         }
       '';
       settings.enabledThemes = [ "natppuccin.css" ];
