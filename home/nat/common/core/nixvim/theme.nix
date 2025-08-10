@@ -18,6 +18,7 @@
           gitsigns = true;
           leap = true;
           mini.enabled = true;
+          nvimtree = true;
           snacks = true;
           telescope.enabled = true;
           ufo = true;

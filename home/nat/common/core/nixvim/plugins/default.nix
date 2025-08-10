@@ -4,6 +4,7 @@
     ./leap.nix
     ./lsp
     ./lualine.nix
+    ./nvim-tree.nix
     ./sidebar.nix
     ./snacks.nix
     ./spider.nix
