@@ -18,6 +18,7 @@
           gitsigns = true;
           leap = true;
           mini.enabled = true;
+          snacks = true;
           telescope.enabled = true;
           ufo = true;
           which_key = true;

@@ -89,9 +89,6 @@ with lib.custom.nixvim;
         (n' "gb" "<C-o>" "[G]o [B]ack")
         (n' "gB" "<C-i>" "[G]o Forward")
         (i "jj" "<Esc>")
-
-        # Open utils
-        (n' "<leader>og" (cmd "LazyGit") "[O]pen Lazy[G]it")
       ];
 
     autoGroups = {
