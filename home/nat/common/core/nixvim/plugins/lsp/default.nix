@@ -53,7 +53,12 @@ with lib.custom.nixvim;
     plugins.lsp = {
       enable = true;
       servers = {
+        eslint.enable = true;
         nixd.enable = true;
+        ocamllsp = {
+          enable = true;
+          package = null;
+        };
         rust_analyzer = {
           enable = true;
 
