@@ -30,32 +30,26 @@ with lib.custom.nixvim;
     keymaps =
       with bind-helpers;
       lib.flatten [
-        (n' "<leader>/" (raw ''
-          function()
-            require('telescope.builtin').current_buffer_fuzzy_find(
-              require('telescope.themes').get_dropdown {
-                winblend = 10,
-                previewer = false
-              }
-            )
-          end
+        (n' "<leader>/" (rawFn ''
+          require('telescope.builtin').current_buffer_fuzzy_find(
+            require('telescope.themes').get_dropdown {
+              winblend = 10,
+              previewer = false
+            }
+          )
         '') "Fuzzily search in current buffer")
 
-        (n' "<leader>f/" (raw ''
-          function()
-            require('telescope.builtin').live_grep {
-              grep_open_files = true,
-              prompt_title = 'Live Grep in Open Files'
-            }
-          end
+        (n' "<leader>f/" (rawFn ''
+          require('telescope.builtin').live_grep {
+            grep_open_files = true,
+            prompt_title = 'Live Grep in Open Files'
+          }
         '') "[F]ind in open files")
 
-        (n' "<leader>fn" (raw ''
-          function()
-            require('telescope.builtin').find_files {
-              cwd = vim.env.HOME .. '/src/nix/nix-config'
-            }
-          end
+        (n' "<leader>fn" (rawFn ''
+          require('telescope.builtin').find_files {
+            cwd = vim.env.HOME .. '/src/nix/nix-config'
+          }
         '') "[F]ind [N]ix config files")
       ];
   };

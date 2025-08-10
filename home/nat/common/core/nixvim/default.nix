@@ -92,7 +92,6 @@ with lib.custom.nixvim;
 
         # Open utils
         (n' "<leader>og" (cmd "LazyGit") "[O]pen Lazy[G]it")
-        (n' "<leader>oy" (cmd "Yazi") "[O]pen [Y]azi")
       ];
 
     autoGroups = {
@@ -104,7 +103,7 @@ with lib.custom.nixvim;
         event = "TextYankPost";
         desc = "Highlight when yanking text";
         group = "nat-highlight-yank";
-        callback = raw "function() vim.highlight.on_yank() end";
+        callback = rawFn "vim.highlight.on_yank()";
       }
     ];
   };

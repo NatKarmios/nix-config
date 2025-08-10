@@ -18,8 +18,8 @@
           gitsigns = true;
           leap = true;
           mini.enabled = true;
-          ufo = true;
           telescope.enabled = true;
+          ufo = true;
           which_key = true;
         };
       };
