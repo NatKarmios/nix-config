@@ -31,6 +31,8 @@
         "󰂅"
       ];
     };
+    interval = 15;
+    weighted-average = true;
   };
   pulseaudio = {
     format = "{icon}  {volume}%";
