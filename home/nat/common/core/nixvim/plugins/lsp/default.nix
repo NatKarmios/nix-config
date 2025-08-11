@@ -59,6 +59,7 @@ with lib.custom.nixvim;
           enable = true;
           package = null;
         };
+        pyright.enable = true; # Python
         rust_analyzer = {
           enable = true;
 
