@@ -30,7 +30,7 @@ in
         # Important apps
         {
           "T".action = spawn "wezterm" "start" "sh" "-c" "tmux attach || tmux";
-          "D".action = spawn "rofi" "-show" "drun";
+          "D".action = spawn "wofi-app";
         }
 
         # Basic navigation

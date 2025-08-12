@@ -49,10 +49,13 @@ in
       ];
       bind = "Mod+M";
     };
+    quick-action = {
+      # Meta!
+      desc = "Quick action";
+      cmd = [ "${pick-quick-action}/bin/niri-quick-action" ];
+      bind = "Mod+A";
+    };
   };
 
-  programs.niri.settings.binds = {
-    "Mod+A".action.spawn = [ "${pick-quick-action}/bin/niri-quick-action" ];
-  }
-  // binds;
+  programs.niri.settings.binds = binds;
 }

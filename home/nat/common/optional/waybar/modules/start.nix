@@ -28,5 +28,6 @@
     format = "󰀻";
     justify = "center";
     tooltip-format = "Start app";
+    on-click = "wofi-app";
   };
 }

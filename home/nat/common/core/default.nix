@@ -13,10 +13,9 @@
     ])
 
     ./nixvim
-    ./rofi.nix
     ./tmux.nix
     ./wezterm.nix
-    ./wofi.nix
+    ./wofi
     ./yazi.nix
     ./zoxide.nix
     ./zsh.nix
