@@ -22,7 +22,7 @@ with lib.custom.nixvim;
 
     globals = {
       mapleader = " ";
-      maplocalleader = " ";
+      maplocalleader = "\\";
       have_nerd_font = raw ''
         vim.env.TERM ~= "linux"
       '';

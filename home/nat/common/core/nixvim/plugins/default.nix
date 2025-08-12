@@ -1,6 +1,7 @@
 {
   imports = [
     ./cmp.nix
+    ./lean.nix
     ./leap.nix
     ./lsp
     ./lualine.nix
