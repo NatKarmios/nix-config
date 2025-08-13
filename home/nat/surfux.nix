@@ -12,6 +12,7 @@
     common/optional/obsidian.nix
     common/optional/onedrive
     common/optional/photoshop.nix
+    common/optional/shells.nix
     common/optional/timewall.nix
     common/optional/waybar
     common/optional/zotero

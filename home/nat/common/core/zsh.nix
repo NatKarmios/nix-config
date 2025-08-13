@@ -64,7 +64,6 @@ in
       nfc = "nix flake check";
       ne = "nix instantiate --eval";
       nb = "nix build";
-      ns = "nix shell";
 
       #----------justfile----------
       jr = "just rebuild";
