@@ -68,8 +68,10 @@
     (
       with pkgs;
       [
+        bat # better cat/less
+        bat-extras.core
+        bottom # system monitor
         copyq # clipboard manager
-        uutils-coreutils-noprefix # Rust rewrite of basic GNU utils
         curl
         eza # ls replacement
         dust # disk usage
@@ -77,13 +79,18 @@
         findutils # find
         fzf # fuzzy find
         jq # json pretty-printer and manipulator
+        manix # Nix options search
         nix-tree # nix package tree viewer
         neofetch # fancier system info than pfetch
         ncdu # TUI disk usage
-        pciutils
         p7zip # compression & encryption
+        pciutils
+        procs # better ps
         ripgrep # better grep
+        sd # simpler cut / awk
+        systemctl-tui
         usbutils
+        uutils-coreutils-noprefix # Rust rewrite of basic GNU utils
         tree # cli dir tree viewer
         unzip # zip extraction
         unrar # rar extraction
