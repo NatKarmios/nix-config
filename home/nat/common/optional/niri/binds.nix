@@ -29,7 +29,7 @@ in
 
         # Important apps
         {
-          "T".action = spawn "wezterm" "start" "sh" "-c" "tmux attach || tmux";
+          "T".action = spawn "wezterm" "start" "muxy" "-l";
           "D".action = spawn "wofi-app";
         }
 

@@ -1,4 +1,12 @@
 { pkgs, inputs, ... }:
+let
+  muxy = pkgs.writers.writePython3Bin "muxy" 
+    {
+      libraries = [ pkgs.python3Packages.pyyaml ];
+      flakeIgnore = [ "E124" "E128" "E501" ];
+    }
+    (builtins.readFile ./muxy.py);
+in
 {
   programs.tmux = {
     enable = true;
@@ -74,4 +82,9 @@
 
     '';
   };
+
+  home.packages = with pkgs; [
+    tmuxinator
+    muxy
+  ];
 }

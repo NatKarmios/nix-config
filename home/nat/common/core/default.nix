@@ -13,7 +13,7 @@
     ])
 
     ./nixvim
-    ./tmux.nix
+    ./tmux
     ./wezterm.nix
     ./wofi
     ./yazi.nix
@@ -79,6 +79,7 @@
         findutils # find
         fzf # fuzzy find
         jq # json pretty-printer and manipulator
+        gum # a bunch of helpful utilities for shell scripting
         manix # Nix options search
         nix-tree # nix package tree viewer
         neofetch # fancier system info than pfetch
