@@ -7,7 +7,7 @@
 with lib.custom.nixvim;
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./plugins
     ./theme.nix
   ];

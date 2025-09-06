@@ -42,6 +42,7 @@
       enable = true;
       settings.notification.window.winblend = 0;
     };
+    flit.enable = true; # Better f/F/t/T, based on leap
     gitblame = {
       # Git blame in virtual text
       enable = true;
