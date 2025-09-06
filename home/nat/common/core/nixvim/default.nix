@@ -75,12 +75,6 @@ with lib.custom.nixvim;
         (nv "<up>" (cmd ''echo "Use j to move!"''))
         (nv "<down>" (cmd ''echo "Use k to move!"''))
 
-        # Nicer split navigation
-        (n' "<C-h>" "<C-w><C-h>" "Move focus to the left window")
-        (n' "<C-l>" "<C-w><C-h>" "Move focus to the right window")
-        (n' "<C-j>" "<C-w><C-h>" "Move focus to the lower window")
-        (n' "<C-k>" "<C-w><C-h>" "Move focus to the upper window")
-
         # My custom bindings; inspired by what I'm used to from DOOM Emacs
         (n' "<leader><Tab>" (cmd "tabn") "Next tab")
         (n' "<leader><S-Tab>" (cmd "tabN") "Previous tab")

@@ -58,6 +58,7 @@
         vim.diagnostic.config({ virtual_text = false })
       '';
     };
+    tmux-navigator.enable = true;
     todo-comments.enable = true; # Highlight and searching for to-do comments
     web-devicons.enable = true; # Helpers for Nerd Font icons
     wilder.enable = true; # Better wildmenu
