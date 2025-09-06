@@ -50,3 +50,14 @@ if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocume
   end, { buffer = event.buf, desc = 'LSP: [T]oggle Inlay [H]ints' })
 end
 
+-- Format on save
+if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_formatting, event.buf) then
+  vim.api.nvim_clear_autocmds({ group = fmt_augroup, buffer = event.buf })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = fmt_augroup,
+    buffer = event.buf,
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+  })
+end

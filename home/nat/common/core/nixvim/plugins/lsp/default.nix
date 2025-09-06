@@ -88,6 +88,9 @@ with lib.custom.nixvim;
         ];
 
       # Auto-highlight references, toggle inlay hints
+      preConfig = ''
+        local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      '';
       onAttach = builtins.readFile ./onAttach.lua;
     };
 
