@@ -35,16 +35,16 @@ in
   home.packages = [ pick-quick-action ];
 
   my.niri.quick-actions = {
-    email = {
+    nix-config = {
       desc = "Edit Nix config";
       cmd = [
         "wezterm"
         "start"
-        "tmux"
-        "new-session"
-        "ZSH_RUN='cd $FLAKE; $EDITOR' zsh"
+        "tmuxinator"
+        "start"
+        "nix"
       ];
-      bind = "Mod+M";
+      bind = "Mod+N";
     };
     quick-action = {
       # Meta!

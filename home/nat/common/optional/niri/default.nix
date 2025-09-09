@@ -8,9 +8,6 @@
   pkgs,
   ...
 }:
-let
-  satellite = pkgs.xwayland-satellite;
-in
 {
   imports = [
     ./binds.nix

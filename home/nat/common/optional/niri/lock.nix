@@ -15,4 +15,12 @@ in
   };
 
   home.packages = [ lock-script ];
+
+  my.niri.quick-actions = {
+    lock = {
+      desc = "Lock screen";
+      cmd = ["${lock-script}/bin/lock"];
+      bind = "Mod+Shift+X";
+    };
+  };
 }
