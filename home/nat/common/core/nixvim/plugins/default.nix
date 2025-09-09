@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bufdelete.nix
     ./cmp.nix
     ./lean.nix
     ./leap.nix
