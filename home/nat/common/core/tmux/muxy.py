@@ -17,7 +17,12 @@ def get_args():
         default=f"{os.environ["HOME"]}/.config/tmuxinator",
         help="The directory to search for tmuxinator sessions (default: ~/.config/tmuxinator)"
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    args.in_tmux = "TMUX" in os.environ and bool(os.environ["TMUX"])
+    if args.in_tmux and args.loop:
+        print("Inside tmux! Ignoring -l/--loop")
+        args.loop = False
+    return args
 
 
 def get_active_sessions():
@@ -108,8 +113,7 @@ def prompt(choices):
         return None
 
 
-def get_tmux_cmds(kind, name):
-    in_tmux = "TMUX" in os.environ and bool(os.environ["TMUX"])
+def get_tmux_cmds(kind, name, in_tmux):
     match kind:
         case "attach":
             return [
@@ -133,17 +137,17 @@ def get_tmux_cmds(kind, name):
             raise ValueError
 
 
-def launch(choice):
-    cmds = get_tmux_cmds(*choice)
+def launch(choice, in_tmux):
+    cmds = get_tmux_cmds(*choice, in_tmux)
     for cmd in cmds:
         subprocess.run(cmd)
 
 
-def prompt_and_launch(tmuxinator_dir):
+def prompt_and_launch(tmuxinator_dir, in_tmux):
     choices = get_choices(tmuxinator_dir)
     choice = prompt(choices)
     if choice:
-        launch(choice)
+        launch(choice, in_tmux)
         return True
     else:
         return False
@@ -153,7 +157,7 @@ def main():
     args = get_args()
     should_loop = True
     while should_loop:
-        should_loop = prompt_and_launch(args.tmuxinator_dir) and args.loop
+        should_loop = prompt_and_launch(args.tmuxinator_dir, args.in_tmux) and args.loop
 
 
 if __name__ == "__main__":
