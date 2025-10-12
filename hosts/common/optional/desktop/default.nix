@@ -15,6 +15,7 @@
   ];
 
   fonts.packages = with pkgs; [
+    cm_unicode
     fira-code
     nerd-fonts.fira-code
     nerd-fonts._0xproto

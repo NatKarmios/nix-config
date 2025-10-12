@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../common/core
@@ -9,6 +9,7 @@
     ../common/optional/git.nix
     ../common/optional/kdeconnect.nix
     ../common/optional/lazygit.nix
+    ../common/optional/latex.nix
     ../common/optional/niri
     ../common/optional/obsidian.nix
     ../common/optional/onedrive
@@ -19,6 +20,10 @@
     ../common/optional/zotero
 
     ./displays.nix
+  ];
+
+  home.packages = with pkgs; [
+    drawio
   ];
 
   services.blueman-applet.enable = true;
