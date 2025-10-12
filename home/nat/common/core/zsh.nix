@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   devDirectory = "~/src";
   devNix = "${devDirectory}/nix";
@@ -21,7 +21,7 @@ in
   programs.zsh = {
     enable = true;
 
-    dotDir = ".config/zsh"; # relative to '~'
+    dotDir = "${config.xdg.configHome}/zsh";
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     autocd = true;
@@ -78,11 +78,19 @@ in
       vim = "nvim";
     };
 
-    initContent = lib.mkOrder 999999 ''
-      if [[ -n $ZSH_RUN ]] then
-        eval $ZSH_RUN
-      fi
-      unset ZSH_RUN
-    '';
+    initContent = lib.mkMerge [
+      ''
+        function nr() {
+          nix run "nixpkgs#$1" -- ''${@:2}
+        }
+      ''
+
+      (lib.mkOrder 999999 ''
+        if [[ -n $ZSH_RUN ]] then
+          eval $ZSH_RUN
+        fi
+        unset ZSH_RUN
+      '')
+    ];
   };
 }
