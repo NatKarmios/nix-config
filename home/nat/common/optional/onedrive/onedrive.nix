@@ -5,7 +5,7 @@
 { pkgs, config, ... }:
 let
   onedrive-dir = "~/.local/sync/onedrive";
-  onedrive-pkg = pkgs.unstable.onedrive;
+  onedrive-pkg = pkgs.onedrive;
   inherit (config.xdg) userDirs;
 in
 {

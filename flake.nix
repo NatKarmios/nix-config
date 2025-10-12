@@ -74,7 +74,7 @@
     #
     # ========== Official sources ==========
     #
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.follows = "nixpkgs-unstable";
 
     # Use these to pin to stable / unstable regardless of the "default" set
     # above. Useful for trying a beta stable release so we can set
@@ -86,7 +86,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -107,13 +107,15 @@
 
     # Consistent system-wide theming
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Nix-level configuration for Niri
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
 
     # Secure boot
@@ -141,6 +143,16 @@
     # mkWindowsApp utility
     erosanix = {
       url = "github:emmanuelrosa/erosanix";
+    };
+
+    # Dank Material Shell
+    DankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #

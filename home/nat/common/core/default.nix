@@ -121,7 +121,7 @@
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    matchBlocks."*".addKeysToAgent = "yes";
   };
 
   # Nicely reload system units when changing configs

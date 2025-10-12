@@ -26,6 +26,9 @@ in
     };
     userName = lib.mkDefault config.hostSpec.userFullName;
     userEmail = lib.mkDefault config.hostSpec.email;
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      credential.helper = "store";
+    };
   };
 }

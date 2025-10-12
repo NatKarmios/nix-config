@@ -2,7 +2,7 @@
   imports = [
     ./bufdelete.nix
     ./cmp.nix
-    ./lean.nix
+    # ./lean.nix  # Uses `require('lspconfig')`, which is deprecated
     ./leap.nix
     ./lsp
     ./lualine.nix

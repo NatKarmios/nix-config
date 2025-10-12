@@ -6,7 +6,7 @@ in
 {
   home.packages = with pkgs; [
     just
-    thefuck
+    stable.thefuck
     tldr
   ];
 

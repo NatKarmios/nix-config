@@ -7,7 +7,7 @@ in
 {
   programs.zotero = {
     enable = true;
-    package = pkgs.unstable.zotero;
+    package = pkgs.zotero;
 
     profiles.default = {
       extensions = with pkgs.zotero-addons; [

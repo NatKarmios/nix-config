@@ -10,7 +10,7 @@ let
     dir="${config.xdg.userDirs.pictures}/screenshots/$(date +%Y-%m)"
     file="$(date +%Y-%m-%d_%H-%M-%S).png"
     mkdir -p $dir
-    fshot gui -p "$dir/$file" -c $@
+    fshot gui -p "$dir/$file" -c $@ && \
     ${pkgs.swayimg}/bin/swayimg "$dir/$file" --size=300,190 & disown
   '';
 in
@@ -22,7 +22,7 @@ in
 
   services.flameshot = {
     enable = true;
-    package = pkgs.flameshot.override { enableWlrSupport = true; };
+    package = pkgs.stable.flameshot.override { enableWlrSupport = true; };
     settings = {
       "General" = {
         disabledTrayIcon = true;

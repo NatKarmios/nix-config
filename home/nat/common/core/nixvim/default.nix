@@ -20,6 +20,13 @@ with lib.custom.nixvim;
     enable = true;
     enableMan = true;
 
+    extraConfigLuaPre = ''
+      local deprecate_ = vim.deprecate
+      vim.deprecate = function(name, alternative, version, plugin, backtrace)
+        return deprecate_(name, alternative, version, plugin, true)
+      end
+    '';
+
     globals = {
       mapleader = " ";
       maplocalleader = "\\";

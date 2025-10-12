@@ -50,8 +50,7 @@ with lib.custom.nixvim;
       cmp-nvim-lsp-signature-help.enable = true;
     };
 
-    plugins.lsp = {
-      enable = true;
+    lsp = {
       servers = {
         eslint.enable = true;
         nixd.enable = true;
@@ -64,12 +63,11 @@ with lib.custom.nixvim;
           enable = true;
 
           # Don't install these automatically; I'll use dev shells when appropriate.
-          installCargo = false;
-          installRustc = false;
+          package = null;
         };
       };
 
-      keymaps.extra =
+      keymaps =
         with bind-helpers;
         lib.flatten [
           (n' "<leader>q" (raw "vim.diagnostic.setloclist") "Open diagnostic [Q]uickfix list")
@@ -88,11 +86,11 @@ with lib.custom.nixvim;
         ];
 
       # Auto-highlight references, toggle inlay hints
-      preConfig = ''
-        local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      '';
       onAttach = builtins.readFile ./onAttach.lua;
     };
 
+    extraConfigLuaPre = ''
+      local fmt_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    '';
   };
 }

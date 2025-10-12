@@ -13,7 +13,7 @@
 
   services.timewall = {
     enable = true;
-    package = pkgs.unstable.timewall;
+    package = pkgs.timewall;
     wallpaperPath = lib.custom.relativeToRoot "img/zelda.heic";
     config = {
       setter = {

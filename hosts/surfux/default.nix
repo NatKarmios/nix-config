@@ -49,6 +49,8 @@
     isLaptop = true;
   };
 
+  hardware.microsoft-surface.kernelVersion = "stable";
+
   services.xserver.displayManager.lightdm.enable = false;
   services.logind.powerKey = "ignore";
 
