@@ -129,6 +129,12 @@
       url = "github:omerxx/tmux-sessionx";
     };
 
+    # FHS environment for unpatched binaries
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Dynamic wallpapers
     timewall = {
       url = "github:bcyran/timewall";

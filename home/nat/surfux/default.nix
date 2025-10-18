@@ -28,4 +28,6 @@
 
   services.blueman-applet.enable = true;
   services.network-manager-applet.enable = true;
+
+  services.podman.enable = true;
 }

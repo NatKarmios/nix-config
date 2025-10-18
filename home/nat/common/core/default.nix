@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   hostSpec,
@@ -101,6 +102,8 @@
         xdg-user-dirs
         yq-go # yaml pretty printer and manipulator
         zip # zip compression
+
+        inputs.nix-alien.packages.${pkgs.system}.default
       ]
     );
 
