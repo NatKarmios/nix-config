@@ -48,6 +48,7 @@ with lib.custom.nixvim;
     plugins = {
       cmp-nvim-lsp.enable = true;
       cmp-nvim-lsp-signature-help.enable = true;
+      lspconfig.enable = true;
     };
 
     lsp = {
