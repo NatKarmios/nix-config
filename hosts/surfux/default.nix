@@ -18,9 +18,10 @@
     # ========== Hardware ==========
     #
     ./hardware-configuration.nix
-    inputs.hardware.nixosModules.microsoft-surface-common
     ./nvidia.nix
     ./displaylink.nix
+    ./power-tweaks.nix
+    # ./kernel-patches.nix
 
     (map lib.custom.relativeToRoot [
       #
@@ -48,8 +49,6 @@
     hostName = "surfux";
     isLaptop = true;
   };
-
-  hardware.microsoft-surface.kernelVersion = "stable";
 
   services.xserver.displayManager.lightdm.enable = false;
   services.logind.settings.Login.HandlePowerKey = "suspend";
