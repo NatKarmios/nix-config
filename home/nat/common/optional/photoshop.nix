@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 {
   home.packages = [
     (pkgs.photoshop.override {
@@ -6,6 +6,6 @@
       uiScale = "192";
       src = pkgs.requireFile inputs.nix-secrets.photoshopSrc;
     })
-    inputs.erosanix.packages.${pkgs.system}.mkwindowsapp-tools
+    inputs.erosanix.packages.${system}.mkwindowsapp-tools
   ];
 }

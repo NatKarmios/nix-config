@@ -1,9 +1,9 @@
 # Copied from https://github.com/crisbour/nix-hm-config/blob/59d4bf32bd13a539a1da76fdd7c7ba9b41d30cc6/pkgs/zotero-addons.nix
 { pkgs, ... }:
 let
-  inherit (pkgs) lib makeOverridable;
+  inherit (pkgs) lib;
 
-  buildZoteroXpiAddon = makeOverridable (
+  buildZoteroXpiAddon = lib.makeOverridable (
     {
       stdenv ? pkgs.stdenv,
       fetchurl ? pkgs.fetchurl,

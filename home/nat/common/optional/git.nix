@@ -24,9 +24,9 @@ in
       signByDefault = true;
       signer = "${git-ssh-sign}";
     };
-    userName = lib.mkDefault config.hostSpec.userFullName;
-    userEmail = lib.mkDefault config.hostSpec.email;
-    extraConfig = {
+    settings = {
+      user.name = lib.mkDefault config.hostSpec.userFullName;
+      user.email = lib.mkDefault config.hostSpec.email;
       init.defaultBranch = "main";
       credential.helper = "store";
     };

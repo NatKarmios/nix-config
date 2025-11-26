@@ -1,8 +1,11 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
-    inputs.niri-flake.nixosModules.niri
+    inputs.niri.nixosModules.niri
   ];
 
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 }

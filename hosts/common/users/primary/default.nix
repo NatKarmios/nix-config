@@ -3,6 +3,7 @@
   pkgs,
   config,
   lib,
+  system,
   ...
 }:
 let
@@ -15,7 +16,8 @@ in
   users = {
     users.${hostSpec.username} = {
       name = hostSpec.username;
-      home = "/home/${hostSpec.username}";
+      home = hostSpec.home;
+      description = hostSpec.userFullName;
       isNormalUser = true;
       hashedPasswordFile = sopsHashedPasswordFile;
       shell = pkgs.zsh; # default shell
@@ -31,7 +33,7 @@ in
   home-manager = {
     backupFileExtension = "backup";
     extraSpecialArgs = {
-      inherit pkgs inputs;
+      inherit pkgs inputs system;
       hostSpec = config.hostSpec;
     };
     users.${hostSpec.username}.imports = lib.flatten [

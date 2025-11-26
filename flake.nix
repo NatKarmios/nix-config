@@ -42,13 +42,14 @@
         with builtins;
         let
           hosts = lib.remove "common" (attrNames (readDir ./hosts));
+          system = "x86_64-linux";
         in
         listToAttrs (
           map (host: {
             name = host;
             value = nixpkgs.lib.nixosSystem {
               specialArgs = {
-                inherit inputs outputs lib;
+                inherit inputs outputs lib system;
               };
               modules = [ ./hosts/${host} ];
             };
@@ -120,7 +121,7 @@
 
     # Secure boot
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

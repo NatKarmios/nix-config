@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 let
   muxy = pkgs.writers.writePython3Bin "muxy" 
     {
@@ -37,7 +37,7 @@ in
       }
       sessionist
       {
-        plugin = inputs.tmux-sessionx.packages.${pkgs.system}.default;
+        plugin = inputs.tmux-sessionx.packages.${system}.default;
         extraConfig = ''
           set -g @sessionx-bind 'S'
           set -g @sessionx-zoxide-mode 'on'

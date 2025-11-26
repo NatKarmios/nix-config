@@ -3,10 +3,7 @@
 with lib.custom.nixvim;
 {
   programs.nixvim = {
-    plugins.leap = {
-      enable = true;
-      addDefaultMappings = false;
-    };
+    plugins.leap.enable = true;
 
     keymaps = with bind-helpers; [
       (nox "s" "<Plug>(leap)")

@@ -52,7 +52,7 @@
   hardware.microsoft-surface.kernelVersion = "stable";
 
   services.xserver.displayManager.lightdm.enable = false;
-  services.logind.powerKey = "ignore";
+  services.logind.settings.Login.HandlePowerKey = "suspend";
 
   misc-tweaks.sddmFontSize = 18;
 

@@ -9,8 +9,9 @@ let
   additions =
     final: prev:
     let
+      erosanix-pkgs = inputs.erosanix.lib.${prev.pkgs.stdenv.hostPlatform.system};
       erosanix = {
-        inherit (inputs.erosanix.lib.${prev.pkgs.system}) mkWindowsApp copyDesktopIcons makeDesktopIcon;
+        inherit (erosanix-pkgs) mkWindowsApp copyDesktopIcons makeDesktopIcon;
       };
     in
     (prev.lib.packagesFromDirectoryRecursive {
@@ -36,5 +37,9 @@ in
 {
   default =
     final: prev:
-    { } // (additions final prev) // (stable-packages final prev) // (unstable-packages final prev);
+    { } //
+      (additions final prev) //
+      (stable-packages final prev) //
+      (unstable-packages final prev) //
+      (inputs.niri.overlays.niri final prev);
 }
