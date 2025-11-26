@@ -45,6 +45,12 @@ with lib.custom.nixvim;
       breakindent = true;
       undofile = true; # Undo history
 
+      # Tab behaviour
+      tabstop = 4;
+      expandtab = true;
+      softtabstop = 4;
+      shiftwidth = 4;
+
       # Ignore case in searches UNLESS \C or capital letters in search term
       ignorecase = true;
       smartcase = true;

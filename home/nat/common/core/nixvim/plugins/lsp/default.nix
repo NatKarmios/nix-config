@@ -53,8 +53,17 @@ with lib.custom.nixvim;
 
     lsp = {
       servers = {
+        # These are handled by `vscode-langservers-extracted`.
+        html.enable = true;
+        jsonls.enable = true;
+        cssls.enable = true;
         eslint.enable = true;
+
         nixd.enable = true;
+        ts_ls = {
+          enable = true;
+          package = null;
+        };
         ocamllsp = {
           enable = true;
           package = null;
