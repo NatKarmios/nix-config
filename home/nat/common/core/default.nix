@@ -4,6 +4,7 @@
   lib,
   pkgs,
   hostSpec,
+  system,
   ...
 }:
 {
@@ -62,6 +63,9 @@
         XDG_TEMPLATES_DIR = "/var/empty";
       };
     };
+
+    # Allow unfree packages in shell commands
+    configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
   };
 
   home.packages =
@@ -103,7 +107,7 @@
         yq-go # yaml pretty printer and manipulator
         zip # zip compression
 
-        inputs.nix-alien.packages.${pkgs.system}.default
+        inputs.nix-alien.packages.${system}.default
       ]
     );
 
@@ -124,7 +128,21 @@
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
-    matchBlocks."*".addKeysToAgent = "yes";
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+      # These values are from the default config;
+      # the default is going away at some point, and currently raises a warning.
+      forwardAgent = false;
+      compression = false;
+      serverAliveInterval = 0;
+      serverAliveCountMax = 3;
+      hashKnownHosts = false;
+      userKnownHostsFile = "~/.ssh/known_hosts";
+      controlMaster = "no";
+      controlPath = "~/.ssh/master-%r@%n:%p";
+      controlPersist = "no";
+    };
+    enableDefaultConfig = false;
   };
 
   # Nicely reload system units when changing configs

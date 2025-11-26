@@ -113,7 +113,7 @@
     };
 
     # Nix-level configuration for Niri
-    niri-flake = {
+    niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
@@ -153,7 +153,7 @@
     };
 
     # Dank Material Shell
-    DankMaterialShell = {
+    dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };

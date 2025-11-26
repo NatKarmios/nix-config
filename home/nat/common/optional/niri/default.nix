@@ -11,8 +11,6 @@
 {
   imports = [
     ./binds.nix
-    ./idle.nix
-    ./lock.nix
     ./quick-actions.nix
   ];
 
@@ -20,8 +18,6 @@
   my.niri.startup-apps.xwayland-satellite = {
     cmd = "xwayland-satellite";
   };
-
-  services.swaync.enable = true;
 
   programs.niri.settings = {
     input = {

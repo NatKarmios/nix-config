@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
+    ./dank-greeter.nix
     ./firefox.nix
     ./gnome.nix
     ./niri.nix
     ./pipewire.nix
-    ./sddm.nix
     ./sleepy.nix
   ];
 
@@ -16,10 +16,14 @@
 
   fonts.packages = with pkgs; [
     cm_unicode
-    fira-code
     nerd-fonts.fira-code
     nerd-fonts._0xproto
     source-sans-pro
+
+    # Needed for DankMaterialShell
+    fira-code
+    material-symbols
+    inter
   ];
 
   # For KDE Connect
