@@ -152,6 +152,12 @@
       url = "github:emmanuelrosa/erosanix";
     };
 
+    # Affinity creative suite
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Dank Material Shell
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";

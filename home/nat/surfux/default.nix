@@ -2,6 +2,7 @@
 {
   imports = [
     ../common/core
+    ../common/optional/affinity.nix
     ../common/optional/cursors.nix
     ../common/optional/dankmaterialshell.nix
     ../common/optional/discord.nix
