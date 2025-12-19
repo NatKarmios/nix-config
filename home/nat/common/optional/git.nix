@@ -29,6 +29,12 @@ in
       user.email = lib.mkDefault config.hostSpec.email;
       init.defaultBranch = "main";
       credential.helper = "store";
+
+      alias = {
+        oreset = ''!bash -c "git reset origin/$(git branch --show-current) --hard"'';
+        unwip = ''!bash -c "git oreset; git reset HEAD^"'';
+        wip = ''!bash -c "git add -A; git commit -m \"WIP\" --no-verify; git push --set-upstream origin -f"'';
+      };
     };
   };
 }
