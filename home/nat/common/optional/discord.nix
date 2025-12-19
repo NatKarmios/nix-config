@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.vesktop = {
     enable = true;
@@ -31,8 +32,12 @@
     };
   };
 
-  my.niri.startup-apps.vesktop.cmd = [
-    "vesktop"
-    "--start-minimized"
-  ];
+  my.niri.startup-apps.vesktop.cmd =
+    let
+      start-vesktop = pkgs.writeShellScriptBin "start-vesktop" ''
+        sleep 5
+        vesktop --start-minimized
+      '';
+    in
+    [ "${start-vesktop}/bin/start-vesktop" ];
 }

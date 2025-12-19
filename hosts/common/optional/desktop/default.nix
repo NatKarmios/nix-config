@@ -12,6 +12,8 @@
   environment.systemPackages = with pkgs; [
     libinput
     wl-clipboard-rs
+    vscode
+    # klogg
   ];
 
   fonts.packages = with pkgs; [
