@@ -91,6 +91,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Stuff that multiple other flakes use; including them here to de-duplicate.
+    flake-compat.url = "github:edolstra/flake-compat";
+    gitignore = {
+      url = "github:hercules-ci/gitignore.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    systems.url = "github:nix-systems/default";
+
     #
     # ========== Utilities ==========
     #
@@ -104,12 +113,17 @@
     nixvim = {
       url = "github:nix-community/nixvim/main";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
+      inputs.nuschtosSearch.inputs.flake-utils.inputs.systems.follows = "systems";
     };
 
     # Consistent system-wide theming
     stylix = {
       url = "github:nix-community/stylix/master";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.systems.follows = "systems";
     };
 
     # Nix-level configuration for Niri
@@ -123,39 +137,52 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.pre-commit-hooks-nix.inputs.gitignore.follows = "gitignore";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # Nicer tmux session management
     tmux-sessionx = {
       url = "github:omerxx/tmux-sessionx";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # FHS environment for unpatched binaries
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     # Dynamic wallpapers
-    timewall = {
-      url = "github:bcyran/timewall";
-    };
+    # timewall = {
+    #   url = "github:bcyran/timewall";
+    # };
 
     # Pre-commit
-    pre-commit-hooks = {
+    git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.gitignore.follows = "gitignore";
     };
 
     # mkWindowsApp utility
     erosanix = {
       url = "github:emmanuelrosa/erosanix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     # Affinity creative suite
     affinity-nix = {
       url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.git-hooks.follows = "git-hooks";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # Dank Material Shell
