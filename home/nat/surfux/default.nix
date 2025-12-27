@@ -28,7 +28,7 @@
     rustdesk-flutter
   ];
 
-  # programs.niri.settings.debug.ignore-drm-device = "/dev/dri/renderD129";
+  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/renderD129";
 
   services.podman.enable = true;
 }
