@@ -14,7 +14,7 @@
       "modules/home"
     ])
 
-    ./nixvim
+    ./nvim.nix
     ./tmux
     ./wezterm.nix
     ./wofi
@@ -33,7 +33,7 @@
       "$HOME/.local/bin"
     ];
     sessionVariables = {
-      FLAKE = "$HOME/src/nix/nix-config";
+      FLAKE = "${config.home.homeDirectory}/src/nix/nix-config";
       SHELL = "zsh";
       TERMINAL = "wezterm";
       VISUAL = "nvim";

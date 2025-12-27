@@ -133,15 +133,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix-level configuration
-    nixvim = {
-      url = "github:nix-community/nixvim/main";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
-      inputs.nuschtosSearch.inputs.flake-utils.inputs.systems.follows = "systems";
-    };
-
     # Consistent system-wide theming
     stylix = {
       url = "github:nix-community/stylix/master";
@@ -179,11 +170,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
     };
-
-    # Dynamic wallpapers
-    # timewall = {
-    #   url = "github:bcyran/timewall";
-    # };
 
     # Pre-commit
     git-hooks = {
