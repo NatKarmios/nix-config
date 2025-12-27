@@ -1,13 +1,12 @@
-{ inputs, system, ... }:
+{ inputs, ... }:
 {
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
+    inputs.dms.homeModules.dankMaterialShell.default
+    inputs.dms.homeModules.dankMaterialShell.niri
   ];
 
   programs.dankMaterialShell = {
     enable = true;
-    # quickshell.package = inputs.quickshell.packages.${system}.default;
 
     systemd.enable = true;
     enableSystemMonitoring = true;

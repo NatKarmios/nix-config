@@ -1,6 +1,10 @@
-{ inputs, config, ... }:
 {
-  imports = [ inputs.dankMaterialShell.nixosModules.greeter ];
+  inputs,
+  config,
+  ...
+}:
+{
+  imports = [ inputs.dms.nixosModules.greeter ];
 
   programs.dankMaterialShell.greeter = {
     enable = true;

@@ -15,9 +15,9 @@
     ../common/optional/niri
     ../common/optional/obsidian.nix
     ../common/optional/onedrive
-    ../common/optional/photoshop.nix
+    # ../common/optional/photoshop.nix
     ../common/optional/shells.nix
-    ../common/optional/timewall.nix
+    # ../common/optional/timewall.nix
     ../common/optional/zotero
 
     ./displays.nix
@@ -25,9 +25,10 @@
 
   home.packages = with pkgs; [
     drawio
+    rustdesk-flutter
   ];
 
-  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/renderD129";
+  # programs.niri.settings.debug.ignore-drm-device = "/dev/dri/renderD129";
 
   services.podman.enable = true;
 }

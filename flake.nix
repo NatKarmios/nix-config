@@ -49,12 +49,36 @@
             name = host;
             value = nixpkgs.lib.nixosSystem {
               specialArgs = {
-                inherit inputs outputs lib system;
+                inherit
+                  inputs
+                  outputs
+                  lib
+                  system
+                  ;
               };
               modules = [ ./hosts/${host} ];
             };
           }) hosts
         );
+
+      #
+      # ========= Dev shell =========
+      #
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              stylua
+              nixd
+              nixfmt-rfc-style
+            ];
+          };
+        }
+      );
 
       #
       # ========= Formatting =========
@@ -186,12 +210,8 @@
     };
 
     # Dank Material Shell
-    dankMaterialShell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
