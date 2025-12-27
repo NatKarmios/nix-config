@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   # Enable OpenGL
   hardware.graphics.enable = true;
@@ -14,7 +14,6 @@
     powerManagement.finegrained = true;
     open = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     prime = {
       offload = {
