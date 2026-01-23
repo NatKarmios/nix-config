@@ -1,23 +1,19 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.dms.homeModules.dankMaterialShell.default
-    inputs.dms.homeModules.dankMaterialShell.niri
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.niri
   ];
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
 
     systemd.enable = true;
     enableSystemMonitoring = true;
-    enableClipboard = true;
     enableVPN = true;
-    enableBrightnessControl = true;
-    enableColorPicker = true;
     enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
-    enableSystemSound = true;
 
     niri = {
       enableKeybinds = false;
