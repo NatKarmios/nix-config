@@ -34,6 +34,7 @@
       "hosts/common/optional/brightnessctl.nix"
       "hosts/common/optional/desktop"
       "hosts/common/optional/lanzaboote.nix"
+      "hosts/common/optional/nix-gc.nix"
       "hosts/common/optional/stylix.nix"
       "hosts/common/optional/syncthing.nix"
       "hosts/common/optional/zerotier.nix"
