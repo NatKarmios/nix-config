@@ -2,8 +2,11 @@
 return {
   'nvim-mini/mini.nvim',
   config = function()
+    -- Interactive text alignment
+    require('mini.align').setup()
+
     -- Better Around/Inside text objects
-    require('mini.ai').setup({ n_lines = 500 })
+    require('mini.ai').setup { n_lines = 500 }
 
     -- Move selections
     require('mini.move').setup()

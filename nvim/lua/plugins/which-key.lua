@@ -42,12 +42,12 @@ return {
     spec = {
       { '<leader>b', group = '[B]uffer' },
       { '<leader>c', group = '[C]ode' },
-      { '<leader>f', group = '[F]ind' },
-      { '<leader>F', group = '[F]ile' },
+      { '<leader>f', group = '[F]ile' },
+      { '<leader>g', group = '[G]it' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>w', group = '[W]indow' },
       { '<leader>W', group = 'Tab' },
     },
-  }
+  },
 }

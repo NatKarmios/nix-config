@@ -4,5 +4,8 @@ return {
   event = 'VeryLazy',
   opts = {
     enabled = false,
-  }
+  },
+  keys = {
+    { '<leader>gb', '<cmd>GitBlameToggle<CR>', desc = 'Toggle [B]lame' },
+  },
 }

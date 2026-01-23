@@ -1,14 +1,14 @@
 -- File manager
 return {
   'mikavilpas/yazi.nvim',
-  version = "*",
-  event = "VeryLazy",
+  version = '*',
+  event = 'VeryLazy',
   dependencies = {
     { 'nvim-lua/plenary.nvim', lazy = true },
   },
   keys = {
-    { '<leader>oy', '<cmd>Yazi<CR>', desc = '[Y]azi (at current file)' },
-    { '<leader>oY', '<cmd>Yazi cwd<CR>', desc = '[Y]azi (at cwd)' },
+    { '<leader>ff', '<cmd>Yazi<CR>', desc = 'Open Yazi (at current file)' },
+    { '<leader>fF', '<cmd>Yazi cwd<CR>', desc = 'Open Yazi (at cwd)' },
   },
   opts = {
     open_for_directories = true,

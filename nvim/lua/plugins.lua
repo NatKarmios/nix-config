@@ -6,6 +6,7 @@ require('lazy').setup {
   require 'plugins.conform', -- Autoformat
   'sindrets/diffview.nvim', -- Git diffs
   require 'plugins.dropbar', -- IDE-esque breadcrumb bar
+  require 'plugins.eunuch', -- File utility commands
   require 'plugins.fidget', -- Notifications & LSP progress messages
   require 'plugins.glance', -- LSP previews
   require 'plugins.git-blame', -- Git blame in virtual text
@@ -17,6 +18,7 @@ require('lazy').setup {
   require 'plugins.mini', -- Many small utilities
   -- require 'plugins.noice', -- UI revamp
   'sitiom/nvim-numbertoggle', -- Auto-toggle relative/absolute nums based on mode
+  require 'plugins.origami', -- Better folding
   require 'plugins.smear-cursor', -- Smear the cursor when making large motions
   require 'plugins.snacks', -- Many QoL plugins
   require 'plugins.spider', -- Better w/e/b motions
@@ -24,7 +26,6 @@ require('lazy').setup {
   require 'plugins.treesitter', -- Utilities based on a smarter syntax parser
   require 'plugins.tmux-navigator', -- Seamless nagivation between tmux panes and vim splits
   'folke/todo-comments.nvim', -- Highlight and searching for to-do comments
-  require 'plugins.ufo', -- Better folding
   require 'plugins.which-key', -- Keybind hints
   'tpope/vim-repeat', -- Better . repeat
   require 'plugins.vimtex', -- LaTeX support
