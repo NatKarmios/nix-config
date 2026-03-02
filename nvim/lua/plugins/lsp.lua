@@ -58,6 +58,7 @@ return {
     vim.lsp.enable 'jsonls'
     vim.lsp.enable 'cssls'
     vim.lsp.enable 'eslint'
+    vim.lsp.enable 'ts_ls'
 
     local flake = 'import (builtins.getFlake "' .. vim.env.FLAKE .. '")'
     local nixOptions = flake .. '.outputs.nixosConfigurations.' .. vim.loop.os_gethostname() .. '.options'
