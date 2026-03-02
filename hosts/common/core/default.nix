@@ -46,7 +46,12 @@ in
   };
 
   networking.hostName = config.hostSpec.hostName;
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 
   console.keyMap = "uk";
 
