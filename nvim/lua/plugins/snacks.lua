@@ -16,6 +16,13 @@ return {
       desc = 'Smart find files',
     },
     {
+      '<leader>s.',
+      function()
+        Snacks.picker.resume()
+      end,
+      desc = 'Resume search',
+    },
+    {
       '<leader>,',
       function()
         Snacks.picker.buffers()
@@ -140,13 +147,6 @@ return {
         Snacks.picker.notifications()
       end,
       desc = '[N]otification history',
-    },
-    {
-      '<leader>sR',
-      function()
-        Snacks.picker.resume()
-      end,
-      desc = '[R]esume search',
     },
     {
       '<leader>ss',
