@@ -36,12 +36,12 @@ in
 {
   zotmoov = buildZoteroXpiAddon rec {
     pname = "zotmoov";
-    version = "1.1.14";
+    version = "1.2.28";
     addonId = "zotmoov@wileyy.com";
 
     # TODO Remove "Beta" when the release is stable
     url = "https://github.com/wileyyugioh/zotmoov/releases/download/${version}/zotmoov-${version}-fx.xpi";
-    hash = "sha256-Csp+cX7YouO8u7XZoY7gNnU5Z8V9dDe7+hxFKOqej3Q=";
+    hash = "sha256-UfPQWLnMqB697s4CG8Jj/liHiLxNDjp8LW0ZbulL7bk=";
 
     meta = with lib; {
       homepage = "https://github.com/wileyyugioh/zotmoov";
@@ -52,11 +52,11 @@ in
 
   zotero-better-bibtex = buildZoteroXpiAddon rec {
     pname = "zotero-better-bibtex";
-    version = "7.0.39";
+    version = "9.0.13";
     addonId = "better-bibtex@iris-advies.com";
 
     url = "https://github.com/retorquere/zotero-better-bibtex/releases/download/v${version}/zotero-better-bibtex-${version}.xpi";
-    hash = "sha256-DK/wvidu6dxikNlld69aHaHHWNfCwy1QefFrUpxDkeQ=";
+    hash = "sha256-Y8XIeDkAWkrKnXlCazrKbFKPyg5Rsgyyrkuzsf6eG/o=";
 
     meta = with lib; {
       homepage = "https://github.com/retorquere/zotero-better-bibtex";
