@@ -1,0 +1,48 @@
+return {
+  'romus204/tree-sitter-manager.nvim',
+  dependencies = {}, -- tree-sitter CLI must be installed system-wide
+  config = function()
+    require('tree-sitter-manager').setup {
+      -- ensure_installed = {}, -- list of parsers to install at the start of a neovim session
+      ensure_installed = {
+        'bash',
+        'c',
+        'css',
+        'diff',
+        'dockerfile',
+        'gitcommit',
+        'gitignore',
+        'haskell',
+        'html',
+        'javascript',
+        'jq',
+        'json',
+        'json5',
+        'just',
+        'kdl',
+        'lua',
+        'make',
+        'markdown',
+        'markdown_inline',
+        'menhir',
+        'nix',
+        'ocaml',
+        'ocaml_interface',
+        'ocamllex',
+        'perl',
+        'properties',
+        'python',
+        'regex',
+        'rst',
+        'rust',
+        'sql',
+        'ssh_config',
+        'toml',
+        'tsx',
+        'typescript',
+        'yaml',
+      },
+      auto_install = true,
+    }
+  end,
+}

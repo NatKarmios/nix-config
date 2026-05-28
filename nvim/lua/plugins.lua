@@ -25,7 +25,7 @@ require('lazy').setup {
   require 'plugins.spider', -- Better w/e/b motions
   require 'plugins.tiny-inline-diagnostic', -- Neater, prettier diagnostics
   require 'plugins.tree', -- File explorer tree
-  require 'plugins.treesitter', -- Utilities based on a smarter syntax parser
+  require 'plugins.treesitter-manager', -- Manager for Treesitter parsers
   require 'plugins.tmux-navigator', -- Seamless nagivation between tmux panes and vim splits
   'folke/todo-comments.nvim', -- Highlight and searching for to-do comments
   require 'plugins.which-key', -- Keybind hints
