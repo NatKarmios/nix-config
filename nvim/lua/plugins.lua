@@ -5,6 +5,7 @@ require('lazy').setup {
   require 'plugins.bufdelete', -- Delete buffers, keep layout
   require 'plugins.conform', -- Autoformat
   'sindrets/diffview.nvim', -- Git diffs
+  require 'plugins.devicons', -- Nerd font icon provider
   require 'plugins.dropbar', -- IDE-esque breadcrumb bar
   require 'plugins.eunuch', -- File utility commands
   require 'plugins.fidget', -- Notifications & LSP progress messages
