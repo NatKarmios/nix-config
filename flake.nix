@@ -74,7 +74,7 @@
             nativeBuildInputs = with pkgs; [
               stylua
               nixd
-              nixfmt-rfc-style
+              nixfmt
             ];
           };
         }
