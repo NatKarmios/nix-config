@@ -18,9 +18,12 @@ in
 
       settings = {
         "extensions.zotero.sync.storage.enabled" = false;
+        "extensions.zotero.baseAttachmentPath" = "${docsDir}/papers";
         "extensions.zotero.dataDir" = "${stateDir}/zotero";
+        "extensions.zotero.autoRenameFiles.linked" = true;
+        "extensions.zotero.autoRenameFiles.done" = false;
         "extensions.zotero.attachmentRenameTemplate" =
-          ''{{firstCreator suffix=" "}}{{ suffix=" - " }}{{if shortTitle}}{{shortTtile}}{{else}}{{title truncate="100"}}{{end}}'';
+          ''{{authors suffix=" "}}{{ year suffix=" - " }}{{if shortTitle}}{{shortTtile}}{{else}}{{title truncate="100"}}{{end}}'';
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         # zotero-better-bibtex
@@ -29,6 +32,7 @@ in
 
         # zotmoove
         "extensions.zotmoov.dst_dir" = "${docsDir}/papers";
+        "extensions.zotmoov.enable_automove" = true;
       };
 
       userChrome = builtins.readFile ./userChrome.css;
