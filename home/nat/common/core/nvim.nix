@@ -5,9 +5,10 @@
     neovim-remote
     tree-sitter
     vscode-langservers-extracted
+    lsof
   ];
 
   # Symlink my config
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink
-    "${config.home.sessionVariables.FLAKE}/nvim";
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.sessionVariables.FLAKE}/nvim";
 }

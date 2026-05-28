@@ -47,6 +47,7 @@
     userDirs = {
       enable = true;
       createDirectories = true;
+      setSessionVariables = true;
       desktop = "${config.home.homeDirectory}/.desktop";
       documents = "${config.home.homeDirectory}/doc";
       download = "${config.home.homeDirectory}/downloads";
@@ -59,8 +60,8 @@
       # templates = "/var/empty";
 
       extraConfig = {
-        XDG_PUBLICSHARE_DIR = "/var/empty";
-        XDG_TEMPLATES_DIR = "/var/empty";
+        PUBLICSHARE = "/var/empty";
+        TEMPLATES = "/var/empty";
       };
     };
 
@@ -80,6 +81,7 @@
         curl
         eza # ls replacement
         dust # disk usage
+        fastfetch # pretty system info
         fd # tree-style ls
         findutils # find
         fzf # fuzzy find
@@ -87,7 +89,6 @@
         gum # a bunch of helpful utilities for shell scripting
         manix # Nix options search
         nix-tree # nix package tree viewer
-        neofetch # fancier system info than pfetch
         ncdu # TUI disk usage
         p7zip # compression & encryption
         pciutils
@@ -147,4 +148,7 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  # Maintain pre-26.05 default behaviour
+  gtk.gtk4.theme = config.gtk.theme;
 }
