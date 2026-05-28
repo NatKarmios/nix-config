@@ -13,6 +13,7 @@
     ../common/optional/lazygit.nix
     ../common/optional/latex.nix
     ../common/optional/niri
+    ../common/optional/opencode.nix
     ../common/optional/obsidian.nix
     ../common/optional/onedrive
     # ../common/optional/photoshop.nix

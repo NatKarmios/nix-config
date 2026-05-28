@@ -19,6 +19,7 @@ require('lazy').setup {
   require 'plugins.mini', -- Many small utilities
   -- require 'plugins.noice', -- UI revamp
   'sitiom/nvim-numbertoggle', -- Auto-toggle relative/absolute nums based on mode
+  require 'plugins.opencode', -- LLM time
   require 'plugins.origami', -- Better folding
   require 'plugins.smear-cursor', -- Smear the cursor when making large motions
   require 'plugins.snacks', -- Many QoL plugins
