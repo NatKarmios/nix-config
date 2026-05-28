@@ -20,4 +20,6 @@
       enableSpawn = false;
     };
   };
+
+  stylix.targets.dank-material-shell.enable = false;
 }
