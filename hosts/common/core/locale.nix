@@ -1,7 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 {
-  time.timeZone = lib.mkDefault "Europe/London";
+  # Laptops may travel to other countries and want to change time zones dynamimcally.
+  # To change, use e.g. `timedatectl set-timezone Europe/London`
+  # Find the right timezone with tzselect
+  time.timeZone = lib.mkDefault (if config.hostSpec.isLaptop then null else "Europe/London");
 
   i18n.defaultLocale = lib.mkDefault "en_GB.UTF-8";
 
