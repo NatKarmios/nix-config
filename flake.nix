@@ -201,6 +201,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # VSCode server
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+    };
+
     #
     # ========== Personal Repositories
     #

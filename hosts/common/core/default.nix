@@ -27,6 +27,7 @@ in
       "modules/common"
       "modules/hosts"
       "hosts/common/core/locale.nix"
+      "hosts/common/core/python.nix"
       "hosts/common/core/sops.nix"
       "hosts/common/core/ssh.nix"
       "hosts/common/users/primary"

@@ -3,19 +3,15 @@
   fetchPypi,
   setuptools,
   wheel,
-  pytermtk,
-  appdirs,
-  copykitten,
-  pyyaml,
 }:
 
 buildPythonPackage rec {
-  pname = "tlogg";
-  version = "0.48.2a0";
+  pname = "pytermtk";
+  version = "0.50.0a0";
 
   src = fetchPypi {
     inherit pname version;
-    hash = "sha256-eY96MwbbytQ7URVezvnNmGhwoXlUGCuW3juJjdqz6D4=";
+    hash = "";
   };
 
   # do not run tests
@@ -29,9 +25,6 @@ buildPythonPackage rec {
   ];
 
   dependencies = [
-    pytermtk
-    appdirs
-    copykitten
-    pyyaml
   ];
 }
+
