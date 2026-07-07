@@ -1,6 +1,6 @@
-{ inputs, system, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [
-    inputs.affinity-nix.packages.${system}.v3
+  home.packages = with pkgs; [
+    affinity-v3
   ];
 }
