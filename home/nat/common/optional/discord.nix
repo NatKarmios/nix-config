@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.vesktop = {
     enable = true;
@@ -32,12 +31,10 @@
     };
   };
 
-  my.niri.startup-apps.vesktop.cmd =
-    let
-      start-vesktop = pkgs.writeShellScriptBin "start-vesktop" ''
-        sleep 5
-        vesktop --start-minimized
-      '';
-    in
-    [ "${start-vesktop}/bin/start-vesktop" ];
+  ## Vesktop starts before DMS, so its tray icon doesn't show. This is a DMS bug:
+  ## https://github.com/AvengeMedia/DankMaterialShell/issues/1073
+  # my.niri.startup-apps.vesktop.cmd = [
+  #   "vesktop"
+  #   "--start-minimized"
+  # ];
 }
