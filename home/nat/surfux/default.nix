@@ -29,7 +29,9 @@
     rustdesk-flutter
   ];
 
-  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/renderD128";
+  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/card2";
+
+  xdg.autostart.enable = true;
 
   services.podman.enable = true;
 }
