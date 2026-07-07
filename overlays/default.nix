@@ -24,7 +24,7 @@ let
       python3 = prev.python3.override {
         packageOverrides = pyfinal: pyprev:
           (prev.lib.packagesFromDirectoryRecursive {
-            callPackage = pyprev.callPackage;
+            callPackage = pyfinal.callPackage;
             directory = ../pkgs/python3;
           });
        };

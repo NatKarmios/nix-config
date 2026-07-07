@@ -13,7 +13,6 @@
     libinput
     wl-clipboard-rs
     vscode
-    # klogg
   ];
 
   fonts.packages = with pkgs; [

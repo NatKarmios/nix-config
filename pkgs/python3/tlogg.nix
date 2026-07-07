@@ -7,6 +7,7 @@
   appdirs,
   copykitten,
   pyyaml,
+  pygments,
 }:
 
 buildPythonPackage rec {
@@ -33,5 +34,6 @@ buildPythonPackage rec {
     appdirs
     copykitten
     pyyaml
+    pygments
   ];
 }
