@@ -117,10 +117,6 @@
 
     # Stuff that multiple other flakes use; including them here to de-duplicate.
     flake-compat.url = "github:edolstra/flake-compat";
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
 
@@ -150,11 +146,8 @@
 
     # Secure boot
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.pre-commit-hooks-nix.inputs.gitignore.follows = "gitignore";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     # Nicer tmux session management
@@ -176,7 +169,6 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
-      inputs.gitignore.follows = "gitignore";
     };
 
     # mkWindowsApp utility
@@ -197,7 +189,9 @@
 
     # Dank Material Shell
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+      # Tracking master for now because of a Niri update bug; try changing back to stable after a while.
+      # https://github.com/AvengeMedia/DankMaterialShell/issues/2525
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

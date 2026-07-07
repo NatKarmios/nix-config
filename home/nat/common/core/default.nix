@@ -15,6 +15,7 @@
     ])
 
     ./nvim.nix
+    ./sops.nix
     ./tmux
     ./wezterm.nix
     ./wofi
@@ -122,6 +123,9 @@
       ];
       warn-dirty = false;
     };
+    extraOptions = ''
+      !include ${config.sops.secrets."nix/access_tokens".path}
+    '';
   };
 
   programs.home-manager.enable = true;
@@ -129,7 +133,7 @@
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
-    matchBlocks."*" = {
+    settings."*" = {
       addKeysToAgent = "yes";
       # These values are from the default config;
       # the default is going away at some point, and currently raises a warning.
@@ -148,7 +152,4 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-  # Maintain pre-26.05 default behaviour
-  gtk.gtk4.theme = config.gtk.theme;
 }
