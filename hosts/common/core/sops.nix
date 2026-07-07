@@ -1,14 +1,15 @@
 {
   pkgs,
-  lib,
   inputs,
   config,
   ...
 }:
 let
-  secretsPath = builtins.toString inputs.nix-secrets;
+  secretsPath = toString inputs.nix-secrets;
 in
 {
+  environment.systemPackages = [ pkgs.sops ];
+
   sops = {
     defaultSopsFile = "${secretsPath}/secrets.yaml";
     validateSopsFiles = false;
