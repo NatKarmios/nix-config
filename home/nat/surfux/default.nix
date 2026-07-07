@@ -19,6 +19,7 @@
     # ../common/optional/photoshop.nix
     ../common/optional/shells.nix
     # ../common/optional/timewall.nix
+    ../common/optional/vscode-server.nix
     ../common/optional/zotero
 
     ./displays.nix
