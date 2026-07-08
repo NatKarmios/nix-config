@@ -56,7 +56,10 @@
 
   misc-tweaks.sddmFontSize = 18;
 
-  environment.systemPackages = [ pkgs.surface-control ];
+  environment.systemPackages = [
+    pkgs.surface-control
+    pkgs.wireguard-tools
+  ];
 
   # Prevent keyboard from sending BTN_0; this is interpreted as a
   #   mouse button and messed with compositors!
