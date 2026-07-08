@@ -1,4 +1,4 @@
-{ pkgs, inputs, system, ... }:
+{ pkgs, inputs, config, system, ... }:
 let
   muxy = pkgs.writers.writePython3Bin "muxy" 
     {
@@ -88,4 +88,9 @@ in
     tmuxinator
     muxy
   ];
+
+  home.activation.mk-tmuxinator-dir = ''
+    run mkdir -p ${config.xdg.configHome}/tmuxinator
+  '';
+
 }
