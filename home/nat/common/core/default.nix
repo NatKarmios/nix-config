@@ -55,6 +55,7 @@
       music = "${config.home.homeDirectory}/media/audio";
       pictures = "${config.home.homeDirectory}/media/images";
       videos = "${config.home.homeDirectory}/media/video";
+      projects = "${config.home.homeDirectory}/projects";
 
       ## "using these options with null or "/var/empty" barfs so it is set properly in extraConfig below"
       # publicshare = "/var/empty";
