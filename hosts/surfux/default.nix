@@ -17,6 +17,7 @@
     # ========== Hardware ==========
     #
     ./hardware-configuration.nix
+    ./luks.nix
     ./nvidia.nix
     ./displaylink.nix
     ./power-tweaks.nix
