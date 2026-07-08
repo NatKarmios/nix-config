@@ -28,6 +28,7 @@
   home.packages = with pkgs; [
     drawio
     rustdesk-flutter
+    slack
   ];
 
   programs.niri.settings.debug.ignore-drm-device = "/dev/dri/card2";
