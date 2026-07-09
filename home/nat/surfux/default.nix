@@ -4,6 +4,7 @@
     ../common/core
     ../common/optional/affinity.nix
     ../common/optional/cursors.nix
+    ../common/optional/claude
     ../common/optional/dankmaterialshell.nix
     ../common/optional/discord.nix
     ../common/optional/displays.nix
