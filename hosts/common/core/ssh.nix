@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   services.openssh = {
     enable = true;
@@ -14,4 +14,7 @@
 
   # Intrusion prevention
   services.fail2ban.enable = true;
+
+  # Wayland equivalent of ssh -X
+  environment.systemPackages = [ pkgs.waypipe ];
 }
