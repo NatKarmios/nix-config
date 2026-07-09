@@ -62,6 +62,7 @@ in
     vim
     wget
     jq
+    screen
   ];
 
   #
