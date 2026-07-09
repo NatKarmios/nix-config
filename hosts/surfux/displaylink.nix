@@ -5,5 +5,10 @@
     "modesetting"
     "displaylink"
   ];
-  systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+  systemd.services.dlm = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      TimeoutStopSec = 10;
+    };
+  };
 }
