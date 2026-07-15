@@ -32,6 +32,18 @@
     slack
   ];
 
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "ssh";
+    };
+    extensions = with pkgs; [
+      gh-eco
+      gh-dash
+      gh-enhance
+    ];
+  };
+
   programs.niri.settings.debug.ignore-drm-device = "/dev/dri/card2";
 
   xdg.autostart.enable = true;
