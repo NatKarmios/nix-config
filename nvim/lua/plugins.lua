@@ -3,6 +3,8 @@ require('lazy').setup {
   require 'plugins.auto-session', -- Remember what files I had open
   require 'plugins.blink-cmp', -- Autocompletion
   require 'plugins.bufdelete', -- Delete buffers, keep layout
+  'natkarmios/cctools', -- Tools for Claude Code
+  require 'plugins.config-local', -- Per-project nvim config
   require 'plugins.conform', -- Autoformat
   'sindrets/diffview.nvim', -- Git diffs
   require 'plugins.devicons', -- Nerd font icon provider
@@ -19,6 +21,7 @@ require('lazy').setup {
   require 'plugins.mini', -- Many small utilities
   -- require 'plugins.noice', -- UI revamp
   'sitiom/nvim-numbertoggle', -- Auto-toggle relative/absolute nums based on mode
+  require 'plugins.ocaml', -- OCaml
   require 'plugins.opencode', -- LLM time
   require 'plugins.origami', -- Better folding
   require 'plugins.smear-cursor', -- Smear the cursor when making large motions
