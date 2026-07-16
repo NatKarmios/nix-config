@@ -72,7 +72,14 @@ in
     overlays = [
       outputs.overlays.default
     ];
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        (builtins.warn
+          "Allowing insecure Electron for Vesktop (https://github.com/NixOS/nixpkgs/pull/542528)"
+          "electron-40.10.5")
+      ];
+    };
   };
 
   #

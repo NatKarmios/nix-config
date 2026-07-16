@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  texlive = pkgs.texlive.combined.scheme-full;
+  texlive = pkgs.texliveFull;
   zathura = pkgs.zathura;
 in
 {

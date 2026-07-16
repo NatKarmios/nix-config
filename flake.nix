@@ -28,7 +28,10 @@
         nixpkgs.lib.extend (self: super: { inherit custom; });
 
     in
-    {
+    lib.custom.warnAll [
+      # Mark band-aid solutions here (or even better, where it is applied)
+      "Using unofficial nixos-vscode-server (https://github.com/nix-community/nixos-vscode-server/pull/101)"
+    ] {
       #
       # ========== Overlays ==========
       #
@@ -108,7 +111,10 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    hardware.url = "github:nixos/nixos-hardware";
+    hardware = {
+      url = "github:nixos/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -116,9 +122,9 @@
     };
 
     # Stuff that multiple other flakes use; including them here to de-duplicate.
-    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat.url = "github:NixOS/flake-compat";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
+    crane.url = "github:ipetkov/crane";
 
     #
     # ========== Utilities ==========
@@ -134,7 +140,6 @@
       url = "github:nix-community/stylix/master";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
-      inputs.systems.follows = "systems";
     };
 
     # Nix-level configuration for Niri
@@ -148,6 +153,8 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.crane.follows = "crane";
+      inputs.pre-commit.inputs.flake-compat.follows = "flake-compat";
     };
 
     # Nicer tmux session management
@@ -185,6 +192,7 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.git-hooks.follows = "git-hooks";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.crane.follows = "crane";
     };
 
     # Dank Material Shell
@@ -193,15 +201,19 @@
       # https://github.com/AvengeMedia/DankMaterialShell/issues/2525
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     # VSCode server
     vscode-server = {
-      url = "github:nix-community/nixos-vscode-server";
+      # TODO: switch back after merge
+      # https://github.com/nix-community/nixos-vscode-server/pull/101
+      url = "github:nix-community/nixos-vscode-server/pull/101/head";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     #
-    # ========== Personal Repositories
+    # ========== Personal Repositories ========== 
     #
     # My secrets
     nix-secrets = {
