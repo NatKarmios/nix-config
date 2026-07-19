@@ -1,11 +1,19 @@
-{ pkgs, inputs, config, system, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  system,
+  ...
+}:
 let
-  muxy = pkgs.writers.writePython3Bin "muxy" 
-    {
-      libraries = [ pkgs.python3Packages.pyyaml ];
-      flakeIgnore = [ "E124" "E128" "E501" ];
-    }
-    (builtins.readFile ./muxy.py);
+  muxy = pkgs.writers.writePython3Bin "muxy" {
+    libraries = [ pkgs.python3Packages.pyyaml ];
+    flakeIgnore = [
+      "E124"
+      "E128"
+      "E501"
+    ];
+  } (builtins.readFile ./muxy.py);
 in
 {
   programs.tmux = {
@@ -43,6 +51,16 @@ in
           set -g @sessionx-zoxide-mode 'on'
         '';
       }
+      (pkgs.tmuxPlugins.mkTmuxPlugin {
+        pluginName = "tmux-super-fingers";
+        version = "unstable-2026-04-23";
+        src = pkgs.fetchFromGitHub {
+          owner = "artemave";
+          repo = "tmux_super_fingers";
+          rev = "523dc9b7a79f1ceb8d9be72e22c263c4a7cd3bdf";
+          sha256 = "sha256-GiOkSADuWz19ndsVlKiKatPnplUpmukoZTPakIXWqF0=";
+        };
+      })
       vim-tmux-navigator
     ];
 
@@ -59,16 +77,21 @@ in
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
-      #hjkl pane switching
+      # 'hjkl' pane switching
       bind h select-pane -L
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
-      #fix home/end
+      # Fix home/end
       bind -n Home send Escape "OH"
       bind -n End send Escape "OF"
       bind R source-file ~/.config/tmux/tmux.conf
       bind r command-prompt "rename-window %%"
+      # For dropping marked window
+      bind H join-pane -h -b
+      bind J join-pane -v
+      bind K join-pane -v -b
+      bind L join-pane -h
 
       set -g history-limit 1000000  # increase from default 2000
       set -g renumber-windows on  # renumber windows when closing
