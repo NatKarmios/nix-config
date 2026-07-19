@@ -44,7 +44,7 @@
     ];
   };
 
-  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/card2";
+  programs.niri.settings.debug.ignore-drm-device = "/dev/dri/by-path/pci-0000:02:00.0-render";
 
   xdg.autostart.enable = true;
 
