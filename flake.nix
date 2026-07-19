@@ -28,75 +28,76 @@
         nixpkgs.lib.extend (self: super: { inherit custom; });
 
     in
-    lib.custom.warnAll [
-      # Mark band-aid solutions here (or even better, where it is applied)
-      "Using unofficial nixos-vscode-server (https://github.com/nix-community/nixos-vscode-server/pull/101)"
-    ] {
-      #
-      # ========== Overlays ==========
-      #
-      # Custom modifications/overrides to upstream packages
-      overlays = import ./overlays { inherit inputs; };
+    lib.custom.warnAll
+      [
+        # Mark band-aid solutions here (or even better, where it is applied)
+      ]
+      {
+        #
+        # ========== Overlays ==========
+        #
+        # Custom modifications/overrides to upstream packages
+        overlays = import ./overlays { inherit inputs; };
 
-      #
-      # ========== Host Configurations ==========
-      #
-      nixosConfigurations =
-        with builtins;
-        let
-          hosts = lib.remove "common" (attrNames (readDir ./hosts));
-          system = "x86_64-linux";
-        in
-        listToAttrs (
-          map (host: {
-            name = host;
-            value = nixpkgs.lib.nixosSystem {
-              specialArgs = {
-                inherit
-                  inputs
-                  outputs
-                  lib
-                  system
-                  ;
+        #
+        # ========== Host Configurations ==========
+        #
+        nixosConfigurations =
+          with builtins;
+          let
+            hosts = lib.remove "common" (attrNames (readDir ./hosts));
+            system = "x86_64-linux";
+          in
+          listToAttrs (
+            map (host: {
+              name = host;
+              value = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                  inherit
+                    inputs
+                    outputs
+                    lib
+                    system
+                    ;
+                };
+                modules = [ ./hosts/${host} ];
               };
-              modules = [ ./hosts/${host} ];
+            }) hosts
+          );
+
+        #
+        # ========= Dev shell =========
+        #
+        devShells = forAllSystems (
+          system:
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          {
+            default = pkgs.mkShell {
+              nativeBuildInputs = with pkgs; [
+                stylua
+                nixd
+                nixfmt
+              ];
             };
-          }) hosts
+          }
         );
 
-      #
-      # ========= Dev shell =========
-      #
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            nativeBuildInputs = with pkgs; [
-              stylua
-              nixd
-              nixfmt
-            ];
-          };
-        }
-      );
-
-      #
-      # ========= Formatting =========
-      #
-      # Nix formatter available through 'nix fmt' https://github.com/NixOS/nixfmt
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-      # Pre-commit checks
-      checks = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        import ./checks.nix { inherit inputs system pkgs; }
-      );
-    };
+        #
+        # ========= Formatting =========
+        #
+        # Nix formatter available through 'nix fmt' https://github.com/NixOS/nixfmt
+        formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+        # Pre-commit checks
+        checks = forAllSystems (
+          system:
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          import ./checks.nix { inherit inputs system pkgs; }
+        );
+      };
 
   inputs = {
     #
@@ -203,17 +204,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
     };
+    # Greeter for Dank Material Shell
+    dms-greeter = {
+      url = "github:AvengeMedia/dank-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # VSCode server
     vscode-server = {
-      # TODO: switch back after merge
-      # https://github.com/nix-community/nixos-vscode-server/pull/101
-      url = "github:nix-community/nixos-vscode-server/pull/101/head";
+      url = "github:nix-community/nixos-vscode-server";
       inputs.flake-parts.follows = "flake-parts";
     };
 
     #
-    # ========== Personal Repositories ========== 
+    # ========== Personal Repositories ==========
     #
     # My secrets
     nix-secrets = {
