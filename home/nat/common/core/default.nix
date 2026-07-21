@@ -92,6 +92,7 @@
         manix # Nix options search
         nix-tree # nix package tree viewer
         ncdu # TUI disk usage
+        osc # Copy/paste system clipboard in the terminal
         p7zip # compression & encryption
         pciutils
         procs # better ps

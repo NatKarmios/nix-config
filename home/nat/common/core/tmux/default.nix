@@ -71,6 +71,10 @@ in
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"
 
+      # Allow clipboard
+      set -g allow-passthrough on
+      set -g set-clipboard on
+
       # Mouse works as expected
       set-option -g mouse on
       # easy-to-remember split pane commands
