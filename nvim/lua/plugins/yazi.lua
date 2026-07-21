@@ -12,6 +12,11 @@ return {
   },
   opts = {
     open_for_directories = true,
+    hooks = {
+      yazi_opened = function(_, buf, _)
+        vim.keymap.set('t', '<Esc>', '<C-c>', { buffer = buf, nowait = true })
+      end,
+    },
   },
   init = function()
     -- Don't load netrw, we're using Yazi instead

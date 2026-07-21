@@ -6,6 +6,7 @@
   programs.lazygit = {
     enable = true;
     settings = {
+      quitOnTopLevelReturn = true; # Exit with <Esc>
       customCommands = [
         {
           key = "<c-space>";

@@ -1,19 +1,12 @@
 -- Seamless nagivation between tmux panes and vim splits
 return {
-  'christoomey/vim-tmux-navigator',
-  cmd = {
-    'TmuxNavigateLeft',
-    'TmuxNavigateDown',
-    'TmuxNavigateUp',
-    'TmuxNavigateRight',
-    'TmuxNavigatePrevious',
-    'TmuxNavigatorProcessList',
-  },
-  keys = {
-    { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
-    { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
-    { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
-    { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
-    { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
-  },
+  'alexghergh/nvim-tmux-navigation',
+  config = function()
+    local nvim_tmux_nav = require 'nvim-tmux-navigation'
+    local modes = { 'n', 'v', 'i', 't' }
+    vim.keymap.set(modes, '<C-h>', nvim_tmux_nav.NvimTmuxNavigateLeft)
+    vim.keymap.set(modes, '<C-j>', nvim_tmux_nav.NvimTmuxNavigateDown)
+    vim.keymap.set(modes, '<C-k>', nvim_tmux_nav.NvimTmuxNavigateUp)
+    vim.keymap.set(modes, '<C-l>', nvim_tmux_nav.NvimTmuxNavigateRight)
+  end,
 }

@@ -1,10 +1,35 @@
 -- Many QoL plugins
+local tmux_bind = function(key, dir, buf)
+  vim.keymap.set({ 'i', 't', 'n' }, key, function()
+    vim.fn.system('tmux select-pane -' .. dir)
+  end, { buffer = buf })
+end
+local tmux_binds = function(buf)
+  tmux_bind('<C-h>', 'L', buf)
+  tmux_bind('<C-j>', 'D', buf)
+  tmux_bind('<C-k>', 'U', buf)
+  tmux_bind('<C-l>', 'R', buf)
+end
+local tmux_key = function(dir)
+  return {
+    function()
+      vim.fn.system('tmux select-pane -' .. dir)
+    end,
+    mode = { 'n', 'i', 't' },
+  }
+end
 return {
   'folke/snacks.nvim',
   opts = {
     image = {},
     input = {},
-    lazygit = {},
+    lazygit = {
+      win = {
+        on_buf = function(win)
+          tmux_binds(win.buf)
+        end,
+      },
+    },
     picker = {
       actions = {
         opencode_send = function(...)
@@ -15,6 +40,10 @@ return {
         input = {
           keys = {
             ['<a-a>'] = { 'opencode_send', mode = { 'n', 'i' } },
+            ['<C-h>'] = tmux_key 'L',
+            ['<C-j>'] = tmux_key 'D',
+            ['<C-k>'] = tmux_key 'U',
+            ['<C-l>'] = tmux_key 'R',
           },
         },
       },
