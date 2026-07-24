@@ -63,6 +63,10 @@ in
             name = "Franken";
             autoAcceptFolders = true;
           }
+          {
+            name = "Cyberdemon";
+            autoAcceptFolders = true;
+          }
         ]
       );
 
