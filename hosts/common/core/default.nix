@@ -64,6 +64,7 @@ in
     jq
     screen
     file
+    nodejs
   ];
 
   #

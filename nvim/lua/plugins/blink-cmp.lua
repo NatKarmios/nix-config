@@ -26,6 +26,19 @@ return {
       version = '*',
       opts = {},
     },
+    -- GitHub Copilot autosuggestions
+    {
+      'giuxtaposition/blink-cmp-copilot',
+      dependencies = {
+        {
+          'zbirenbaum/copilot.lua',
+          opts = {
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+          },
+        },
+      },
+    },
   },
   --- @module 'blink.cmp'
   --- @type blink.cmp.Config
@@ -52,10 +65,25 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'lazydev', 'vimtex' },
+      default = { 'lsp', 'path', 'snippets', 'lazydev', 'vimtex', 'copilot' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         vimtex = { name = 'vimtex', min_keyword_length = 2, module = 'blink.compat.source', score_offset = 80 },
+        copilot = {
+          name = 'copilot',
+          module = 'blink-cmp-copilot',
+          score_offset = 100,
+          async = true,
+          transform_items = function(_, items)
+            local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
+            local kind_idx = #CompletionItemKind + 1
+            CompletionItemKind[kind_idx] = 'Copilot'
+            for _, item in ipairs(items) do
+              item.kind = kind_idx
+            end
+            return items
+          end,
+        },
       },
     },
 
@@ -66,5 +94,44 @@ return {
     fuzzy = { implementation = 'prefer_rust_with_warning' },
 
     signature = { enabled = true },
+
+    appearance = {
+      kind_icons = {
+        -- Custom
+        Copilot = '',
+
+        -- Default
+        Text = '󰉿',
+        Method = '󰊕',
+        Function = '󰊕',
+        Constructor = '󰒓',
+
+        Field = '󰜢',
+        Variable = '󰆦',
+        Property = '󰖷',
+
+        Class = '󱡠',
+        Interface = '󱡠',
+        Struct = '󱡠',
+        Module = '󰅩',
+
+        Unit = '󰪚',
+        Value = '󰦨',
+        Enum = '󰦨',
+        EnumMember = '󰦨',
+
+        Keyword = '󰻾',
+        Constant = '󰏿',
+
+        Snippet = '󱄽',
+        Color = '󰏘',
+        File = '󰈔',
+        Reference = '󰬲',
+        Folder = '󰉋',
+        Event = '󱐋',
+        Operator = '󰪚',
+        TypeParameter = '󰬛',
+      },
+    },
   },
 }
