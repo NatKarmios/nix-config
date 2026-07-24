@@ -3,7 +3,11 @@ return {
   {
     'chrisgrieser/nvim-origami',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+      foldKeymaps = {
+        closeOnlyOnFirstColumn = true,
+      },
+    },
 
     init = function()
       vim.o.foldcolumn = '1'
