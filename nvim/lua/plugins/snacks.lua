@@ -89,14 +89,14 @@ return {
     {
       '<leader>sb',
       function()
-        Snacks.picker.lines()
+        Snacks.picker.lines { args = { '--auto-hybrid-regex' } }
       end,
       desc = 'Grep [B]uffer',
     },
     {
       '<leader>sB',
       function()
-        Snacks.picker.grep_buffers()
+        Snacks.picker.grep_buffers { args = { '--auto-hybrid-regex' } }
       end,
       desc = 'Grep open [B]uffers',
     },
@@ -138,7 +138,7 @@ return {
     {
       '<leader>sg',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep { args = { '--auto-hybrid-regex' } }
       end,
       desc = '[G]rep',
     },
