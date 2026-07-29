@@ -15,6 +15,7 @@ require('lazy').setup {
   require 'plugins.git-blame', -- Git blame in virtual text
   require 'plugins.gitsigns', -- Buffer-wise Git utilities
   require 'plugins.guess-indent', -- Detect tabstop and shiftwidth automatically
+  require 'plugins.harpoon', -- Quick navigation of marked files
   require 'plugins.leap', -- Super powered motion!
   require 'plugins.lsp', -- LSP
   require 'plugins.lualine', -- Statusline

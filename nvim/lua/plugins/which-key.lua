@@ -40,6 +40,7 @@ return {
 
     -- Document existing key chains
     spec = {
+      { '<leader>a', group = '[A]I' },
       { '<leader>b', group = '[B]uffer' },
       { '<leader>c', group = '[C]ode' },
       { '<leader>f', group = '[F]ile' },
@@ -48,6 +49,26 @@ return {
       { '<leader>t', group = '[T]oggle' },
       { '<leader>w', group = '[W]indow' },
       { '<leader>W', group = 'Tab' },
+      {
+        '<leader>h',
+        group = '[H]arpoon',
+        expand = function()
+          local list = require('harpoon'):list()
+          local keys = {}
+          for i, item in pairs(list.items) do
+            if type(i) == 'number' and i < 10 then
+              table.insert(keys, {
+                tostring(i),
+                function()
+                  list:select(i)
+                end,
+                desc = item.value,
+              })
+            end
+          end
+          return keys
+        end,
+      },
     },
   },
 }
