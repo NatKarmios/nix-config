@@ -25,7 +25,10 @@ require('lazy').setup {
   require 'plugins.opencode', -- LLM time
   require 'plugins.origami', -- Better folding
   require 'plugins.smear-cursor', -- Smear the cursor when making large motions
-  require 'plugins.snacks', -- Many QoL plugins
+  require 'plugins.snacks-image', -- Preview images
+  require 'plugins.snacks-input', -- Better vim.ui.input
+  require 'plugins.snacks-lazygit', -- Git TUI
+  require 'plugins.snacks-picker', -- Picker & fuzzy finder
   require 'plugins.spider', -- Better w/e/b motions
   require 'plugins.tiny-inline-diagnostic', -- Neater, prettier diagnostics
   require 'plugins.tree', -- File explorer tree
