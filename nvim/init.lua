@@ -1,3 +1,4 @@
+require 'nix-extra'
 require 'options'
 require 'keymaps'
 require 'lazy-setup'
