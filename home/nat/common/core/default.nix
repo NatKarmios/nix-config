@@ -86,7 +86,6 @@
         fastfetch # pretty system info
         fd # tree-style ls
         findutils # find
-        fzf # fuzzy find
         jq # json pretty-printer and manipulator
         gum # a bunch of helpful utilities for shell scripting
         manix # Nix options search
@@ -114,6 +113,12 @@
         inputs.nix-alien.packages.${system}.default
       ]
     );
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultOptions = [ "--tmux center" ];
+  };
 
   nix = {
     package = lib.mkDefault pkgs.nix;
