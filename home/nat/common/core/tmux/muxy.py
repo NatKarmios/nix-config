@@ -121,7 +121,7 @@ def get_tmux_cmds(kind, name, in_tmux):
             ]
         case "start":
             return [
-                ["tmuxinator", "start", name],
+                ["tmuxinator", "start", name, "--suppress-tmux-version-warning"],
             ]
         case "new":
             if not in_tmux:
