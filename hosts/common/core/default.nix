@@ -9,10 +9,6 @@
 let
   subsituters = [
     {
-      url = "https://cache.garnix.io";
-      key = "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g=";
-    }
-    {
       url = "https://niri.cachix.org";
       key = "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=";
     }
