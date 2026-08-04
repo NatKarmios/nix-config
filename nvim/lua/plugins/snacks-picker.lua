@@ -33,7 +33,6 @@ return {
     },
   },
   keys = {
-    -- Picker
     {
       '<leader><leader>',
       function()
@@ -201,14 +200,6 @@ return {
         Snacks.picker.undo()
       end,
       desc = '[U]ndo history',
-    },
-    -- Lazygit
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit.open()
-      end,
-      desc = 'Lazy[G]it',
     },
   },
 }

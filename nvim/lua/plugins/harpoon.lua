@@ -129,4 +129,31 @@ return {
       },
     },
   },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      spec = {
+        {
+          '<leader>h',
+          group = '[H]arpoon',
+          expand = function()
+            local list = require('harpoon'):list()
+            local keys = {}
+            for i, item in pairs(list.items) do
+              if type(i) == 'number' and i < 10 then
+                table.insert(keys, {
+                  tostring(i),
+                  function()
+                    list:select(i)
+                  end,
+                  desc = item.value,
+                })
+              end
+            end
+            return keys
+          end,
+        },
+      },
+    },
+  },
 }

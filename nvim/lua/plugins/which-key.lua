@@ -2,6 +2,7 @@
 return {
   'folke/which-key.nvim',
   event = 'VimEnter',
+  opts_extend = { 'spec' },
   opts = {
     delay = 0,
     mappings = vim.g.have_nerd_font,
@@ -49,26 +50,6 @@ return {
       { '<leader>t', group = '[T]oggle' },
       { '<leader>w', group = '[W]indow' },
       { '<leader>W', group = 'Tab' },
-      {
-        '<leader>h',
-        group = '[H]arpoon',
-        expand = function()
-          local list = require('harpoon'):list()
-          local keys = {}
-          for i, item in pairs(list.items) do
-            if type(i) == 'number' and i < 10 then
-              table.insert(keys, {
-                tostring(i),
-                function()
-                  list:select(i)
-                end,
-                desc = item.value,
-              })
-            end
-          end
-          return keys
-        end,
-      },
     },
   },
 }
