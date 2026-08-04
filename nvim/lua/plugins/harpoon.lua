@@ -78,7 +78,18 @@ return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {},
+    config = function()
+      local harpoon = require 'harpoon'
+      harpoon.setup {}
+      harpoon:extend {
+        ADD = function(cx)
+          print('Added harpoon ' .. cx.idx)
+        end,
+        REMOVE = function(cx)
+          print('Removed harpoon ' .. cx.idx)
+        end,
+      }
+    end,
     keys = {
       {
         '<leader>ha',
@@ -90,7 +101,7 @@ return {
       {
         '<leader>hd',
         function()
-          require('harpoon'):list():add()
+          require('harpoon'):list():remove()
         end,
         desc = '[D]elete harpoon',
       },
