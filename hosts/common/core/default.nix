@@ -9,8 +9,8 @@
 let
   subsituters = [
     {
-      url = "https://niri.cachix.org";
-      key = "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=";
+      url = "https://niri-epireyn.cachix.org";
+      key = "niri-epireyn.cachix.org-1:tlVyFN7CtsDT+ZcLPS+ekFWeT1X6X4OqvWqbBMyIzFA=";
     }
   ];
 in

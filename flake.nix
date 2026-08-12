@@ -109,7 +109,7 @@
     # above. Useful for trying a beta stable release so we can set
     # 'nixpkgs-stable' for critical packages while updating 'nixpkgs' to start
     # migrating.
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hardware = {
@@ -145,7 +145,7 @@
 
     # Nix-level configuration for Niri
     niri = {
-      url = "github:sodiboo/niri-flake";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };

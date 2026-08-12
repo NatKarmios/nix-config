@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   devDirectory = "~/src";
   devNix = "${devDirectory}/nix";
@@ -6,7 +11,6 @@ in
 {
   home.packages = with pkgs; [
     just
-    stable.thefuck
     tldr
   ];
 
