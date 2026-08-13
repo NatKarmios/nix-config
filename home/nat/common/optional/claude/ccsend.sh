@@ -30,13 +30,37 @@ if [ -z "${TMUX:-}" ]; then
     exit 1
 fi
 
-# Cache pane list (pid:pane_id per line) for current session
-PANE_LIST=$(tmux list-panes -s -F '#{pane_pid}:#{pane_id}')
+# Cache pane lists (pid:pane_id per line) for current window and current session
+WINDOW_PANE_LIST=$(tmux list-panes -F '#{pane_pid}:#{pane_id}')
+SESSION_PANE_LIST=$(tmux list-panes -s -F '#{pane_pid}:#{pane_id}')
 
-# Find pane ID for a given PID
+# Find pane ID for a given PID within a given pane list
 find_pane_for_pid() {
     local search_pid=$1
-    echo "$PANE_LIST" | grep "^${search_pid}:" | cut -d: -f2 | head -1
+    local pane_list=$2
+    echo "$pane_list" | grep "^${search_pid}:" | cut -d: -f2 | head -1
+}
+
+# Walk up the process tree from each claude PID to find the tmux pane,
+# searching within the given pane list
+find_panes() {
+    local pane_list=$1
+    local found=""
+    for claude_pid in $CLAUDE_PIDS; do
+        pid=$claude_pid
+        while [ -n "$pid" ] && [ "$pid" != "1" ]; do
+            result=$(find_pane_for_pid "$pid" "$pane_list")
+            if [ -n "$result" ]; then
+                # Add to list if not already present
+                if ! echo "$found" | grep -q "^${result}$"; then
+                    found="${found}${found:+$'\n'}${result}"
+                fi
+                break
+            fi
+            pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
+        done
+    done
+    echo "$found"
 }
 
 # Find claude processes (try exact match first, then broader search)
@@ -47,22 +71,13 @@ if [ -z "$CLAUDE_PIDS" ]; then
     exit 1
 fi
 
-# Walk up the process tree from each claude PID to find the tmux pane
-FOUND_PANES=""
-for claude_pid in $CLAUDE_PIDS; do
-    pid=$claude_pid
-    while [ -n "$pid" ] && [ "$pid" != "1" ]; do
-        result=$(find_pane_for_pid "$pid")
-        if [ -n "$result" ]; then
-            # Add to list if not already present
-            if ! echo "$FOUND_PANES" | grep -q "^${result}$"; then
-                FOUND_PANES="${FOUND_PANES}${FOUND_PANES:+$'\n'}${result}"
-            fi
-            break
-        fi
-        pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
-    done
-done
+# Check panes in the current window first, then fall back to the whole session
+FOUND_PANES=$(find_panes "$WINDOW_PANE_LIST")
+SCOPE="window"
+if [ -z "$FOUND_PANES" ]; then
+    FOUND_PANES=$(find_panes "$SESSION_PANE_LIST")
+    SCOPE="session"
+fi
 
 if [ -z "$FOUND_PANES" ]; then
     echo "error: could not find Claude Code pane in current session" >&2
@@ -71,7 +86,7 @@ fi
 
 PANE_COUNT=$(echo "$FOUND_PANES" | wc -l | tr -d ' ')
 if [ "$PANE_COUNT" -gt 1 ]; then
-    echo "error: multiple Claude Code instances found in current session" >&2
+    echo "error: multiple Claude Code instances found in current $SCOPE" >&2
     exit 1
 fi
 
