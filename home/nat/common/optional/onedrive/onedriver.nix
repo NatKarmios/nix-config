@@ -17,13 +17,13 @@ in
 
   home.packages = [ onedriver ];
 
-  home.activation.mk-onedrive-remote-dir = ''
-    run mkdir -p ${onedrive-remote-dir}
-  '';
-
   systemd.user.services.onedriver = {
     Unit.Description = "A native Linux filesystem for Microsoft OneDrive";
     Install.WantedBy = [ "default.target" ];
     Service.ExecStart = "${onedriver}/bin/onedriver ${onedrive-remote-dir} -n";
+    Service.ExecStartPre = [
+      "-${pkgs.coreutils}/bin/mkdir -p ${onedrive-remote-dir}"
+      "-${pkgs.fuse3}/bin/fusermount3 -uz ${onedrive-remote-dir}"
+    ];
   };
 }
