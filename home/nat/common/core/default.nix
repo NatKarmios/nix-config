@@ -154,6 +154,7 @@
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
     };
+    includes = [ "config_local" ];
     enableDefaultConfig = false;
   };
 
