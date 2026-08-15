@@ -12,8 +12,19 @@
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.sessionVariables.FLAKE}/nvim";
 
-  # Extra, nix-specific stuff
+  # Nix-managed lua config
   xdg.configFile."nvim-nix/init.lua".text = ''
     -- This file is managed by Nix
   '';
+
+  home.sessionVariables = {
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+  };
+
+  programs.zsh.shellAliases = {
+    e = "nvim";
+    vi = "nvim";
+    vim = "nvim";
+  };
 }

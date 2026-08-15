@@ -34,7 +34,6 @@ in
     backupFileExtension = "backup";
     extraSpecialArgs = {
       inherit pkgs inputs system;
-      hostSpec = config.hostSpec;
     };
     users.${hostSpec.username}.imports = lib.flatten [
       (

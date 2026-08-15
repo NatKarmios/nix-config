@@ -562,10 +562,10 @@
     },
     "nix-secrets": {
       "locked": {
-        "lastModified": 1784892853,
-        "narHash": "sha256-vZuKNJo7pb6TbS6z8vXikdAMY8HeYafLSHMjkjIXfpg=",
+        "lastModified": 1786762747,
+        "narHash": "sha256-NO12tWjXfPebXW1MyeEQUwHtBROay+IF0z1l3uNcd88=",
         "ref": "main",
-        "rev": "f1f0e707c3fe4f982526b3923724d3907fc76f37",
+        "rev": "c6214d20cc8f410a9be96b6013e36012bc24fe03",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@gitlab.com/NatKarmios/nix-secrets.git"

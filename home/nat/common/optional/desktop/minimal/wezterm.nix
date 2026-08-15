@@ -17,4 +17,6 @@
       draw-border-with-background = false;
     }
   ];
+
+  home.sessionVariables.TERMINAL = "wezterm";
 }

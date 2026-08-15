@@ -122,4 +122,5 @@ in
     run mkdir -p ${config.xdg.configHome}/tmuxinator
   '';
 
+  programs.zsh.shellAliases.tx = "tmux attach || tmux";
 }

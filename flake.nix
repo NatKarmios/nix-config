@@ -5,6 +5,7 @@
     {
       self,
       nixpkgs,
+      home-manager,
       ...
     }@inputs:
     let
@@ -21,11 +22,11 @@
       # ===== Extend lib with lib.custom
       # This approach allows lib.custom to propagate into hm
       # see: https://github.com/nix-community/home-manager/pull/3454
-      lib =
-        let
-          custom = import ./lib { inherit (nixpkgs) lib; };
-        in
-        nixpkgs.lib.extend (self: super: { inherit custom; });
+      lib-custom = import ./lib { inherit (nixpkgs) lib; };
+      lib = nixpkgs.lib.extend (self: super: { custom = lib-custom; });
+      hm-lib = nixpkgs.lib.extend (self: super:
+        home-manager.lib // { custom = lib-custom; }
+      );
 
     in
     lib.custom.warnAll
@@ -63,6 +64,27 @@
                 modules = [ ./hosts/${host} ];
               };
             }) hosts
+          );
+
+        homeConfigurations =
+          with builtins;
+          let
+            homes = lib.remove "common" (attrNames (readDir ./home/nat/standalone));
+            system = "x86_64-linux";
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          listToAttrs (
+            map (home: {
+              name = home;
+              value = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {
+                  inherit pkgs inputs system;
+                  lib = hm-lib;
+                };
+                modules = [ ./home/nat/standalone/${home} ];
+              };
+            }) homes
           );
 
         #

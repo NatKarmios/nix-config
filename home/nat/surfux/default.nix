@@ -1,52 +1,23 @@
-{ pkgs, ... }:
+{ hostSpec, ... }:
 {
   imports = [
     ../common/core
-    ../common/optional/affinity.nix
-    ../common/optional/cursors.nix
-    ../common/optional/claude
-    ../common/optional/dankmaterialshell.nix
-    ../common/optional/discord.nix
-    ../common/optional/displays.nix
-    ../common/optional/flameshot.nix
-    ../common/optional/git.nix
-    ../common/optional/kdeconnect.nix
-    ../common/optional/lazygit.nix
-    ../common/optional/latex.nix
-    ../common/optional/niri
-    ../common/optional/opencode.nix
-    ../common/optional/obsidian.nix
+
+    ../common/optional/ai
+    ../common/optional/desktop/extra
+    ../common/optional/dev/extra
     ../common/optional/onedrive
-    # ../common/optional/photoshop.nix
-    ../common/optional/shells.nix
-    # ../common/optional/timewall.nix
-    ../common/optional/vscode-server.nix
-    ../common/optional/zotero
+    ../common/optional/sops.nix
+    ../common/optional/ssh.nix
+    ../common/optional/term-extra
 
     ./displays.nix
   ];
 
-  home.packages = with pkgs; [
-    drawio
-    rustdesk-flutter
-    slack
-  ];
+  inherit hostSpec;
 
-  programs.gh = {
-    enable = true;
-    settings = {
-      git_protocol = "ssh";
-    };
-    extensions = with pkgs; [
-      gh-eco
-      gh-dash
-      gh-enhance
-    ];
-  };
 
   programs.niri.settings.debug.ignore-drm-device = "/dev/dri/by-path/pci-0000:02:00.0-render";
-
-  xdg.autostart.enable = true;
 
   services.podman.enable = true;
 }
