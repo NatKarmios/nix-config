@@ -10,4 +10,6 @@
     userFullName = fullName;
     handle = handle;
   };
+
+  targets.genericLinux.enable = true;
 }
