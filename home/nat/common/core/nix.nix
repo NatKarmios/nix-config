@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   nix = {
     package = lib.mkDefault pkgs.nix;
@@ -10,12 +15,8 @@
       ];
       warn-dirty = false;
     };
-    extraOptions = lib.mkIf
-      (lib.hasAttrByPath [ "sops" "secrets" "nix/access_tokens" ] config)
-      ''
-        !include ${config.sops.secrets."nix/access_tokens".path}
-      '';
+    extraOptions = lib.mkIf (lib.hasAttrByPath [ "sops" "secrets" "nix/access_tokens" ] config) ''
+      !include ${config.sops.secrets."nix/access_tokens".path}
+    '';
   };
-
-  nixpkgs.config.allowUnfree = true;
 }

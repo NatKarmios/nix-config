@@ -24,9 +24,7 @@
       # see: https://github.com/nix-community/home-manager/pull/3454
       lib-custom = import ./lib { inherit (nixpkgs) lib; };
       lib = nixpkgs.lib.extend (self: super: { custom = lib-custom; });
-      hm-lib = nixpkgs.lib.extend (self: super:
-        home-manager.lib // { custom = lib-custom; }
-      );
+      hm-lib = nixpkgs.lib.extend (self: super: home-manager.lib // { custom = lib-custom; });
 
     in
     lib.custom.warnAll
@@ -71,7 +69,10 @@
           let
             homes = lib.remove "common" (attrNames (readDir ./home/nat/standalone));
             system = "x86_64-linux";
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
           in
           listToAttrs (
             map (home: {

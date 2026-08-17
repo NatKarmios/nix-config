@@ -1,5 +1,6 @@
-{ lib, config, ... }: {
-  programs.zsh = {
+{ lib, config, ... }:
+{
+  programs.zsh = rec {
     enable = true;
 
     dotDir = "${config.xdg.configHome}/zsh";
@@ -10,12 +11,13 @@
     history.size = 10000;
     history.share = true;
 
-
     shellAliases = {
       q = "exit";
     };
 
     initContent = lib.mkOrder 999999 ''
+      [[ -f ${dotDir}/.zshrc_extra ]] && source ${dotDir}/.zshrc_extra
+
       if [[ -n $ZSH_RUN ]] then
         eval $ZSH_RUN
       fi
