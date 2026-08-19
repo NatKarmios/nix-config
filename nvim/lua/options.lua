@@ -13,6 +13,7 @@ vim.o.mouse = 'a' -- Enable mouse
 vim.o.showmode = false -- Hide mode; statusline will show it
 vim.o.breakindent = true -- Wrapped lines preserve indent
 vim.o.undofile = true -- Undo history
+vim.o.autoread = true -- Auto-reload changed files
 
 -- Tab behaviour
 vim.o.tabstop = 2
