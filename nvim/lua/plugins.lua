@@ -25,6 +25,7 @@ require('lazy').setup {
   require 'plugins.ocaml', -- OCaml
   require 'plugins.opencode', -- LLM time
   require 'plugins.origami', -- Better folding
+  require 'plugins.render-markdown', -- Render markdown nicely
   require 'plugins.smear-cursor', -- Smear the cursor when making large motions
   require 'plugins.snacks-image', -- Preview images
   require 'plugins.snacks-input', -- Better vim.ui.input
