@@ -15,6 +15,7 @@
           description = "Intent-to-commit";
         }
       ];
+      git.overrideGpg = true;
     };
   };
 
