@@ -5,6 +5,7 @@
     extraConfig = ''
       return {
         font_size = 11.0,
+        line_height = 0.8,
         hide_tab_bar_if_only_one_tab = true,
         window_background_opacity = 0.9,
       }
