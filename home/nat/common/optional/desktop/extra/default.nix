@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     drawio
+    signal-desktop
     slack
   ];
 }
