@@ -115,7 +115,7 @@ in
 
   home.packages = with pkgs; [
     tmuxinator
-    muxy
+    (lib.warn "muxy: using workaround env var" muxy)
   ];
 
   home.activation.mk-tmuxinator-dir = ''

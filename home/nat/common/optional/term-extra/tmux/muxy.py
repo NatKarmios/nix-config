@@ -90,7 +90,8 @@ def fmt_choice(choice):
 
 def prompt(choices):
     choices_fmt = "\n".join(map(fmt_choice, choices.items()))
-    fmt_cmd = "gum format -t template"
+    # https://github.com/charmbracelet/gum/issues/1131
+    fmt_cmd = "CLICOLOR_FORCE=1 gum format -t template"
     filter_cmd = "gum filter --no-strip-ansi --no-strict --placeholder 'Select a tmux session'"
     cmd = f"echo '{choices_fmt}' | {fmt_cmd} | {filter_cmd}"
     try:
