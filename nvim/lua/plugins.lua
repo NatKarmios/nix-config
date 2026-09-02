@@ -6,7 +6,7 @@ require('lazy').setup {
   'natkarmios/cctools', -- Tools for Claude Code
   require 'plugins.config-local', -- Per-project nvim config
   require 'plugins.conform', -- Autoformat
-  'sindrets/diffview.nvim', -- Git diffs
+  require 'plugins.diffview', -- Git diffs
   require 'plugins.devicons', -- Nerd font icon provider
   require 'plugins.dropbar', -- IDE-esque breadcrumb bar
   require 'plugins.eunuch', -- File utility commands
