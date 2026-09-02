@@ -112,6 +112,13 @@ return {
     {
       '<leader>gs',
       function()
+        Snacks.picker.git_status()
+      end,
+      desc = '[S]earch status',
+    },
+    {
+      '<leader>gS',
+      function()
         Snacks.picker.pick 'git_grep_hunks'
       end,
       desc = '[S]earch hunks',
