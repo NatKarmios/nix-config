@@ -16,6 +16,7 @@
         }
       ];
       git.overrideGpg = true;
+      os.copyToClipboardCmd = "echo {{text}} | osc copy";
     };
   };
 
