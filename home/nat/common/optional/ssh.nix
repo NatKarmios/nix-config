@@ -3,8 +3,6 @@
     enable = true;
     settings."*" = {
       addKeysToAgent = "yes";
-      # These values are from the default config;
-      # the default is going away at some point, and currently raises a warning.
       forwardAgent = false;
       compression = false;
       serverAliveInterval = 0;
@@ -18,6 +16,4 @@
     includes = [ "config_local" ];
     enableDefaultConfig = false;
   };
-
-  services.ssh-agent.enable = true;
 }
