@@ -14,12 +14,13 @@ in
       key = "${ssh-dir}/id_ed25519";
       signByDefault = true;
     };
-    extraConfig.gpg.ssh.allowedSignersFile = "${ssh-dir}/allowed_signers";
+
     settings = {
       user.name = lib.mkDefault config.hostSpec.userFullName;
       user.email = lib.mkDefault config.hostSpec.email;
       init.defaultBranch = "main";
       credential.helper = "store";
+      gpg.ssh.allowedSignersFile = "${ssh-dir}/allowed_signers";
 
       alias = {
         oreset = ''!bash -c "git reset origin/$(git branch --show-current) --hard"'';
