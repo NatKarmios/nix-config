@@ -1,7 +1,21 @@
 { pkgs, config, ... }:
 {
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    sideloadInitLua = true; # Don't overwrite init.lua
+    withRuby = true;
+    withPython3 = true;
+    withNodeJs = true;
+    withPerl = true;
+  };
+
   home.packages = with pkgs; [
-    neovim
     neovim-remote
     tree-sitter
     vscode-langservers-extracted
@@ -17,14 +31,7 @@
     -- This file is managed by Nix
   '';
 
-  home.sessionVariables = {
-    VISUAL = "nvim";
-    EDITOR = "nvim";
-  };
-
   programs.zsh.shellAliases = {
     e = "nvim";
-    vi = "nvim";
-    vim = "nvim";
   };
 }
