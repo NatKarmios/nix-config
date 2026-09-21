@@ -11,5 +11,7 @@
     drawio
     signal-desktop
     slack
+    ytmdesktop
+    zulip
   ];
 }
