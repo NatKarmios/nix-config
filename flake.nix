@@ -239,6 +239,12 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    # Claude Desktop
+    claude-desktop = {
+      url = "github:stslex/claude-desktop-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #
     # ========== Personal Repositories ==========
     #

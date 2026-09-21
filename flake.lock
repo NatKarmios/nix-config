@@ -105,6 +105,26 @@
         "type": "github"
       }
     },
+    "claude-desktop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1787082414,
+        "narHash": "sha256-afGHNsRnojmZsVPRqupQwhSG2MaJ9pi1CKh9Rnzu/Q8=",
+        "owner": "stslex",
+        "repo": "claude-desktop-nix",
+        "rev": "1e9edde818e9fa3d183296008dd00bfe5095cdff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stslex",
+        "repo": "claude-desktop-nix",
+        "type": "github"
+      }
+    },
     "corefonts": {
       "flake": false,
       "locked": {
@@ -719,6 +739,7 @@
     "root": {
       "inputs": {
         "affinity-nix": "affinity-nix",
+        "claude-desktop": "claude-desktop",
         "crane": "crane",
         "dms": "dms",
         "dms-greeter": "dms-greeter",
