@@ -20,5 +20,6 @@
     [
       ccsend
       claude-desktop
+      pkgs.claude-swap
     ];
 }
