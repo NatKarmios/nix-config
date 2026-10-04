@@ -34,6 +34,7 @@
       #
       "hosts/common/optional/brightnessctl.nix"
       "hosts/common/optional/desktop"
+      "hosts/common/optional/gnome-keyring.nix"
       "hosts/common/optional/lanzaboote.nix"
       "hosts/common/optional/nix-gc.nix"
       "hosts/common/optional/stylix.nix"
