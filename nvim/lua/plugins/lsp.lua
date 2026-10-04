@@ -86,5 +86,12 @@ return {
     vim.lsp.enable 'nixd'
 
     vim.lsp.enable 'ocamllsp'
+
+    vim.lsp.config('slipshow', {
+      cmd = { 'slipshow', 'lsp' },
+      filetypes = { 'slipshow' },
+      root_markers = { '.git' },
+    })
+    vim.lsp.enable 'slipshow'
   end,
 }
