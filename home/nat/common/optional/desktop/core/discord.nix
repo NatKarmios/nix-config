@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.vesktop = {
     enable = true;
@@ -33,8 +34,14 @@
 
   ## Vesktop starts before DMS, so its tray icon doesn't show. This is a DMS bug:
   ## https://github.com/AvengeMedia/DankMaterialShell/issues/1073
-  # my.niri.startup-apps.vesktop.cmd = [
-  #   "vesktop"
-  #   "--start-minimized"
-  # ];
+  my.niri.startup-apps.vesktop.cmd =
+    let
+      vesktop-startup = pkgs.writeShellScriptBin "vesktop-startup" ''
+        # Wait for the tray host to register its StatusNotifierWatcher
+        gdbus wait --session org.kde.StatusNotifierWatcher
+        sleep 1
+        exec vesktop --start-minimized
+      '';
+    in
+    [ "${vesktop-startup}/bin/vesktop-startup" ];
 }
