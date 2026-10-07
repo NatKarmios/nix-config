@@ -1,16 +1,12 @@
 {
   pkgs,
-  config,
   inputs,
   system,
   ...
 }:
 {
 
-  programs.claude-code = {
-    enable = true;
-    configDir = "${config.xdg.configHome}/claude";
-  };
+  programs.claude-code.enable = true;
 
   home.packages =
     let
