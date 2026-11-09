@@ -48,8 +48,27 @@ return {
       { '<leader>g', group = '[G]it' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>t', group = '[T]oggle' },
-      { '<leader>w', group = '[W]indow' },
-      { '<leader>W', group = 'Tab' },
+      {
+        '<leader>w',
+        group = 'Tabs',
+        expand = function()
+          local keys = {}
+          for i, tab in ipairs(vim.api.nvim_list_tabpages()) do
+            if i < 10 then
+              local buf = vim.api.nvim_win_get_buf(vim.api.nvim_tabpage_get_win(tab))
+              local name = vim.api.nvim_buf_get_name(buf)
+              table.insert(keys, {
+                tostring(i),
+                function()
+                  vim.api.nvim_set_current_tabpage(tab)
+                end,
+                desc = name ~= '' and vim.fn.fnamemodify(name, ':~:.') or '[No Name]',
+              })
+            end
+          end
+          return keys
+        end,
+      },
     },
   },
 }
