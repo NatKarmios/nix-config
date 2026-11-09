@@ -1,6 +1,9 @@
 let
   internal-on = [
-    { criteria = "$INTERNAL"; status = "enable"; }
+    {
+      criteria = "$INTERNAL";
+      status = "enable";
+    }
   ];
 in
 {
@@ -20,7 +23,8 @@ in
             position = "35,1200";
           }
           {
-            criteria = "PNP(AOC) 2460X D02E9BA000209";
+            criteria = "Hewlett Packard HP E241i CN44171NJF";
+            # criteria = "PNP(AOC) 2460X D02E9BA000209";
             status = "enable";
             position = "0,0";
           }
@@ -34,7 +38,10 @@ in
       {
         name = "misc-ext";
         outputs = internal-on ++ [
-          { criteria = "*"; status = "enable"; }
+          {
+            criteria = "*";
+            status = "enable";
+          }
         ];
       }
     ];
