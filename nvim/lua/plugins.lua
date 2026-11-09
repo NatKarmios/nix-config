@@ -32,6 +32,7 @@ require('lazy').setup {
   require 'plugins.snacks-lazygit', -- Git TUI
   require 'plugins.snacks-picker', -- Picker & fuzzy finder
   require 'plugins.spider', -- Better w/e/b motions
+  require 'plugins.tabby', -- Tabline with named tabs
   require 'plugins.tiny-inline-diagnostic', -- Neater, prettier diagnostics
   require 'plugins.tree', -- File explorer tree
   require 'plugins.treesitter-manager', -- Manager for Treesitter parsers
